@@ -1,0 +1,267 @@
+---
+import Device from "../../components/Device.astro";
+---
+
+<section
+  data-scroll
+  data-scroll-css-progress
+  data-scroll-event-progress="wagonTrackedProgress"
+>
+  <div class="sticky">
+    <div class="relative">
+      <article>
+        <Device kind="iPhone 15" fill="height">
+          <video id="video" src="/videos/wagon recording.webm" muted></video>
+        </Device>
+      </article>
+      <div class="texts">
+        <ins id="myLastApp">
+          <svg
+            width="83"
+            height="79"
+            viewBox="0 0 83 79"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M80.7546 1.89441C60.2073 1.89441 41.6506 14.8621 29.155 30.187C19.5324 41.9883 11.2073 61.7236 11.2073 77.0504"
+              stroke="black"
+              stroke-width="3"
+              stroke-linecap="round"></path>
+            <path
+              d="M1.72827 66.5538C1.9862 68.8752 4.57216 71.6728 5.74425 73.7826C6.80179 75.6862 8.7676 75.8553 10.1927 76.9954C11.4708 78.0178 15.1689 76.8858 16.1858 76.1304C18.6653 74.2885 20.8273 72.171 23.4145 70.4462C25.1606 69.2822 27.036 67.2002 28.9751 66.5538"
+              stroke="black"
+              stroke-width="3"
+              stroke-linecap="round"></path>
+          </svg>
+          <span>Wagon,<br /> ma dernière application.</span>
+        </ins>
+        <ins id="stopsNearby">
+          <span>Arrêts de bus à proximité</span>
+          <svg
+            width="204"
+            height="77"
+            viewBox="0 0 204 77"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M182.155 74.28C185.98 74.28 190.653 73.5495 194.229 75.1385C195.739 75.8097 196.563 71.901 197.126 71.0068C199.118 67.8442 199.926 63.8028 201.956 60.7578"
+              stroke="black"
+              stroke-width="3"
+              stroke-linecap="round"></path>
+            <path
+              d="M2.02051 1.8396C14.3443 1.8396 26.6681 1.8396 38.9919 1.8396C61.4885 1.8396 84.8312 6.51896 106.227 13.43C122.756 18.7691 138.834 26.1721 153.394 35.6451C161.981 41.232 170.982 46.7499 178.506 53.7551C181.643 56.6755 184.95 60.2808 187.575 63.6553C188.658 65.0473 190.236 67.8982 191.573 68.9676C192.373 69.6083 195.23 73.762 194.712 74.2799"
+              stroke="black"
+              stroke-width="3"
+              stroke-linecap="round"></path>
+          </svg>
+        </ins>
+        <ins id="realtimeDepartures">
+          <svg
+            width="90"
+            height="75"
+            viewBox="0 0 90 75"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M2.17874 62.4021C2.17874 64.3215 1.17521 73.0326 4.07705 73.0326C8.44914 73.0326 12.8361 74.0361 16.9855 72.653"
+              stroke="black"
+              stroke-width="3"
+              stroke-linecap="round"></path>
+            <path
+              d="M88.3077 2.06177C70.9519 2.06177 53.5088 14.1132 40.1439 24.1369C29.6556 32.0031 22.9907 41.3057 16.062 52.0838C13.2797 56.4118 9.91351 61.3254 8.18331 66.1316C7.57148 67.8311 6.26359 72.1828 4.68994 72.9696"
+              stroke="black"
+              stroke-width="3"
+              stroke-linecap="round"></path>
+          </svg>
+          <span>Départs en<br />temps réel.</span>
+        </ins>
+        <ins id="todayDepartures">
+          <span>Départs du jour,<br />toujours à jour.</span>
+        </ins>
+        <ins id="journey">
+          <span>On part maintenant,<br />on arrive quand ?</span>
+        </ins>
+        <ins id="problem">
+          <span>Un problème ?</span>
+        </ins>
+        <ins id="incident">
+          <svg
+            width="90"
+            height="75"
+            viewBox="0 0 90 75"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M2.17874 62.4021C2.17874 64.3215 1.17521 73.0326 4.07705 73.0326C8.44914 73.0326 12.8361 74.0361 16.9855 72.653"
+              stroke="black"
+              stroke-width="3"
+              stroke-linecap="round"></path>
+            <path
+              d="M88.3077 2.06177C70.9519 2.06177 53.5088 14.1132 40.1439 24.1369C29.6556 32.0031 22.9907 41.3057 16.062 52.0838C13.2797 56.4118 9.91351 61.3254 8.18331 66.1316C7.57148 67.8311 6.26359 72.1828 4.68994 72.9696"
+              stroke="black"
+              stroke-width="3"
+              stroke-linecap="round"></path>
+          </svg>
+          <span>Dites le nous, dites leur.</span>
+        </ins>
+      </div>
+    </div>
+  </div>
+  <div style="height: 1500vh"></div>
+</section>
+
+<script>
+  const video = document.getElementById("video") as HTMLVideoElement;
+
+  const captionOffsets = {
+    myLastApp: [0, 0.01],
+    stopsNearby: [0.04, 0.12],
+    realtimeDepartures: [0.13, 0.24],
+    todayDepartures: [0.25, 0.4],
+    journey: [0.38, 0.6],
+    problem: [0.6, 0.99],
+    incident: [0.7, 0.99],
+  };
+
+  window.addEventListener("wagonTrackedProgress", (e) => {
+    const { progress } = e.detail;
+
+    video.currentTime = video.duration * progress;
+
+    for (const [id, [start, end]] of Object.entries(captionOffsets)) {
+      const el = document.getElementById(id) as HTMLElement;
+      if (progress >= start && progress < end) {
+        el.classList.add("visible");
+      } else {
+        el.classList.remove("visible");
+      }
+    }
+  });
+</script>
+
+<style>
+  .sticky {
+    height: 100vh;
+    position: sticky;
+    top: 0;
+  }
+
+  .relative {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  article,
+  .text {
+    position: absolute;
+    inset: 0;
+  }
+
+  article {
+    top: 5vh;
+    bottom: 5vh;
+    width: fit-content;
+    margin: auto;
+    transition-property: transform;
+    transition-duration: 0.01s;
+    transition-timing-function: ease;
+    transform: scale(min(1, calc(0.6 + var(--progress) * 14)));
+    transform-origin: center;
+  }
+
+  section {
+    display: grid;
+    place-items: center;
+  }
+
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .texts {
+    width: 100vw;
+    height: 100vh;
+    font-family: "Script", cursive;
+    font-size: 2rem;
+    text-transform: uppercase;
+  }
+
+  .texts ins {
+    position: absolute;
+    gap: 20px;
+    display: flex;
+    text-decoration: none;
+    opacity: 0;
+    transition: opacity 0.4s;
+  }
+
+  .texts ins.visible {
+    opacity: 1;
+    animation: appear 0.4s;
+  }
+
+  @keyframes appear {
+    from {
+      transform: scale(0.8);
+      opacity: 0;
+    }
+
+    70% {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+
+    to {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  #myLastApp {
+    left: 50%;
+    top: 7%;
+  }
+
+  #myLastApp svg {
+    padding-top: 22px;
+  }
+
+  #stopsNearby {
+    right: 55%;
+    top: 20%;
+  }
+
+  #realtimeDepartures {
+    left: calc(50% + 14vh);
+    top: 62%;
+  }
+
+  #todayDepartures {
+    right: calc(50% + 25vh);
+    top: 40%;
+  }
+
+  #journey {
+    right: calc(50% + 25vh);
+    top: 60%;
+  }
+
+  #problem {
+    left: calc(50% + 27vh);
+    top: 15%;
+  }
+
+  #incident {
+    left: calc(50% + 14vh);
+    top: 25%;
+  }
+</style>

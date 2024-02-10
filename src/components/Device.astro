@@ -1,0 +1,90 @@
+---
+interface DeviceFrame {
+  src: string;
+  paddingPercentageVertical: number;
+  paddingPercentageHorizontal: number;
+  borderRadius: number;
+}
+
+interface Props {
+  kind: "iPhone 15" | "iPhone 14 pro";
+  fill: "height" | "width";
+  boxShadow?: string;
+}
+
+const { kind, fill, boxShadow } = Astro.props;
+
+function getDeviceFrame(kind: string): DeviceFrame {
+  switch (kind) {
+    case "iPhone 15":
+    case "iPhone 14 pro":
+      return {
+        src: "/images/devices/iphone 14 pro silver.webp",
+        paddingPercentageVertical: 4.4,
+        paddingPercentageHorizontal: 4.7,
+        borderRadius: 5,
+      };
+    default:
+      throw new Error(`Unknown device kind: ${kind}`);
+  }
+}
+
+const frame = getDeviceFrame(kind);
+---
+
+<figure css-fill={fill}>
+  <aside
+    style={`margin: ${frame.paddingPercentageVertical}% ${frame.paddingPercentageHorizontal}%; border-radius: ${frame.borderRadius}%`}
+  >
+    <slot />
+  </aside>
+  <img
+    src={frame.src}
+    alt=""
+    role="presentation"
+    draggable="false"
+    style={boxShadow && `box-shadow: ${boxShadow}`}
+  />
+</figure>
+
+<style>
+  figure {
+    padding: 0;
+    margin: 0;
+    position: relative;
+  }
+
+  figure[css-fill="height"] {
+    height: 100%;
+    width: fit-content;
+  }
+
+  figure[css-fill="width"] {
+    width: 100%;
+    height: fit-content;
+  }
+
+  aside {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+  }
+
+  img {
+    position: sticky;
+    z-index: 1;
+    user-select: none;
+    pointer-events: none;
+    -webkit-user-drag: none;
+  }
+
+  figure[css-fill="height"] img {
+    width: auto;
+    height: 100%;
+  }
+
+  figure[css-fill="width"] img {
+    width: 100%;
+    height: auto;
+  }
+</style>
