@@ -28,12 +28,10 @@ import Device from "../../components/Device.astro";
           >
             <path
               d="M80.7546 1.89441C60.2073 1.89441 41.6506 14.8621 29.155 30.187C19.5324 41.9883 11.2073 61.7236 11.2073 77.0504"
-              stroke="black"
               stroke-width="3"
               stroke-linecap="round"></path>
             <path
               d="M1.72827 66.5538C1.9862 68.8752 4.57216 71.6728 5.74425 73.7826C6.80179 75.6862 8.7676 75.8553 10.1927 76.9954C11.4708 78.0178 15.1689 76.8858 16.1858 76.1304C18.6653 74.2885 20.8273 72.171 23.4145 70.4462C25.1606 69.2822 27.036 67.2002 28.9751 66.5538"
-              stroke="black"
               stroke-width="3"
               stroke-linecap="round"></path>
           </svg>
@@ -50,12 +48,10 @@ import Device from "../../components/Device.astro";
           >
             <path
               d="M182.155 74.28C185.98 74.28 190.653 73.5495 194.229 75.1385C195.739 75.8097 196.563 71.901 197.126 71.0068C199.118 67.8442 199.926 63.8028 201.956 60.7578"
-              stroke="black"
               stroke-width="3"
               stroke-linecap="round"></path>
             <path
               d="M2.02051 1.8396C14.3443 1.8396 26.6681 1.8396 38.9919 1.8396C61.4885 1.8396 84.8312 6.51896 106.227 13.43C122.756 18.7691 138.834 26.1721 153.394 35.6451C161.981 41.232 170.982 46.7499 178.506 53.7551C181.643 56.6755 184.95 60.2808 187.575 63.6553C188.658 65.0473 190.236 67.8982 191.573 68.9676C192.373 69.6083 195.23 73.762 194.712 74.2799"
-              stroke="black"
               stroke-width="3"
               stroke-linecap="round"></path>
           </svg>
@@ -70,12 +66,10 @@ import Device from "../../components/Device.astro";
           >
             <path
               d="M2.17874 62.4021C2.17874 64.3215 1.17521 73.0326 4.07705 73.0326C8.44914 73.0326 12.8361 74.0361 16.9855 72.653"
-              stroke="black"
               stroke-width="3"
               stroke-linecap="round"></path>
             <path
               d="M88.3077 2.06177C70.9519 2.06177 53.5088 14.1132 40.1439 24.1369C29.6556 32.0031 22.9907 41.3057 16.062 52.0838C13.2797 56.4118 9.91351 61.3254 8.18331 66.1316C7.57148 67.8311 6.26359 72.1828 4.68994 72.9696"
-              stroke="black"
               stroke-width="3"
               stroke-linecap="round"></path>
           </svg>
@@ -100,17 +94,24 @@ import Device from "../../components/Device.astro";
           >
             <path
               d="M2.17874 62.4021C2.17874 64.3215 1.17521 73.0326 4.07705 73.0326C8.44914 73.0326 12.8361 74.0361 16.9855 72.653"
-              stroke="black"
               stroke-width="3"
               stroke-linecap="round"></path>
             <path
               d="M88.3077 2.06177C70.9519 2.06177 53.5088 14.1132 40.1439 24.1369C29.6556 32.0031 22.9907 41.3057 16.062 52.0838C13.2797 56.4118 9.91351 61.3254 8.18331 66.1316C7.57148 67.8311 6.26359 72.1828 4.68994 72.9696"
-              stroke="black"
               stroke-width="3"
               stroke-linecap="round"></path>
           </svg>
           <span>Dites le nous, dites leur.</span>
         </ins>
+        <button
+          class="skipDemo"
+          data-scroll-to
+          data-scroll-to-href="#testflight"
+          data-scroll-to-offset="-100"
+          data-scroll-to-duration="2.3"
+        >
+          <span>Passer la démo</span>
+        </button>
       </div>
     </div>
   </div>
@@ -214,6 +215,28 @@ import Device from "../../components/Device.astro";
     animation: appear 0.4s;
   }
 
+  .skipDemo {
+    padding: 16px 36px;
+    cursor: pointer;
+    position: absolute;
+    bottom: 5vh;
+    right: 5vh;
+    background-color: rgba(200, 200, 200, 0.1);
+    border-radius: 999px;
+    color: unset;
+    text-decoration: none;
+    display: grid;
+    place-items: center;
+    border: none;
+  }
+
+  .skipDemo span {
+    opacity: 0.8;
+    font-family: "Body";
+    font-size: 1.1rem;
+    text-transform: none;
+  }
+
   @keyframes appear {
     from {
       transform: scale(0.8);
@@ -231,12 +254,19 @@ import Device from "../../components/Device.astro";
     }
   }
 
+  svg {
+    stroke: black;
+  }
+
   #myLastApp {
+    --color: #555;
     left: 50%;
     top: 7%;
+    color: var(--color);
   }
 
   #myLastApp svg {
+    stroke: var(--color);
     padding-top: 22px;
   }
 
@@ -268,5 +298,15 @@ import Device from "../../components/Device.astro";
   #incident {
     left: calc(50% + 14vh);
     top: 25%;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    #myLastApp {
+      --color: #aaa;
+    }
+
+    svg {
+      stroke: #666;
+    }
   }
 </style>

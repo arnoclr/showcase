@@ -1,6 +1,10 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import LiveDemo from "../sections/Wagon/LiveDemo.astro";
+import Testflight from "../sections/Wagon/Testflight.astro";
+import Twitter from "../sections/Wagon/Twitter.astro";
+import Stats from "../sections/Wagon/Stats.astro";
+import Tweets from "../sections/Wagon/Tweets.astro";
 ---
 
 <Layout title="Welcome to Astro.">
@@ -13,6 +17,10 @@ import LiveDemo from "../sections/Wagon/LiveDemo.astro";
   </header>
 
   <LiveDemo />
+  <Testflight />
+  <Twitter />
+  <Stats />
+  <Tweets />
 </Layout>
 
 <style>
@@ -25,7 +33,8 @@ import LiveDemo from "../sections/Wagon/LiveDemo.astro";
 
   i {
     font-style: normal;
-    opacity: 0.4;
+    opacity: 0.7;
+    font-weight: 400;
   }
 
   h1 {
@@ -35,15 +44,15 @@ import LiveDemo from "../sections/Wagon/LiveDemo.astro";
   .hero-eyebrow {
     font-size: 24px;
     line-height: 1.16667;
-    font-weight: 600;
+    font-weight: 400;
     letter-spacing: 0em;
   }
 
   .headline-super {
     font-size: 80px;
     line-height: 1.05;
-    font-weight: 600;
-    letter-spacing: -0.015em;
+    font-weight: 400;
+    letter-spacing: -0.035em;
   }
 
   img {

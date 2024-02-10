@@ -1,0 +1,50 @@
+---
+import Device from "../../components/Device.astro";
+---
+
+<section>
+  <Device kind="iPhone 15" fill="height">
+    <img src="/images/twitter wagon.jpg" alt="" />
+  </Device>
+  <aside>
+    <p>
+      Parce que le bêta test nécessite un groupe conséquent d’utilisateurs, j’ai
+      fait la promo de l’appli sur Twitter. J’ai même fini par créer un compte
+      dédié.
+    </p>
+    <strong>Le résultat ?</strong>
+  </aside>
+</section>
+
+<style>
+  section {
+    margin-top: 20vh;
+    height: 100vh;
+    width: 100%;
+    padding: 10vh 22px;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    gap: 56px;
+  }
+
+  aside {
+    position: sticky;
+    top: 10vh;
+    max-width: 400px;
+  }
+
+  p {
+    font-size: 2rem;
+    opacity: 0.7;
+  }
+
+  strong {
+    font-size: 3.6rem;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+</style>
