@@ -115,6 +115,8 @@ import Device from "../../components/Device.astro";
 </section>
 
 <script>
+  import { type LocomotiveEvent } from "../../types/Locomotive";
+
   const video = document.getElementById("video") as HTMLVideoElement;
 
   const captionOffsets = {
@@ -127,8 +129,8 @@ import Device from "../../components/Device.astro";
     incident: [0.7, 0.99],
   };
 
-  window.addEventListener("wagonTrackedProgress", (e) => {
-    const { progress } = e.detail;
+  window.addEventListener("wagonTrackedProgress", (e: unknown) => {
+    const { progress } = (e as LocomotiveEvent).detail;
 
     video.currentTime = video.duration * progress;
 
