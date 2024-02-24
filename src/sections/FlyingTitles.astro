@@ -1,0 +1,172 @@
+<main>
+  <section>
+    <h1 data-scroll data-scroll-speed="-0.3" style="font-size: 8vw;">
+      Arno Cellarier
+    </h1>
+  </section>
+  <section class="elba">
+    <h2 data-scroll data-scroll-css-progress>
+      Je crée des sites web<br />et des applications
+    </h2>
+    <img
+      data-scroll
+      data-scroll-css-progress
+      src="/images/website horizontal.png"
+      alt="Mon site web sur le mont-saint-michel affiché sur un iPhone 8"
+    />
+  </section>
+  <section class="zjir">
+    <div role="group">
+      <h2
+        style="font-size: 5vw; text-align: left; padding-left: 4vw;"
+        data-scroll
+        data-scroll-css-progress
+      >
+        J’accorde une grande importance à l’expérience utilisateur
+      </h2>
+      <img
+        style="height: 100vh; width: auto;"
+        src="/images/wagon vertical.png"
+        alt="Application Wagon sur un iPhone 8, avec les prochains départs des bus à proximité"
+        data-scroll
+        data-scroll-css-progress
+      />
+    </div>
+  </section>
+  <section class="zaco">
+    <h2>Au design</h2>
+  </section>
+  <section role="rowgroup" class="faca">
+    <div role="group">
+      <svg
+        role="presentation"
+        width="155"
+        height="155"
+        viewBox="0 0 155 155"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <circle cx="77.5" cy="77.5" r="77.5" fill="#007AFF"></circle>
+        <path
+          d="M78 51.9999C75.7083 51.9999 73.7465 51.1839 72.1146 49.552C70.4826 47.9201 69.6667 45.9583 69.6667 43.6666C69.6667 41.3749 70.4826 39.4131 72.1146 37.7812C73.7465 36.1492 75.7083 35.3333 78 35.3333C80.2917 35.3333 82.2535 36.1492 83.8854 37.7812C85.5174 39.4131 86.3333 41.3749 86.3333 43.6666C86.3333 45.9583 85.5174 47.9201 83.8854 49.552C82.2535 51.1839 80.2917 51.9999 78 51.9999ZM65.5 118.667V64.4999C61.3333 64.1527 57.0972 63.6319 52.7917 62.9374C48.4861 62.243 44.3889 61.3749 40.5 60.3333L42.5833 51.9999C48 53.4583 53.7639 54.5173 59.875 55.177C65.9861 55.8367 72.0278 56.1666 78 56.1666C83.9722 56.1666 90.0139 55.8367 96.125 55.177C102.236 54.5173 108 53.4583 113.417 51.9999L115.5 60.3333C111.611 61.3749 107.514 62.243 103.208 62.9374C98.9028 63.6319 94.6667 64.1527 90.5 64.4999V118.667H82.1667V93.6666H73.8333V118.667H65.5Z"
+          fill="white"></path>
+      </svg>
+      <small>role=presentation</small>
+    </div>
+    <div role="row">
+      <h2>Et à l'accessibilité</h2>
+      <small>Contraste 21:1</small>
+    </div>
+  </section>
+</main>
+
+<style>
+  [data-scroll-css-progress] {
+    --smooth-progress: calc(
+      -1 + 1.4 * var(--progress) - 0.45 * pow(var(--progress), 2) + 0.05 * pow(var(--progress), 90)
+    );
+  }
+
+  section {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transform-style: preserve-3d;
+    perspective: 900px;
+  }
+
+  h1,
+  h2 {
+    text-align: center;
+  }
+
+  [role="group"] {
+    display: flex;
+    align-items: center;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .elba h2 {
+    font-size: 7vw;
+    transform: rotate3d(
+      1,
+      -1,
+      0,
+      min(0deg, calc(60deg * var(--progress) - 30deg))
+    );
+  }
+
+  .elba img {
+    transform: translateY(max(-10vh, calc(-30vh * var(--progress) * 2)))
+      rotate3d(-1, 0, 0, min(0deg, calc(10deg * var(--progress) * 5) - 10deg));
+  }
+
+  .zjir div {
+    width: 100%;
+    perspective: 900px;
+  }
+
+  /* .zjir h2 {
+    transform-origin: top;
+    transform: rotate3d(
+      1,
+      0.5,
+      0,
+      calc(180deg * var(--smooth-progress) + 90deg)
+    );
+  } */
+
+  /* .zjir img {
+    transform: translateX(max(0vw, calc(400vw * var(--progress) - 120vw)))
+      translateY(calc(var(--progress) * -10vh))
+      rotate3d(-1, 0, 0, min(0deg, calc(400deg * var(--progress) - 90deg)));
+  } */
+
+  .zaco h2 {
+    font-size: 10vw;
+  }
+
+  .faca {
+    align-items: center;
+  }
+
+  .faca h2 {
+    margin: 1vw 0;
+    font-size: 8vw;
+  }
+
+  .faca small {
+    font-size: 2vw;
+    color: gray;
+  }
+
+  .faca [role="group"] {
+    position: relative;
+    width: fit-content;
+    align-items: end;
+    justify-content: center;
+  }
+
+  .faca svg {
+    width: 10vw;
+    height: 10vw;
+  }
+
+  .faca svg + small {
+    position: absolute;
+    bottom: 0;
+    left: 100%;
+  }
+
+  .faca [role="row"] svg {
+    width: 10vw;
+    height: 10vw;
+    margin-right: 2vw;
+  }
+</style>
