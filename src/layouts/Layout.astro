@@ -47,11 +47,23 @@ const { title } = Astro.props;
 
   @font-face {
     font-family: "Numeric";
-    src: url("/fonts/Varela_Round/VarelaRound-Regular.ttf");
+    src: url("/fonts/Arial Rounded MT Bold Regular/Arial Rounded MT Bold Regular.ttf");
+  }
+
+  body,
+  html {
+    margin: 0;
+    padding: 0;
   }
 
   body {
     font-family: "Body", sans-serif;
+  }
+
+  [data-footnote] sup a {
+    font-size: 0.3em;
+    color: gray;
+    vertical-align: super;
   }
 
   @media (prefers-color-scheme: dark) {
