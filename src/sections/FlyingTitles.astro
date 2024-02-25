@@ -1,6 +1,6 @@
 <main>
   <section>
-    <h1 data-scroll data-scroll-speed="-0.3" style="font-size: 8vw;">
+    <h1 data-scroll data-scroll-speed="-0.3" style="font-size: 4vw;">
       Arno Cellarier
     </h1>
   </section>
@@ -23,15 +23,10 @@
     data-scroll-event-bezier=".61,.02,.86,.55"
   >
     <div role="group">
-      <h2
-        style="font-size: 5vw; text-align: left; padding-left: 4vw;"
-        data-scroll
-        data-scroll-event-progress="flyingTitleProgressEvent"
-      >
+      <h2 data-scroll data-scroll-event-progress="flyingTitleProgressEvent">
         J’accorde une grande importance à l’expérience utilisateur,
       </h2>
       <img
-        style="height: auto; width: 50vw"
         src="/images/wagon vertical.png"
         alt="Application Wagon sur un iPhone 8, avec les prochains départs des bus à proximité"
         data-scroll
@@ -135,6 +130,10 @@
     transform-style: preserve-3d;
   }
 
+  section:first-child {
+    min-height: 70vh;
+  }
+
   h1 {
     opacity: 0.5;
   }
@@ -161,8 +160,8 @@
   }
 
   .elba img {
-    transform: translateY(max(-10vh, calc(-30vh * var(--progress) * 2)))
-      rotate3d(-1, 0, 0, calc(20deg * var(--progress) - 20deg));
+    transform: translateY(max(-10vh, calc(-40vh * var(--progress) + 20vh)))
+      rotate3d(-1, 0, 0, calc(10deg * var(--progress) - 10deg));
   }
 
   .zjir {
@@ -175,6 +174,9 @@
   }
 
   .zjir h2 {
+    font-size: 5vw;
+    text-align: left;
+    padding-left: 4vw;
     transform-origin: top;
     transform: rotate3d(
       1,
@@ -185,6 +187,8 @@
   }
 
   .zjir img {
+    height: auto;
+    width: 50vw;
     transform-origin: bottom right;
     transform: 
     /* translateY(calc(var(--progress) * 60%)) */ rotate3d(
@@ -240,5 +244,37 @@
     width: 10vw;
     height: 10vw;
     margin-right: 2vw;
+  }
+
+  @media (max-width: 900px) {
+    section {
+      min-height: 20vh;
+    }
+
+    section:first-child {
+      min-height: 10vh;
+    }
+
+    [data-scroll] {
+      transform: none !important;
+    }
+
+    .zjir [role="group"] {
+      flex-direction: column;
+      align-items: end;
+    }
+
+    .zjir h2 {
+      padding: 2vw;
+      text-align: center;
+      font-size: 7vw;
+    }
+
+    .zjir img {
+      width: 100vw;
+      height: 100vw;
+      object-fit: cover;
+      object-position: 10vw 0px;
+    }
   }
 </style>
