@@ -5,38 +5,54 @@
     </h1>
   </section>
   <section class="elba">
-    <h2 data-scroll data-scroll-css-progress>
-      Je crée des sites web<br />et des applications
+    <h2 data-scroll data-scroll-event-progress="flyingTitleProgressEvent">
+      Je crée des sites web<br />et des applications.
     </h2>
     <img
       data-scroll
-      data-scroll-css-progress
+      data-scroll-event-progress="flyingTitleProgressEvent"
+      data-scroll-event-bezier=".11,.86,.54,.96"
       src="/images/website horizontal.png"
       alt="Mon site web sur le mont-saint-michel affiché sur un iPhone 8"
     />
   </section>
-  <section class="zjir">
+  <section
+    class="zjir"
+    data-scroll
+    data-scroll-event-progress="flyingTitleProgressEvent"
+    data-scroll-event-bezier=".61,.02,.86,.55"
+  >
     <div role="group">
       <h2
         style="font-size: 5vw; text-align: left; padding-left: 4vw;"
         data-scroll
-        data-scroll-css-progress
+        data-scroll-event-progress="flyingTitleProgressEvent"
       >
-        J’accorde une grande importance à l’expérience utilisateur
+        J’accorde une grande importance à l’expérience utilisateur,
       </h2>
       <img
-        style="height: 100vh; width: auto;"
+        style="height: auto; width: 50vw"
         src="/images/wagon vertical.png"
         alt="Application Wagon sur un iPhone 8, avec les prochains départs des bus à proximité"
         data-scroll
-        data-scroll-css-progress
+        data-scroll-event-progress="flyingTitleProgressEvent"
+        data-scroll-event-bezier=".11,.86,.54,.96"
       />
     </div>
   </section>
-  <section class="zaco">
-    <h2>Au design</h2>
+  <section
+    class="zaco"
+    data-scroll
+    data-scroll-event-progress="flyingTitleProgressEvent"
+  >
+    <h2>Au design,</h2>
   </section>
-  <section role="rowgroup" class="faca">
+  <section
+    role="rowgroup"
+    class="faca"
+    data-scroll
+    data-scroll-event-progress="flyingTitleProgressEvent"
+  >
     <div role="group">
       <svg
         role="presentation"
@@ -54,11 +70,50 @@
       <small>role=presentation</small>
     </div>
     <div role="row">
-      <h2>Et à l'accessibilité</h2>
+      <h2>Et à l'accessibilité.</h2>
       <small>Contraste 21:1</small>
     </div>
   </section>
 </main>
+
+<script>
+  import { type LocomotiveEvent } from "../types/Locomotive";
+  import CubicBezier from "@thednp/bezier-easing";
+
+  function cubicBezier(
+    x1: number,
+    y1: number,
+    x2: number,
+    y2: number,
+    at: number
+  ): number {
+    const cubic = new CubicBezier(x1, y1, x2, y2) as unknown as (
+      x: number
+    ) => number;
+    return cubic(at);
+  }
+
+  window.addEventListener("flyingTitleProgressEvent", (e: unknown) => {
+    const { detail } = e as LocomotiveEvent;
+
+    const bezier = detail.target.getAttribute("data-scroll-event-bezier");
+
+    const bezierArray =
+      bezier === null
+        ? [0.07, 0.55, 0.67, 0.42]
+        : bezier.split(",").map(Number);
+
+    const progress = cubicBezier(
+      bezierArray[0],
+      bezierArray[1],
+      bezierArray[2],
+      bezierArray[3],
+      detail.progress
+    );
+
+    detail.target.style.setProperty("--progress", progress.toString());
+  });
+</script>
 
 <style>
   [data-scroll-css-progress] {
@@ -67,13 +122,21 @@
     );
   }
 
+  main,
+  section {
+    perspective: 900px;
+  }
+
   section {
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     transform-style: preserve-3d;
-    perspective: 900px;
+  }
+
+  h1 {
+    opacity: 0.5;
   }
 
   h1,
@@ -94,17 +157,16 @@
 
   .elba h2 {
     font-size: 7vw;
-    transform: rotate3d(
-      1,
-      -1,
-      0,
-      min(0deg, calc(60deg * var(--progress) - 30deg))
-    );
+    transform: rotate3d(1, -1, 0, calc(10deg * var(--progress) - 5deg));
   }
 
   .elba img {
     transform: translateY(max(-10vh, calc(-30vh * var(--progress) * 2)))
-      rotate3d(-1, 0, 0, min(0deg, calc(10deg * var(--progress) * 5) - 10deg));
+      rotate3d(-1, 0, 0, calc(20deg * var(--progress) - 20deg));
+  }
+
+  .zjir {
+    transform: translateX(calc(100vw * var(--progress)));
   }
 
   .zjir div {
@@ -112,21 +174,30 @@
     perspective: 900px;
   }
 
-  /* .zjir h2 {
+  .zjir h2 {
     transform-origin: top;
     transform: rotate3d(
       1,
-      0.5,
+      -1,
       0,
-      calc(180deg * var(--smooth-progress) + 90deg)
+      min(20deg, calc(-180deg * var(--progress) + 70deg))
     );
-  } */
+  }
 
-  /* .zjir img {
-    transform: translateX(max(0vw, calc(400vw * var(--progress) - 120vw)))
-      translateY(calc(var(--progress) * -10vh))
-      rotate3d(-1, 0, 0, min(0deg, calc(400deg * var(--progress) - 90deg)));
-  } */
+  .zjir img {
+    transform-origin: bottom right;
+    transform: 
+    /* translateY(calc(var(--progress) * 60%)) */ rotate3d(
+      1,
+      -1,
+      0,
+      calc(-80deg * var(--progress) + 70deg)
+    );
+  }
+
+  .zaco {
+    transform: rotate3d(-1, 1, 0, calc(60deg * var(--progress) - 30deg));
+  }
 
   .zaco h2 {
     font-size: 10vw;
@@ -134,6 +205,7 @@
 
   .faca {
     align-items: center;
+    transform: rotate3d(1, -1, 0, calc(60deg * var(--progress) - 40deg));
   }
 
   .faca h2 {
