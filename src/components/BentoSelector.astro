@@ -1,0 +1,57 @@
+<ul>
+  <li>
+    <img src="/images/phone xs wagon.png" alt="" />
+  </li>
+  <li>
+    <img src="/images/phone xs msm.png" alt="" />
+  </li>
+  <li>
+    <img src="/images/phone xs omsistuff.png" alt="" />
+  </li>
+  <li>
+    <img src="/images/phone xs theses.png" alt="" />
+  </li>
+  <li>
+    <img src="/images/phone xs kpp.png" alt="" />
+  </li>
+</ul>
+
+<style>
+  ul {
+    margin: 0 auto;
+    padding: 0;
+    width: 70%;
+    list-style: none;
+    display: flex;
+    perspective: 800px;
+  }
+
+  li {
+    transform-origin: top;
+  }
+
+  li:nth-child(1) {
+    transform: rotate3d(-0.7, 1, -0.1, 40deg) translate(-10%, 2%);
+  }
+
+  li:nth-child(2) {
+    transform: rotate3d(-0.7, 0.35, -0.03, 30deg) translateY(1%) scale(0.95);
+  }
+
+  li:nth-child(3) {
+    transform: rotate3d(-0.7, 0, 0, 20deg) scale(0.86);
+  }
+
+  li:nth-child(4) {
+    transform: rotate3d(-0.7, -0.35, 0.03, 30deg) translateY(1%) scale(0.95);
+  }
+
+  li:nth-child(5) {
+    transform: rotate3d(-0.7, -1, 0.1, 40deg) translate(10%, 2%);
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+</style>
