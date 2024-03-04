@@ -20,7 +20,7 @@
     class="zjir"
     data-scroll
     data-scroll-event-progress="flyingTitleProgressEvent"
-    data-scroll-event-bezier=".61,.02,.86,.55"
+    data-scroll-event-bezier=".47,.11,.49,.91;.8,.12,.22,.76;1,0,.91,.07;.54,.02,.49,.99"
   >
     <div role="group">
       <h2 data-scroll data-scroll-event-progress="flyingTitleProgressEvent">
@@ -39,6 +39,7 @@
     class="zaco"
     data-scroll
     data-scroll-event-progress="flyingTitleProgressEvent"
+    data-scroll-event-bezier=".47,.11,.49,.91;.8,.12,.22,.76"
   >
     <h2>Au design,</h2>
   </section>
@@ -47,6 +48,7 @@
     class="faca"
     data-scroll
     data-scroll-event-progress="flyingTitleProgressEvent"
+    data-scroll-event-bezier=".47,.11,.49,.91;.8,.12,.22,.76"
   >
     <div role="group">
       <svg
@@ -91,22 +93,31 @@
   window.addEventListener("flyingTitleProgressEvent", (e: unknown) => {
     const { detail } = e as LocomotiveEvent;
 
-    const bezier = detail.target.getAttribute("data-scroll-event-bezier");
+    const beziers = detail.target.getAttribute("data-scroll-event-bezier");
 
-    const bezierArray =
-      bezier === null
-        ? [0.07, 0.55, 0.67, 0.42]
-        : bezier.split(",").map(Number);
+    const entries =
+      beziers === null ? [null].entries() : beziers.split(";").entries();
 
-    const progress = cubicBezier(
-      bezierArray[0],
-      bezierArray[1],
-      bezierArray[2],
-      bezierArray[3],
-      detail.progress
-    );
+    for (const [i, bezier] of entries) {
+      const bezierArray =
+        bezier === null
+          ? [0.07, 0.55, 0.67, 0.42]
+          : bezier.split(",").map(Number);
 
-    detail.target.style.setProperty("--progress", progress.toString());
+      const progress = cubicBezier(
+        bezierArray[0],
+        bezierArray[1],
+        bezierArray[2],
+        bezierArray[3],
+        detail.progress
+      );
+
+      const cssVarName = i == 0 ? "--progress" : `--progress-${i}`;
+
+      detail.target.style.setProperty(cssVarName, progress.toString());
+
+      console.log(detail.target.className, progress);
+    }
   });
 </script>
 
@@ -165,7 +176,7 @@
   }
 
   .zjir {
-    transform: translateX(calc(100vw * var(--progress)));
+    transform: translateY(calc(100vh * var(--progress) - 50vh));
   }
 
   .zjir div {
@@ -178,29 +189,21 @@
     text-align: left;
     padding-left: 4vw;
     transform-origin: top;
-    transform: rotate3d(
-      1,
-      -1,
-      0,
-      min(20deg, calc(-180deg * var(--progress) + 70deg))
-    );
+    transform: translateY(calc(var(--progress-2) * -100vh))
+      rotate3d(-1, 1, 0, calc(-25deg * var(--progress-3)));
   }
 
   .zjir img {
     height: auto;
     width: 50vw;
     transform-origin: bottom right;
-    transform: 
-    /* translateY(calc(var(--progress) * 60%)) */ rotate3d(
-      1,
-      -1,
-      0,
-      calc(-80deg * var(--progress) + 70deg)
-    );
+    transform: translateY(20vh) translateX(calc(var(--progress-2) * 100vw))
+      rotate3d(1, -1, 0, calc(-80deg * var(--progress) + 70deg));
   }
 
   .zaco {
-    transform: rotate3d(-1, 1, 0, calc(60deg * var(--progress) - 30deg));
+    transform: translateY(calc(100vh * var(--progress) - 50vh))
+      rotate3d(-1, 1, 0, calc(30deg * var(--progress-1) - 25deg));
   }
 
   .zaco h2 {
@@ -209,7 +212,8 @@
 
   .faca {
     align-items: center;
-    transform: rotate3d(1, -1, 0, calc(60deg * var(--progress) - 40deg));
+    transform: translateY(calc(100vh * var(--progress) - 50vh))
+      rotate3d(-1, 1, 0, calc(-5deg * var(--progress-1) + 5deg));
   }
 
   .faca h2 {
@@ -246,9 +250,21 @@
     margin-right: 2vw;
   }
 
-  @media (max-width: 900px) {
+  @media (min-width: 900px) {
+    .elba {
+      margin-bottom: 20vh;
+    }
+
+    .zaco,
+    .faca,
+    .zjir {
+      margin-bottom: 80vh;
+    }
+  }
+
+  @media (max-width: 899px) {
     section {
-      min-height: 20vh;
+      min-height: 60vw;
     }
 
     section:first-child {
