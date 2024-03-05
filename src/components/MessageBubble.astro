@@ -1,0 +1,33 @@
+<div>
+  <slot />
+  <svg
+    width="21"
+    height="24"
+    viewBox="0 0 21 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M13.166 16.8194V0.173584C5.76786 0.935158 0.764321 2.02034 0.763672 12.9028C0.763068 23.0208 13.166 23.6736 20.0202 23.6736C15.7775 23.6736 13.166 21.3889 13.166 16.8194Z"
+      fill="#007AFF"></path>
+  </svg>
+</div>
+
+<style>
+  div {
+    position: relative;
+    padding: 6px 16px;
+    background-color: #007aff;
+    color: white;
+    border-radius: 999px;
+  }
+
+  svg {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    height: 50%;
+    width: auto;
+    transform: translateX(38%);
+  }
+</style>
