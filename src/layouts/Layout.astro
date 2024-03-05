@@ -96,6 +96,13 @@ const { title } = Astro.props;
       font-size: small;
     }
   }
+
+  @media (prefers-color-scheme: dark) {
+    nav {
+      background-color: #000b;
+      border-color: #222;
+    }
+  }
 </style>
 
 <style is:global>
