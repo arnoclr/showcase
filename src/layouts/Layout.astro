@@ -53,7 +53,7 @@ const { title } = Astro.props;
     align-items: center;
     justify-content: space-between;
     height: 62px;
-    padding: 0 max(16px, 10vw);
+    padding: 0 10vw;
     background-color: #fefefee7;
     border-bottom: 1px solid #eee;
     backdrop-filter: blur(20px);
@@ -77,6 +77,24 @@ const { title } = Astro.props;
   nav a {
     text-decoration: none;
     color: unset;
+  }
+
+  @media (max-width: 580px) {
+    nav {
+      gap: 8px;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding: 0 16px;
+    }
+
+    nav ul {
+      margin-left: auto;
+    }
+
+    nav span {
+      font-size: small;
+    }
   }
 </style>
 
