@@ -44,6 +44,10 @@ const { title } = Astro.props;
 </html>
 
 <style>
+  :root {
+    --navbar-horizontal-padding: 10vw;
+  }
+
   nav {
     top: 0;
     left: 0;
@@ -53,7 +57,7 @@ const { title } = Astro.props;
     align-items: center;
     justify-content: space-between;
     height: 62px;
-    padding: 0 10vw;
+    padding: 0 var(--navbar-horizontal-padding);
     background-color: #fefefee7;
     border-bottom: 1px solid #eee;
     backdrop-filter: blur(20px);
@@ -80,12 +84,15 @@ const { title } = Astro.props;
   }
 
   @media (max-width: 580px) {
+    :root {
+      --navbar-horizontal-padding: 12px;
+    }
+
     nav {
       gap: 8px;
       justify-content: center;
       align-items: center;
       flex-direction: column;
-      padding: 0 16px;
     }
 
     nav ul {
@@ -127,8 +134,12 @@ const { title } = Astro.props;
     font-family: "Body", sans-serif;
   }
 
+  * {
+    box-sizing: border-box;
+  }
+
   [data-footnote] sup a {
-    font-size: 0.3em;
+    font-size: max(11px, 0.3em);
     color: gray;
     vertical-align: super;
   }

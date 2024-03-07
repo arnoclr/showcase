@@ -1,5 +1,5 @@
 ---
-import Card from "../layouts/Card.astro";
+
 ---
 
 <section>
@@ -16,9 +16,8 @@ import Card from "../layouts/Card.astro";
 
   <script>
     const footnotes = document.querySelectorAll<HTMLElement>("[data-footnote]");
-    const footnotesList = document.querySelector<HTMLUListElement>(
-      "[role=doc-footnote]"
-    );
+    const footnotesList =
+      document.querySelector<HTMLUListElement>("[role=definition]");
 
     function appendFootnoteIndicator(inside: HTMLElement, id: number): void {
       const indicator = document.createElement("sup");
@@ -57,9 +56,8 @@ import Card from "../layouts/Card.astro";
 
 <style>
   footer {
-    max-width: min(900px, 80vw);
     padding: 32px 0;
-    margin: 32px auto;
+    margin: 32px var(--navbar-horizontal-padding);
     border-top: 2px solid #ddd;
   }
 
@@ -69,11 +67,11 @@ import Card from "../layouts/Card.astro";
     margin: 0;
     display: flex;
     flex-direction: column;
-    gap: 1vw;
+    gap: 0.4vw;
   }
 
   li {
-    font-size: min(6vw, 2rem);
+    font-size: min(4vw, 2rem);
   }
 
   li a {
@@ -81,8 +79,9 @@ import Card from "../layouts/Card.astro";
     text-decoration: dotted underline;
   }
 
-  [role="doc-footnote"] {
+  [role="definition"] {
     margin-top: 32px;
     color: gray;
+    font-size: 11px;
   }
 </style>
