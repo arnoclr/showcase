@@ -1,7 +1,7 @@
 <h2>Mes projets</h2>
-<ul id="bs">
+<ul id="bs" data-scroll data-scroll-call="hidePresentation">
   <li>
-    <input type="radio" name="ropo" id="bs-wagon" />
+    <input type="radio" name="ropo" id="bs-wagon" checked />
     <img src="/images/phone xs wagon.png" alt="" />
   </li>
   <li>
@@ -107,6 +107,22 @@
     width: 100%;
     height: auto;
   }
+
+  @media (prefers-color-scheme: dark) {
+    ul::after {
+      background: linear-gradient(to bottom, #0000 0%, #000e 40%, #000 70%);
+    }
+
+    ul::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: -100vw;
+      right: -100vw;
+      height: 100vh;
+      background: linear-gradient(to top, #222 30%, #0000 100%);
+    }
+  }
 </style>
 
 <style is:global>
@@ -127,10 +143,5 @@
     position: relative;
     margin-top: -10vw;
     z-index: 2;
-  }
-
-  /* TODO: virer ca et voir pour corriger les animations de scroll quand la taille du viewport change */
-  body:has(input:checked) [data-scroll] {
-    transform: none !important;
   }
 </style>

@@ -1,4 +1,4 @@
-<main class="hide-on-project-selected">
+<main class="presentation">
   <section>
     <h1 data-scroll data-scroll-speed="-0.3" style="font-size: 4vw;">
       Arno Cellarier
@@ -119,6 +119,11 @@
       console.log(detail.target.className, progress);
     }
   });
+
+  window.addEventListener("hidePresentation", () => {
+    const main = document.querySelector("main.presentation") as HTMLElement;
+    main.classList.add("no-animations");
+  });
 </script>
 
 <style>
@@ -132,6 +137,10 @@
   section {
     perspective: 900px;
   }
+
+  /* main.no-animations [data-scroll] {
+    transform: none !important;
+  } */
 
   section {
     min-height: 100vh;
