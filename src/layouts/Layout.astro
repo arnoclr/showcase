@@ -149,5 +149,15 @@ const { title } = Astro.props;
       background-color: #000;
       color: #fff;
     }
+
+    .for-light-mode {
+      display: none;
+    }
+  }
+
+  @media (prefers-color-scheme: light) {
+    .for-dark-mode {
+      display: none;
+    }
   }
 </style>
