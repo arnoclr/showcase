@@ -144,6 +144,13 @@ const { title } = Astro.props;
     vertical-align: super;
   }
 
+  [role="rowgroup"] {
+    height: 120vh;
+    gap: 20vw;
+    display: flex;
+    align-items: center;
+  }
+
   @media (prefers-color-scheme: dark) {
     body {
       background-color: #000;
@@ -159,5 +166,15 @@ const { title } = Astro.props;
     .for-dark-mode {
       display: none;
     }
+  }
+
+  .button {
+    padding: 12px 22px;
+    background-color: #007aff;
+    color: white;
+    border-radius: 999px;
+    text-decoration: none;
+    border: none;
+    width: fit-content;
   }
 </style>

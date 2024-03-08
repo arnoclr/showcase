@@ -9,7 +9,7 @@
     <img src="/images/phone xs msm.png" alt="" />
   </li>
   <li>
-    <input type="radio" name="ropo" />
+    <input type="radio" name="ropo" id="bs-omsistuff" />
     <img src="/images/phone xs omsistuff.png" alt="" />
   </li>
   <li>
@@ -128,7 +128,8 @@
 <style is:global>
   .bs-wagon-content,
   .bs-msm-content,
-  .bs-theses-content {
+  .bs-theses-content,
+  .bs-omsistuff-content {
     display: none;
   }
 
@@ -141,6 +142,10 @@
   }
 
   #bs:has(#bs-theses:checked) ~ .bs-theses-content {
+    display: block;
+  }
+
+  #bs:has(#bs-omsistuff:checked) ~ .bs-omsistuff-content {
     display: block;
   }
 
