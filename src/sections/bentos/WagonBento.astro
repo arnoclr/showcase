@@ -4,12 +4,62 @@
 
 <section class="bs-wagon-content bento-content">
   <h2>Wagon</h2>
-  <img src="/images/pmf/wagon small bento.jpg" alt="" />
-  <small
+  <p class="eric">Prendre les transports, autrement.</p>
+  <div class="poro" role="rowgroup">
+    <h3><small>Prochains passages,</small><br />en un coup d'œil</h3>
+    <img
+      class="first for-light-mode"
+      src="/images/pmf/wagon phones.png"
+      alt=""
+    />
+    <img
+      class="first for-dark-mode"
+      src="/images/pmf/wagon phones dark.png"
+      alt=""
+    />
+  </div>
+  <!-- <small
     data-footnote="Application uniquement disponible en version bêta sur TestFlight. Nombre de places limitées. La fonctionnalité d'itinéraire est encore en developpement et sera disponible via une mise à jour."
   >
     Certaines fonctionnalités ne sont pas encore disponibles.
-  </small>
+  </small> -->
+  <div class="poro" role="rowgroup">
+    <img class="for-light-mode" src="/images/pmf/wagon report.png" alt="" />
+    <img class="for-dark-mode" src="/images/pmf/wagon report dark.png" alt="" />
+    <h3><small>Un imprévu ?</small><br />Dites le nous,<br />dites leur.</h3>
+  </div>
+  <div class="poro" role="rowgroup">
+    <img class="for-light-mode" src="/images/pmf/wagon search.png" alt="" />
+    <img class="for-dark-mode" src="/images/pmf/wagon search dark.png" alt="" />
+    <h3>Vous n'êtes pas sur place ?<br />Cherchez l'arrêt.</h3>
+  </div>
+  <div role="rowgroup" class="numbers">
+    <p>
+      <span>1.2k</span>
+      <span data-footnote="Données pour février 2023. X (anciennement Twitter)">
+        abonnés sur X
+      </span>
+    </p>
+    <p>
+      <span>600</span>
+      <span
+        data-footnote="600 testeurs sur TestFlight. Nombre de places limité"
+      >
+        testeurs
+      </span>
+    </p>
+    <p>
+      <span>55.8k</span>
+      <span>arrêts de bus référencés</span>
+    </p>
+  </div>
+  <a
+    class="button open"
+    target="_blank"
+    href="https://twitter.com/ridewithwagon"
+  >
+    Accéder au fil Twitter
+  </a>
 </section>
 
 <style>
@@ -18,14 +68,53 @@
     padding: 0 var(--navbar-horizontal-padding);
   }
 
+  .first {
+    height: auto;
+    width: 60%;
+  }
+
+  .eric {
+    opacity: 0.6;
+    font-size: 2vw;
+  }
+
+  a {
+    display: block;
+    margin: 10vh auto;
+  }
+
   h2 {
     margin-top: 0;
+    margin-bottom: 16px;
+    font-size: max(20px, 5vw);
+  }
+
+  h3 {
+    font-size: max(18px, 4vw);
+  }
+
+  p {
+    font-size: 2vw;
     margin-bottom: 4vw;
-    font-size: 8vw;
+    opacity: 0.7;
+  }
+
+  h3 small {
+    font-size: inherit;
+    opacity: 0.6;
+  }
+
+  .poro {
+    height: 100vh;
+    gap: 10vw;
   }
 
   img {
-    height: auto;
-    width: 100%;
+    height: 80vh;
+    width: auto;
+  }
+
+  .numbers span:first-child {
+    color: #00aa83;
   }
 </style>
