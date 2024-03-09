@@ -4,6 +4,7 @@ import presentationImage from "../images/omsistuff/phone ipad.png";
 import discoverImage from "../images/omsistuff/discover.png";
 import loginImage from "../images/omsistuff/login.png";
 import reviewsImage from "../images/omsistuff/reviews.png";
+import highlightsImage from "../images/omsistuff/highlights.png";
 ---
 
 <section class="bs-omsistuff-content bento-content">
@@ -13,10 +14,10 @@ import reviewsImage from "../images/omsistuff/reviews.png";
   <a
     href="https://omsistuff.fr/heuliez-bus-gx337-g-new-face/la-metropole-mobilite-transdev-alpilles-berre-mediterranee/952?ref=copy_url&ref_label=from_unknow_user&ref_value=0#comments-section"
   >
-    <small
-      >La Métropole Mobilité - Transdev Alpilles Berre Méditerranée - Heuliez
-      Bus GX337 G New Face</small
-    >
+    <small>
+      La Métropole Mobilité - Transdev Alpilles Berre Méditerranée - Heuliez Bus
+      GX337 G New Face
+    </small>
   </a>
   <h3 style="margin-top: 20vh;">Plusieurs manières de découvrir.</h3>
   <p>
@@ -42,6 +43,10 @@ import reviewsImage from "../images/omsistuff/reviews.png";
       ressortir les avis pertinents.
     </p>
     <Image style="height: auto; width: 70%;" src={reviewsImage} alt="" />
+  </div>
+  <div class="poro" role="rowgroup">
+    <h3>Un recap de vôtre année</h3>
+    <Image class="first" src={highlightsImage} alt="" />
   </div>
   <h3 style="margin-top: 20vh; text-align: center;">Une communauté active</h3>
   <div role="rowgroup" class="numbers">
@@ -96,6 +101,16 @@ import reviewsImage from "../images/omsistuff/reviews.png";
   img {
     height: auto;
     width: 100%;
+  }
+
+  .first {
+    height: auto;
+    width: 60%;
+  }
+
+  .poro {
+    height: 100vh;
+    gap: 10vw;
   }
 
   .numbers span:first-child {

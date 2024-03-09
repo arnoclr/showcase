@@ -1,3 +1,9 @@
+---
+import { Image } from "astro:assets";
+import horizontalDevice from "../images/presentation/website horizontal.png";
+import verticalDevice from "../images/presentation/wagon vertical.png";
+---
+
 <main class="presentation">
   <section>
     <h1 data-scroll data-scroll-speed="-0.3" style="font-size: 4vw;">
@@ -8,11 +14,11 @@
     <h2 data-scroll data-scroll-event-progress="flyingTitleProgressEvent">
       Je crée des sites web<br />et des applications.
     </h2>
-    <img
+    <Image
       data-scroll
       data-scroll-event-progress="flyingTitleProgressEvent"
       data-scroll-event-bezier=".11,.86,.54,.96"
-      src="/images/website horizontal.png"
+      src={horizontalDevice}
       alt="Mon site web sur le mont-saint-michel affiché sur un iPhone 8"
     />
   </section>
@@ -26,8 +32,8 @@
       <h2 data-scroll data-scroll-event-progress="flyingTitleProgressEvent">
         J’accorde une grande importance à l’expérience utilisateur,
       </h2>
-      <img
-        src="/images/wagon vertical.png"
+      <Image
+        src={verticalDevice}
         alt="Application Wagon sur un iPhone 8, avec les prochains départs des bus à proximité"
         data-scroll
         data-scroll-event-progress="flyingTitleProgressEvent"
