@@ -25,6 +25,10 @@ const { src, height } = Astro.props;
       const video = this.querySelector("video");
       const button = this.querySelector("button");
 
+      if (!video || !button) {
+        throw new Error("Missing video or button element");
+      }
+
       button.addEventListener("click", () => {
         video.currentTime = 0;
         video.play();
