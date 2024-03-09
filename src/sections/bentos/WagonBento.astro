@@ -1,10 +1,11 @@
 ---
-import Comments from "../../components/Comments.astro";
+import Comments from "../../components/Comments.vue";
 import Video from "../../components/Video.astro";
 import wagonLiveJourneyVideo from "../../videos/wagon live journey.mp4";
 ---
 
 <section class="bs-wagon-content bento-content">
+  <Comments githubIssueId={1} client:visible />
   <h2>Wagon</h2>
   <p class="eric">Prendre les transports, autrement.</p>
   <div class="poro" role="rowgroup">
@@ -71,7 +72,6 @@ import wagonLiveJourneyVideo from "../../videos/wagon live journey.mp4";
   >
     Accéder au fil Twitter
   </a>
-  <!-- <Comments githubIssueId={1} client:visible /> -->
 </section>
 
 <style>
@@ -96,7 +96,7 @@ import wagonLiveJourneyVideo from "../../videos/wagon live journey.mp4";
   }
 
   h2 {
-    margin-top: 0;
+    margin-top: 10vh;
     margin-bottom: 16px;
     font-size: max(20px, 5vw);
   }
