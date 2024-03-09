@@ -2,20 +2,77 @@
 import Layout from "../layouts/Layout.astro";
 import FlyingTitles from "../sections/FlyingTitles.astro";
 import Footer from "../sections/Footer.astro";
-import BentoSelector from "../components/BentoSelector.astro";
+import ProjectsSelector, {
+  type ProjectDetails,
+} from "../components/ProjectsSelector.astro";
 import WagonBento from "../sections/bentos/WagonBento.astro";
 import MSMBento from "../sections/bentos/MSMBento.astro";
 import Theses from "../sections/Theses.astro";
 import Omsistuff from "../sections/Omsistuff.astro";
+import wagonPhone from "../images/selector/wagon.png";
+import msmPhone from "../images/selector/msm.png";
+import omsistuffPhone from "../images/selector/omsistuff.png";
+import thesesPhone from "../images/selector/theses.png";
+import kppPhone from "../images/selector/kpp.png";
+import { v4 } from "uuid";
+import Project from "../components/Project.astro";
+import type { ComponentInstance } from "astro";
+
+const wagonProject: ProjectDetails = {
+  id: v4(),
+  title: "Wagon",
+  frame: wagonPhone,
+};
+
+const msmProject: ProjectDetails = {
+  id: v4(),
+  title: "Mont-Saint-Michel",
+  frame: msmPhone,
+};
+
+const omsistuffProject: ProjectDetails = {
+  id: v4(),
+  title: "Omsistuff",
+  frame: omsistuffPhone,
+};
+
+const thesesProject: ProjectDetails = {
+  id: v4(),
+  title: "Thèses",
+  frame: thesesPhone,
+};
+
+const kppProject: ProjectDetails = {
+  id: v4(),
+  title: "KPP Maker",
+  frame: kppPhone,
+};
 ---
 
 <Layout title="Welcome to Astro.">
   <FlyingTitles />
-  <BentoSelector />
-  <WagonBento />
-  <MSMBento />
-  <Omsistuff />
-  <Theses />
+  <ProjectsSelector
+    projects={[
+      wagonProject,
+      omsistuffProject,
+      msmProject,
+      thesesProject,
+      kppProject,
+    ]}
+  >
+    <Project project={wagonProject}>
+      <WagonBento />
+    </Project>
+    <Project project={omsistuffProject}>
+      <Omsistuff />
+    </Project>
+    <Project project={msmProject}>
+      <MSMBento />
+    </Project>
+    <Project project={thesesProject}>
+      <Theses />
+    </Project>
+  </ProjectsSelector>
   <Footer />
 </Layout>
 

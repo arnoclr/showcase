@@ -1,35 +1,44 @@
 ---
 import { Image } from "astro:assets";
-import wagonPhone from "../images/selector/wagon.png";
-import msmPhone from "../images/selector/msm.png";
-import omsistuffPhone from "../images/selector/omsistuff.png";
-import thesesPhone from "../images/selector/theses.png";
-import kppPhone from "../images/selector/kpp.png";
+import type { ImageMetadata } from "astro";
+import { v4 } from "uuid";
+
+export interface ProjectDetails {
+  id: string;
+  frame: ImageMetadata;
+  title: string;
+}
+
+interface Props {
+  projects: ProjectDetails[];
+}
+
+const { projects } = Astro.props;
+
+if (projects.length !== 5) {
+  throw new Error("Need exactly 5 projects.");
+}
+
+const name = v4();
 ---
 
 <h2>Mes projets</h2>
-<ul id="bs" data-scroll data-scroll-call="hidePresentation">
-  <li>
-    <input type="radio" name="ropo" id="bs-wagon" checked />
-    <Image src={wagonPhone} alt="" />
-  </li>
-  <li>
-    <input type="radio" name="ropo" id="bs-msm" />
-    <Image src={msmPhone} alt="" />
-  </li>
-  <li>
-    <input type="radio" name="ropo" id="bs-omsistuff" />
-    <Image src={omsistuffPhone} alt="" />
-  </li>
-  <li>
-    <input type="radio" name="ropo" id="bs-theses" />
-    <Image src={thesesPhone} alt="" />
-  </li>
-  <li>
-    <input type="radio" name="ropo" />
-    <Image src={kppPhone} alt="" />
-  </li>
+<ul>
+  {
+    projects.map((project, i) => (
+      <li>
+        <input
+          type="radio"
+          name={name}
+          id={"checkbox-" + project.id}
+          checked={i === 0}
+        />
+        <Image src={project.frame} alt={project.title} />
+      </li>
+    ))
+  }
 </ul>
+<slot />
 
 <style>
   h2 {
@@ -131,36 +140,5 @@ import kppPhone from "../images/selector/kpp.png";
   }
 
   @media (prefers-color-scheme: dark) {
-  }
-</style>
-
-<style is:global>
-  .bs-wagon-content,
-  .bs-msm-content,
-  .bs-theses-content,
-  .bs-omsistuff-content {
-    display: none;
-  }
-
-  #bs:has(#bs-wagon:checked) ~ .bs-wagon-content {
-    display: block;
-  }
-
-  #bs:has(#bs-msm:checked) ~ .bs-msm-content {
-    display: block;
-  }
-
-  #bs:has(#bs-theses:checked) ~ .bs-theses-content {
-    display: block;
-  }
-
-  #bs:has(#bs-omsistuff:checked) ~ .bs-omsistuff-content {
-    display: block;
-  }
-
-  .bento-content {
-    position: relative;
-    margin-top: -5vw;
-    z-index: 2;
   }
 </style>

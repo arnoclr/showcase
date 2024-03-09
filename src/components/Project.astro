@@ -1,0 +1,30 @@
+---
+import type { ProjectDetails } from "../components/ProjectsSelector.astro";
+
+interface Props {
+  project: ProjectDetails;
+}
+
+const { project } = Astro.props;
+
+const rawCSS = `
+  ul:has(#checkbox-${project.id}:checked) ~ #content-${project.id} {
+    display: block;
+  }
+`;
+---
+
+<div class="content" id={"content-" + project.id}>
+  <slot />
+</div>
+
+<style is:inline set:html={rawCSS}></style>
+
+<style>
+  .content {
+    display: none;
+    position: relative;
+    margin-top: -5vw;
+    z-index: 2;
+  }
+</style>
