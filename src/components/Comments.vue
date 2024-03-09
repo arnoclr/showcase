@@ -73,39 +73,57 @@ onMounted(() => {
 </script>
 
 <template>
-  <span v-if="state.type === 'loading'">Chargement ...</span>
-  <span v-if="state.type === 'error'">
-    Impossible de charger les commentaires pour le moment.
-  </span>
-  <ul v-if="state.type === 'ok'">
-    <li v-for="comment in state.comments">
-      <div></div>
-      <span class="name">{{ comment.username }}</span>
-      <img :src="comment.profilePic" aria-hidden="true" alt="" />
-      <div class="bubble">
-        <span>{{ comment.textContent }}</span>
-        <svg
-          class="arrow"
-          aria-hidden="true"
-          width="20"
-          height="24"
-          viewBox="0 0 20 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            d="M6.85352 16.6458V0C14.2517 0.761574 19.2552 1.84675 19.2559 12.7292C19.2565 22.8472 6.85353 23.5 -0.000638962 23.5C4.24201 23.5 6.85352 21.2153 6.85352 16.6458Z"
-          />
-        </svg>
-      </div>
-    </li>
-    <li>
-      <a target="_blank" :href="leaveCommentUrl">Écrire un avis</a>
-    </li>
-  </ul>
+  <div class="transitionOnHeight" :loading="state.type === 'loading'">
+    <div class="overflowHidden">
+      <span v-if="state.type === 'loading'">Chargement ...</span>
+      <span v-if="state.type === 'error'">
+        Impossible de charger les commentaires pour le moment.
+      </span>
+      <ul v-if="state.type === 'ok'">
+        <li v-for="comment in state.comments">
+          <div></div>
+          <span class="name">{{ comment.username }}</span>
+          <img :src="comment.profilePic" aria-hidden="true" alt="" />
+          <div class="bubble">
+            <span>{{ comment.textContent }}</span>
+            <svg
+              class="arrow"
+              aria-hidden="true"
+              width="20"
+              height="24"
+              viewBox="0 0 20 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M6.85352 16.6458V0C14.2517 0.761574 19.2552 1.84675 19.2559 12.7292C19.2565 22.8472 6.85353 23.5 -0.000638962 23.5C4.24201 23.5 6.85352 21.2153 6.85352 16.6458Z"
+              />
+            </svg>
+          </div>
+        </li>
+        <li>
+          <a target="_blank" :href="leaveCommentUrl">Écrire un avis</a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </template>
 
 <style scoped>
+.transitionOnHeight {
+  display: grid;
+  grid-template-rows: 1fr;
+  transition: grid-template-rows 0.7s ease-in;
+}
+
+.transitionOnHeight[loading="true"] {
+  grid-template-rows: 0fr;
+}
+
+.overflowHidden {
+  overflow: hidden;
+}
+
 ul {
   --bubble-background-color: #eee;
   --horizontal-padding: 1rem;
@@ -150,7 +168,7 @@ img {
   position: absolute;
   bottom: 0;
   left: 0;
-  height: 50%;
+  height: 1.3rem;
   width: auto;
   transform: translateX(-36%);
   fill: var(--bubble-background-color);

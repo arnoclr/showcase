@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import Heading from "../components/presentations/Heading.astro";
+import Comments from "../components/Comments.vue";
 import presentationImage from "../images/omsistuff/light/phone ipad.png";
 import presentationImageDark from "../images/omsistuff/dark/phone ipad.png";
 import discoverImage from "../images/omsistuff/light/discover.png";
@@ -85,6 +86,7 @@ import highlightsImageDark from "../images/omsistuff/dark/highlights.png";
       <span>membres au total</span>
     </p>
   </div>
+  <Comments githubIssueId={3} client:visible />
   <a
     class="button open"
     target="_blank"
