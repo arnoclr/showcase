@@ -1,30 +1,29 @@
 ---
 import { Image } from "astro:assets";
-import presentationImage from "../images/omsistuff/phone ipad.png";
-import discoverImage from "../images/omsistuff/discover.png";
-import loginImage from "../images/omsistuff/login.png";
-import reviewsImage from "../images/omsistuff/reviews.png";
-import highlightsImage from "../images/omsistuff/highlights.png";
+import presentationImage from "../images/omsistuff/light/phone ipad.png";
+import presentationImageDark from "../images/omsistuff/dark/phone ipad.png";
+import discoverImage from "../images/omsistuff/light/discover.png";
+import discoverImageDark from "../images/omsistuff/dark/discover.png";
+import loginImage from "../images/omsistuff/light/login.png";
+import loginImageDark from "../images/omsistuff/dark/login.png";
+import reviewsImage from "../images/omsistuff/light/reviews.png";
+import reviewsImageDark from "../images/omsistuff/dark/reviews.png";
+import highlightsImage from "../images/omsistuff/light/highlights.png";
+import highlightsImageDark from "../images/omsistuff/dark/highlights.png";
 ---
 
 <section class="bs-omsistuff-content bento-content">
   <h2>Omsistuff</h2>
   <p>Librairie de repaints pour OMSI 2.</p>
-  <Image src={presentationImage} alt="" />
-  <a
-    href="https://omsistuff.fr/heuliez-bus-gx337-g-new-face/la-metropole-mobilite-transdev-alpilles-berre-mediterranee/952?ref=copy_url&ref_label=from_unknow_user&ref_value=0#comments-section"
-  >
-    <small>
-      La Métropole Mobilité - Transdev Alpilles Berre Méditerranée - Heuliez Bus
-      GX337 G New Face
-    </small>
-  </a>
+  <Image class="for-light-mode" src={presentationImage} alt="" />
+  <Image class="for-dark-mode" src={presentationImageDark} alt="" />
   <h3 style="margin-top: 20vh;">Plusieurs manières de découvrir.</h3>
   <p>
     Vous pouvez trouver des repaints via la carte du monde, les suggestions en
     page d'accueil ou les résultats de recherche Google.
   </p>
-  <Image src={discoverImage} alt="" />
+  <Image class="for-light-mode" src={discoverImage} alt="" />
+  <Image class="for-dark-mode" src={discoverImageDark} alt="" />
   <div role="rowgroup">
     <div>
       <h3>Connexion en un clic</h3>
@@ -33,7 +32,18 @@ import highlightsImage from "../images/omsistuff/highlights.png";
         boite mail.
       </p>
     </div>
-    <Image style="height: 80vh; width: auto;" src={loginImage} alt="" />
+    <Image
+      class="for-light-mode"
+      style="height: 80vh; width: auto;"
+      src={loginImage}
+      alt=""
+    />
+    <Image
+      class="for-dark-mode"
+      style="height: 80vh; width: auto;"
+      src={loginImageDark}
+      alt=""
+    />
   </div>
   <h3>Des vrais avis,<br /> pour vous aider à choisir.</h3>
   <div role="rowgroup" style="gap: 5vw; height: unset;">
@@ -42,11 +52,23 @@ import highlightsImage from "../images/omsistuff/highlights.png";
       L'algorithme pondère les avis selon plusieurs facteurs pour faire
       ressortir les avis pertinents.
     </p>
-    <Image style="height: auto; width: 70%;" src={reviewsImage} alt="" />
+    <Image
+      class="for-light-mode"
+      style="height: auto; width: 70%;"
+      src={reviewsImage}
+      alt=""
+    />
+    <Image
+      class="for-dark-mode"
+      style="height: auto; width: 70%;"
+      src={reviewsImageDark}
+      alt=""
+    />
   </div>
   <div class="poro" role="rowgroup">
     <h3>Un recap de vôtre année</h3>
-    <Image class="first" src={highlightsImage} alt="" />
+    <Image class="first for-light-mode" src={highlightsImage} alt="" />
+    <Image class="first for-dark-mode" src={highlightsImageDark} alt="" />
   </div>
   <h3 style="margin-top: 20vh; text-align: center;">Une communauté active</h3>
   <div role="rowgroup" class="numbers">

@@ -134,7 +134,7 @@ li {
 .bubble {
   position: relative;
   width: fit-content;
-  max-width: 600px;
+  max-width: 60ch;
   padding: 8px var(--horizontal-padding);
   background-color: var(--bubble-background-color);
   border-radius: 1.4rem;
@@ -161,5 +161,11 @@ a {
   color: gray;
   margin-top: 1rem;
   margin-left: 3rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  ul {
+    --bubble-background-color: #333;
+  }
 }
 </style>
