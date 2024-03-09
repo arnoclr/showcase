@@ -112,6 +112,9 @@ ul {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 }
 
 .name {
@@ -151,6 +154,7 @@ img {
   width: auto;
   transform: translateX(-36%);
   fill: var(--bubble-background-color);
+  z-index: -1;
 }
 
 a {
