@@ -1,5 +1,7 @@
 ---
-
+import Comments from "../../components/Comments.astro";
+import Video from "../../components/Video.astro";
+import wagonLiveJourneyVideo from "../../videos/wagon live journey.mp4";
 ---
 
 <section class="bs-wagon-content bento-content">
@@ -23,6 +25,15 @@
   >
     Certaines fonctionnalités ne sont pas encore disponibles.
   </small> -->
+  <div class="poro" role="rowgroup">
+    <Video client:visible height="80vh" src={wagonLiveJourneyVideo} />
+    <h3
+      data-footnote="Fonctionnalité encore en développement. Elle sera disponible via une mise à jour sur TestFlight ultérieurement."
+    >
+      <small>On arrive quand ?</small><br />Ouvrez l'application,<br />on vous
+      dira.
+    </h3>
+  </div>
   <div class="poro" role="rowgroup">
     <img class="for-light-mode" src="/images/pmf/wagon report.png" alt="" />
     <img class="for-dark-mode" src="/images/pmf/wagon report dark.png" alt="" />
@@ -60,6 +71,7 @@
   >
     Accéder au fil Twitter
   </a>
+  <Comments githubIssueId={1} client:visible />
 </section>
 
 <style>
