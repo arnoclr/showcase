@@ -1,11 +1,14 @@
 ---
 import type { ProjectDetails } from "../components/ProjectsSelector.astro";
+import NextProjectButton from "../components/presentations/NextProjectButton.astro";
+import { Image } from "astro:assets";
 
 interface Props {
   project: ProjectDetails;
+  nextProject?: ProjectDetails;
 }
 
-const { project } = Astro.props;
+const { project, nextProject } = Astro.props;
 
 const rawCSS = `
   ul:has(#checkbox-${project.id}:checked) ~ #content-${project.id} {
@@ -16,6 +19,18 @@ const rawCSS = `
 
 <div class="content" id={"content-" + project.id}>
   <slot />
+  <aside>
+    {
+      nextProject !== undefined && (
+        <NextProjectButton projectTargetId={nextProject.id}>
+          <div class="buttonContent">
+            <span>Voir le projet suivant</span>
+            <Image src={nextProject.frame} alt="" />
+          </div>
+        </NextProjectButton>
+      )
+    }
+  </aside>
 </div>
 
 <style is:inline set:html={rawCSS}></style>
@@ -26,5 +41,32 @@ const rawCSS = `
     position: relative;
     margin-top: -5vw;
     z-index: 2;
+  }
+
+  aside {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 var(--navbar-horizontal-padding);
+  }
+
+  .buttonContent {
+    padding: 0 2rem;
+    height: 82px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    overflow: hidden;
+    background-color: rgba(200, 200, 200, 0.1);
+    border-radius: 8px;
+  }
+
+  .buttonContent span {
+    opacity: 0.8;
+  }
+
+  .buttonContent img {
+    width: 80px;
+    height: auto;
+    transform: translate(0, 30%);
   }
 </style>

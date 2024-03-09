@@ -1,0 +1,65 @@
+---
+interface Props {
+  projectTargetId: string;
+}
+
+const { projectTargetId } = Astro.props;
+---
+
+<next-project-button data-project-target-id={projectTargetId}>
+  <button>
+    <slot />
+  </button>
+</next-project-button>
+
+<script>
+  class NextProjectButton extends HTMLElement {
+    constructor() {
+      super();
+
+      const projectTargetId = this.dataset.projectTargetId;
+      const button = this.querySelector("button");
+
+      if (button === null) {
+        throw new Error("NextProjectButton must contain a button element");
+      }
+
+      if (projectTargetId === undefined) {
+        throw new Error(
+          "NextProjectButton must contain a data-project-target-id attribute"
+        );
+      }
+
+      button.addEventListener("click", () => {
+        const projectTarget = document.getElementById(
+          "checkbox-" + projectTargetId
+        ) as HTMLInputElement | null;
+
+        if (projectTarget === null) {
+          throw new Error(
+            `NextProjectButton could not find a project with id ${projectTargetId}`
+          );
+        }
+
+        projectTarget.scrollIntoView({ behavior: "smooth" });
+
+        setTimeout(() => {
+          projectTarget.checked = true;
+        }, 1000);
+      });
+    }
+  }
+
+  customElements.define("next-project-button", NextProjectButton);
+</script>
+
+<style>
+  button {
+    all: unset;
+    cursor: pointer;
+  }
+
+  button:focus-visible {
+    outline: auto;
+  }
+</style>
