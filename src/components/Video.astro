@@ -87,4 +87,10 @@ const { src, height } = Astro.props;
     height: 1.5rem;
     fill: #007aff;
   }
+
+  @media (prefers-color-scheme: dark) {
+    video {
+      border-color: #353535;
+    }
+  }
 </style>

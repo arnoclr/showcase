@@ -1,6 +1,14 @@
 ---
+import { Image } from "astro:assets";
 import Comments from "../../components/Comments.vue";
+import Video from "../../components/Video.astro";
 import Heading from "../../components/presentations/Heading.astro";
+import discoverPlacesVideoDark from "../../videos/msm discover dark.mp4";
+import mainImageDark from "../../images/msm/dark/main.png";
+import localesImageDark from "../../images/msm/dark/locales.png";
+import searchImageDark from "../../images/msm/dark/search.png";
+import visitImageDark from "../../images/msm/dark/visit.png";
+import historyImageDark from "../../images/msm/dark/history.png";
 ---
 
 <section class="bs-msm-content bento-content">
@@ -8,7 +16,36 @@ import Heading from "../../components/presentations/Heading.astro";
     title="Mont-Saint-Michel"
     subtitle="Projet en partenariat avec l'UNESCO"
   />
+  <Image class="fullwidth" src={mainImageDark} alt="" />
+  <div style="margin-top: 10vh;"></div>
   <Comments githubIssueId={2} client:visible />
+  <div class="poro" role="rowgroup">
+    <h3>Découvrez l'histoire du Mont,<br /><small>avec notre guide.</small></h3>
+    <Image class="horizontal" src={historyImageDark} alt="" />
+  </div>
+  <div class="poro">
+    <h3>
+      <small>Visitez le Mont,</small>
+      <br />comme si vous y étiez,
+      <br />sans y être.
+    </h3>
+    <Image class="horizontal" src={visitImageDark} alt="" />
+  </div>
+  <div class="poro" role="rowgroup">
+    <h3>Parcourez le site,<br />depuis votre clavier.</h3>
+    <Image src={searchImageDark} alt="" />
+  </div>
+  <div class="poro" role="rowgroup">
+    <Video height="80vh" src={discoverPlacesVideoDark} />
+    <h3>
+      Programmez une visite.<br />
+      <small>On fait en fonction de vos horaires.</small>
+    </h3>
+  </div>
+  <div class="poro" role="rowgroup">
+    <h3>Disponible en plusieurs langues.</h3>
+    <Image class="horizontal" src={localesImageDark} alt="" />
+  </div>
 </section>
 
 <style>
@@ -23,12 +60,36 @@ import Heading from "../../components/presentations/Heading.astro";
     font-size: 4vw;
   }
 
+  h3 {
+    font-size: max(18px, 4vw);
+  }
+
+  h3 small {
+    font-size: inherit;
+    opacity: 0.6;
+  }
+
+  .poro {
+    height: 100vh;
+    gap: 10vw;
+  }
+
   p {
     margin-bottom: 4vw;
   }
 
   img {
+    height: 80vh;
+    width: auto;
+  }
+
+  img.horizontal {
     height: auto;
+    width: 60%;
+  }
+
+  img.fullwidth {
     width: 100%;
+    height: auto;
   }
 </style>

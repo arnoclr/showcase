@@ -69,7 +69,7 @@ const name = v4();
     height: 100vh;
     background: linear-gradient(
       to top,
-      rgba(155, 155, 155, 0.1) 30%,
+      rgba(200, 200, 200, 0.1) 30%,
       #0000 100%
     );
   }
@@ -140,5 +140,8 @@ const name = v4();
   }
 
   @media (prefers-color-scheme: dark) {
+    ul::after {
+      background-color: black;
+    }
   }
 </style>
