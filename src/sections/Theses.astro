@@ -1,15 +1,73 @@
 ---
+import { Image } from "astro:assets";
 import Heading from "../components/presentations/Heading.astro";
+import presentationImage from "../images/theses/light/presentation.png";
+import presentationImageDark from "../images/theses/dark/presentation.png";
+import geolocalizedSearchImage from "../images/theses/light/geolocalized.png";
+import geolocalizedSearchImageDark from "../images/theses/dark/geolocalized.png";
+import advancedSearchImage from "../images/theses/light/advanced search.png";
+import advancedSearchImageDark from "../images/theses/dark/advanced search.png";
+import compareImage from "../images/theses/light/compare.png";
+import compareImageDark from "../images/theses/dark/compare.png";
+import alertImage from "../images/theses/light/alert.png";
+import alertImageDark from "../images/theses/dark/alert.png";
 ---
 
 <section class="bs-theses-content bento-content">
   <Heading title="Thèses" subtitle="Recherchez, comparez, soyez alerté." />
-  <img class="for-light-mode" src="/images/pmf/theses ipad phone.png" alt="" />
-  <img
-    class="for-dark-mode"
-    src="/images/pmf/theses ipad phone dark.png"
-    alt=""
-  />
+  <Image class="fullwidth for-light-mode" src={presentationImage} alt="" />
+  <Image class="fullwidth for-dark-mode" src={presentationImageDark} alt="" />
+  <div class="poro" role="rowgroup">
+    <div>
+      <h3>Recherche localisée.</h3>
+      <p>
+        Vous pouvez filtrer les résultats par ville ou directement chercher les
+        thèses soutenues dans une université en particulier.
+      </p>
+    </div>
+    <Image
+      class="horizontal for-light-mode"
+      src={geolocalizedSearchImage}
+      alt=""
+    />
+    <Image
+      class="horizontal for-dark-mode"
+      src={geolocalizedSearchImageDark}
+      alt=""
+    />
+  </div>
+  <h3>Comparez jusqu'à 4 recherches.<br /> En simultané.</h3>
+  <Image class="fullwidth for-light-mode" src={compareImage} alt="" />
+  <Image class="fullwidth for-dark-mode" src={compareImageDark} alt="" />
+  <div class="poro" role="rowgroup">
+    <div>
+      <h3>Recherche avancée.</h3>
+      <p>
+        En plus des filtres basés sur la localisation, vous pouvez affiner votre
+        recherche en utilisant des filtres avancés tels que l'auteur, la date ou
+        la manière de rechercher les mots clés.
+      </p>
+    </div>
+    <Image class="horizontal for-light-mode" src={advancedSearchImage} alt="" />
+    <Image
+      class="horizontal for-dark-mode"
+      src={advancedSearchImageDark}
+      alt=""
+    />
+  </div>
+  <div class="poro" role="rowgroup">
+    <Image class="for-light-mode" src={alertImage} alt="" />
+    <Image class="for-dark-mode" src={alertImageDark} alt="" />
+    <div>
+      <h3>Créez des alertes.</h3>
+      <p
+        data-footnote="La fonctionnalité d'alertes n'est pas terminée. Actuellement, elle envoie seulement un mail au moment de la souscription à l'alerte. "
+      >
+        Vous pouvez créer des alertes pour être notifié dès qu'une nouvelle
+        thèse correspondant à vos critères de recherche est publiée.
+      </p>
+    </div>
+  </div>
 </section>
 
 <style>
@@ -18,10 +76,19 @@ import Heading from "../components/presentations/Heading.astro";
     padding: 0 var(--navbar-horizontal-padding);
   }
 
+  .poro {
+    height: 100vh;
+    gap: 10vw;
+  }
+
   h2 {
     margin-top: 0;
     margin-bottom: 16px;
-    font-size: 5vw;
+    font-size: max(20px, 5vw);
+  }
+
+  h3 {
+    font-size: max(18px, 4vw);
   }
 
   p {
@@ -31,7 +98,17 @@ import Heading from "../components/presentations/Heading.astro";
   }
 
   img {
+    height: 80vh;
+    width: auto;
+  }
+
+  img.horizontal {
     height: auto;
+    width: 60%;
+  }
+
+  img.fullwidth {
     width: 100%;
+    height: auto;
   }
 </style>
