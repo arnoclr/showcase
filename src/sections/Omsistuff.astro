@@ -1,5 +1,6 @@
 ---
 import { Image } from "astro:assets";
+import Heading from "../components/presentations/Heading.astro";
 import presentationImage from "../images/omsistuff/light/phone ipad.png";
 import presentationImageDark from "../images/omsistuff/dark/phone ipad.png";
 import discoverImage from "../images/omsistuff/light/discover.png";
@@ -13,8 +14,7 @@ import highlightsImageDark from "../images/omsistuff/dark/highlights.png";
 ---
 
 <section class="bs-omsistuff-content bento-content">
-  <h2>Omsistuff</h2>
-  <p>Librairie de repaints pour OMSI 2.</p>
+  <Heading title="Omsistuff" subtitle="Librairie de repaints pour OMSI 2." />
   <Image class="for-light-mode" src={presentationImage} alt="" />
   <Image class="for-dark-mode" src={presentationImageDark} alt="" />
   <h3 style="margin-top: 20vh;">Plusieurs manières de découvrir.</h3>

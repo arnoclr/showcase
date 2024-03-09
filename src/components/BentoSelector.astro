@@ -51,15 +51,28 @@ import kppPhone from "../images/selector/kpp.png";
     perspective: 800px;
   }
 
+  ul::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: -100vw;
+    right: -100vw;
+    height: 100vh;
+    background: linear-gradient(
+      to top,
+      rgba(155, 155, 155, 0.1) 30%,
+      #0000 100%
+    );
+  }
+
   ul::after {
     content: "";
     position: absolute;
     bottom: 0;
-    top: 30%;
     left: -100vw;
     right: -100vw;
-    background: linear-gradient(to bottom, #fff0 0%, #fffe 40%, #fff 70%);
-    pointer-events: none;
+    height: 40%;
+    background-color: white;
   }
 
   li {
@@ -118,19 +131,6 @@ import kppPhone from "../images/selector/kpp.png";
   }
 
   @media (prefers-color-scheme: dark) {
-    ul::after {
-      background: linear-gradient(to bottom, #0000 0%, #000e 40%, #000 70%);
-    }
-
-    ul::before {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: -100vw;
-      right: -100vw;
-      height: 100vh;
-      background: linear-gradient(to top, #222 30%, #0000 100%);
-    }
   }
 </style>
 
@@ -160,7 +160,7 @@ import kppPhone from "../images/selector/kpp.png";
 
   .bento-content {
     position: relative;
-    margin-top: -10vw;
+    margin-top: -5vw;
     z-index: 2;
   }
 </style>

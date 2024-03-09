@@ -1,11 +1,14 @@
 ---
-
+import Comments from "../../components/Comments.vue";
+import Heading from "../../components/presentations/Heading.astro";
 ---
 
 <section class="bs-msm-content bento-content">
-  <h2>Découvrez le Mont-Saint-Michel</h2>
-  <p>Projet en partenariat avec l'UNESCO</p>
-  <img src="/images/pmf/msm bento.jpg" alt="" />
+  <Heading
+    title="Mont-Saint-Michel"
+    subtitle="Projet en partenariat avec l'UNESCO"
+  />
+  <Comments githubIssueId={2} client:visible />
 </section>
 
 <style>
