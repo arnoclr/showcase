@@ -1,7 +1,14 @@
 ---
+import { Image } from "astro:assets";
 import Comments from "../../components/Comments.vue";
 import Video from "../../components/Video.astro";
-import wagonLiveJourneyVideo from "../../videos/wagon live journey.mp4";
+import presentationImage from "../../images/wagon/light/phones.png";
+import presentationImageDark from "../../images/wagon/dark/phones.png";
+import liveJourneyVideo from "../../videos/wagon live journey.mp4";
+import reportImage from "../../images/wagon/light/report.png";
+import reportImageDark from "../../images/wagon/dark/report.png";
+import searchImage from "../../images/wagon/light/search.png";
+import searchImageDark from "../../images/wagon/dark/search.png";
 ---
 
 <section class="bs-wagon-content bento-content">
@@ -10,16 +17,8 @@ import wagonLiveJourneyVideo from "../../videos/wagon live journey.mp4";
   <p class="eric">Prendre les transports, autrement.</p>
   <div class="poro" role="rowgroup">
     <h3><small>Prochains passages,</small><br />en un coup d'œil</h3>
-    <img
-      class="first for-light-mode"
-      src="/images/pmf/wagon phones.png"
-      alt=""
-    />
-    <img
-      class="first for-dark-mode"
-      src="/images/pmf/wagon phones dark.png"
-      alt=""
-    />
+    <Image class="first for-light-mode" src={presentationImage} alt="" />
+    <Image class="first for-dark-mode" src={presentationImageDark} alt="" />
   </div>
   <!-- <small
     data-footnote="Application uniquement disponible en version bêta sur TestFlight. Nombre de places limitées. La fonctionnalité d'itinéraire est encore en developpement et sera disponible via une mise à jour."
@@ -27,7 +26,7 @@ import wagonLiveJourneyVideo from "../../videos/wagon live journey.mp4";
     Certaines fonctionnalités ne sont pas encore disponibles.
   </small> -->
   <div class="poro" role="rowgroup">
-    <Video height="80vh" src={wagonLiveJourneyVideo} />
+    <Video height="80vh" src={liveJourneyVideo} />
     <h3
       data-footnote="Fonctionnalité encore en développement. Elle sera disponible via une mise à jour sur TestFlight ultérieurement."
     >
@@ -36,13 +35,13 @@ import wagonLiveJourneyVideo from "../../videos/wagon live journey.mp4";
     </h3>
   </div>
   <div class="poro" role="rowgroup">
-    <img class="for-light-mode" src="/images/pmf/wagon report.png" alt="" />
-    <img class="for-dark-mode" src="/images/pmf/wagon report dark.png" alt="" />
+    <Image class="for-light-mode" src={reportImage} alt="" />
+    <Image class="for-dark-mode" src={reportImageDark} alt="" />
     <h3><small>Un imprévu ?</small><br />Dites le nous,<br />dites leur.</h3>
   </div>
   <div class="poro" role="rowgroup">
-    <img class="for-light-mode" src="/images/pmf/wagon search.png" alt="" />
-    <img class="for-dark-mode" src="/images/pmf/wagon search dark.png" alt="" />
+    <Image class="for-light-mode" src={searchImage} alt="" />
+    <Image class="for-dark-mode" src={searchImageDark} alt="" />
     <h3>Vous n'êtes pas sur place ?<br />Cherchez l'arrêt.</h3>
   </div>
   <div role="rowgroup" class="numbers">

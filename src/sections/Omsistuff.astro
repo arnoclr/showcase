@@ -1,11 +1,15 @@
 ---
-
+import { Image } from "astro:assets";
+import presentationImage from "../images/omsistuff/phone ipad.png";
+import discoverImage from "../images/omsistuff/discover.png";
+import loginImage from "../images/omsistuff/login.png";
+import reviewsImage from "../images/omsistuff/reviews.png";
 ---
 
 <section class="bs-omsistuff-content bento-content">
   <h2>Omsistuff</h2>
   <p>Librairie de repaints pour OMSI 2.</p>
-  <img src="/images/pmf/omsistuff phone ipad.png" alt="" />
+  <Image src={presentationImage} alt="" />
   <a
     href="https://omsistuff.fr/heuliez-bus-gx337-g-new-face/la-metropole-mobilite-transdev-alpilles-berre-mediterranee/952?ref=copy_url&ref_label=from_unknow_user&ref_value=0#comments-section"
   >
@@ -19,7 +23,7 @@
     Vous pouvez trouver des repaints via la carte du monde, les suggestions en
     page d'accueil ou les résultats de recherche Google.
   </p>
-  <img src="/images/pmf/omsistuff discover.png" alt="" />
+  <Image src={discoverImage} alt="" />
   <div role="rowgroup">
     <div>
       <h3>Connexion en un clic</h3>
@@ -28,11 +32,7 @@
         boite mail.
       </p>
     </div>
-    <img
-      style="height: 80vh; width: auto;"
-      src="/images/pmf/omsistuff login.png"
-      alt=""
-    />
+    <Image style="height: 80vh; width: auto;" src={loginImage} alt="" />
   </div>
   <h3>Des vrais avis,<br /> pour vous aider à choisir.</h3>
   <div role="rowgroup" style="gap: 5vw; height: unset;">
@@ -41,11 +41,7 @@
       L'algorithme pondère les avis selon plusieurs facteurs pour faire
       ressortir les avis pertinents.
     </p>
-    <img
-      style="height: auto; width: 70%;"
-      src="/images/pmf/omsistuff reviews.png"
-      alt=""
-    />
+    <Image style="height: auto; width: 70%;" src={reviewsImage} alt="" />
   </div>
   <h3 style="margin-top: 20vh; text-align: center;">Une communauté active</h3>
   <div role="rowgroup" class="numbers">

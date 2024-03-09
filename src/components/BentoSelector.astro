@@ -1,24 +1,33 @@
+---
+import { Image } from "astro:assets";
+import wagonPhone from "../images/selector/wagon.png";
+import msmPhone from "../images/selector/msm.png";
+import omsistuffPhone from "../images/selector/omsistuff.png";
+import thesesPhone from "../images/selector/theses.png";
+import kppPhone from "../images/selector/kpp.png";
+---
+
 <h2>Mes projets</h2>
 <ul id="bs" data-scroll data-scroll-call="hidePresentation">
   <li>
     <input type="radio" name="ropo" id="bs-wagon" checked />
-    <img src="/images/phone xs wagon.png" alt="" />
+    <Image src={wagonPhone} alt="" />
   </li>
   <li>
     <input type="radio" name="ropo" id="bs-msm" />
-    <img src="/images/phone xs msm.png" alt="" />
+    <Image src={msmPhone} alt="" />
   </li>
   <li>
     <input type="radio" name="ropo" id="bs-omsistuff" />
-    <img src="/images/phone xs omsistuff.png" alt="" />
+    <Image src={omsistuffPhone} alt="" />
   </li>
   <li>
     <input type="radio" name="ropo" id="bs-theses" />
-    <img src="/images/phone xs theses.png" alt="" />
+    <Image src={thesesPhone} alt="" />
   </li>
   <li>
     <input type="radio" name="ropo" />
-    <img src="/images/phone xs kpp.png" alt="" />
+    <Image src={kppPhone} alt="" />
   </li>
 </ul>
 
