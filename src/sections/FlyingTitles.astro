@@ -188,7 +188,7 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
   }
 
   .elba h2 {
-    font-size: 7vw;
+    font-size: max(40px, 7vw);
     transform: rotate3d(1, -1, 0, calc(10deg * var(--progress) - 5deg));
   }
 
@@ -207,7 +207,7 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
   }
 
   .zjir h2 {
-    font-size: 5vw;
+    font-size: max(40px, 5vw);
     text-align: left;
     padding-left: 4vw;
     transform-origin: top;
@@ -229,7 +229,7 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
   }
 
   .zaco h2 {
-    font-size: 10vw;
+    font-size: max(40px, 10vw);
   }
 
   .faca {
@@ -240,7 +240,7 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
 
   .faca h2 {
     margin: 1vw 0;
-    font-size: 8vw;
+    font-size: max(40px 8vw);
   }
 
   .faca small {
@@ -293,7 +293,12 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
     }
 
     section:first-child {
+      margin-top: 20vh;
       min-height: 10vh;
+    }
+
+    h2 {
+      text-wrap: balance;
     }
 
     [data-scroll] {
@@ -308,7 +313,6 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
     .zjir h2 {
       padding: 2vw;
       text-align: center;
-      font-size: 7vw;
     }
 
     .zjir img {
