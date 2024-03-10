@@ -1,0 +1,56 @@
+---
+interface Person {
+  firstname: string;
+  lastname: string;
+  role: string;
+  linkedinUrl: string;
+}
+
+interface Props {
+  people: Person[];
+}
+
+const { people } = Astro.props;
+---
+
+<ul>
+  {
+    people
+      .sort((a, b) => a.lastname.localeCompare(b.lastname))
+      .map((person) => (
+        <li>
+          <a href={person.linkedinUrl}>
+            {person.firstname} {person.lastname}
+          </a>
+          <span>{person.role}</span>
+        </li>
+      ))
+  }
+</ul>
+
+<style>
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    padding: 8px 0;
+    font-size: max(24px, 3vw);
+  }
+
+  li:not(:last-child) {
+    border-bottom: 1px solid rgba(155, 155, 155, 0.2);
+  }
+
+  span {
+    opacity: 0.4;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    font-weight: 500;
+  }
+</style>

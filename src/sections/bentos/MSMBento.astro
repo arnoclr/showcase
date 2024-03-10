@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import Comments from "../../components/Comments.vue";
+import Team from "../../components/presentations/Team.astro";
 import Video from "../../components/Video.astro";
 import DeviceFrameSection from "../../components/presentations/DeviceFrameSection.astro";
 import Heading from "../../components/presentations/Heading.astro";
@@ -11,6 +12,41 @@ import searchImageDark from "../../images/msm/dark/search.png";
 import visitImageDark from "../../images/msm/dark/visit.png";
 import { ImageSizePreset } from "../../utils/images";
 import discoverPlacesVideoDark from "../../videos/msm discover dark.mp4";
+
+const arnoCellarier = {
+  firstname: "Arno",
+  lastname: "Cellarier",
+  role: "Chef de projet",
+  linkedinUrl: "https://www.linkedin.com/in/arno-cellarier/",
+};
+
+const yaelCoeffier = {
+  firstname: "Yaël",
+  lastname: "Coëffier",
+  role: "Développeur & Designer",
+  linkedinUrl: "https://www.linkedin.com/in/yael-coeffier/",
+};
+
+const christopherBeaurain = {
+  firstname: "Christopher",
+  lastname: "Beaurain",
+  role: "Ancien chef de projet",
+  linkedinUrl: "https://www.linkedin.com/in/christopher-beaurain-a464b0173/",
+};
+
+const clementDeSimon = {
+  firstname: "Clément",
+  lastname: "De Simon",
+  role: "Chargé du contenu",
+  linkedinUrl: "https://www.linkedin.com/in/clément-de-simon-71b632227/",
+};
+
+const gabrielFrancois = {
+  firstname: "Gabriel",
+  lastname: "François",
+  role: "Chargé du contenu",
+  linkedinUrl: "https://www.linkedin.com/in/gabriel-françois-855988222/",
+};
 ---
 
 <section class="bs-msm-content bento-content">
@@ -25,6 +61,16 @@ import discoverPlacesVideoDark from "../../videos/msm discover dark.mp4";
   />
   <div style="margin-top: 10vh;"></div>
   <Comments githubIssueId={2} client:visible />
+  <h3>Notre équipe.</h3>
+  <Team
+    people={[
+      arnoCellarier,
+      yaelCoeffier,
+      gabrielFrancois,
+      clementDeSimon,
+      christopherBeaurain,
+    ]}
+  />
   <DeviceFrameSection>
     <h3>Découvrez l'histoire du Mont,<br /><small>avec notre guide.</small></h3>
     <Image
