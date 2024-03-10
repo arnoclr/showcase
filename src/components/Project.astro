@@ -13,6 +13,7 @@ const { project, nextProject } = Astro.props;
 const rawCSS = `
   ul:has(#checkbox-${project.id}:checked) ~ #content-${project.id} {
     display: block;
+    animation: appearWithBlur 0.4s cubic-bezier(.43,-0.28,.14,1);
   }
 `;
 ---
