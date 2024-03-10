@@ -9,8 +9,32 @@ interface ObservedElement {
 export class AnimatedScroll {
   private _elements: ObservedElement[] = [];
   private _animationFrameId: number | null = null;
+  private _lowerBoundPx: number = 0;
 
   public constructor() {
+    this.updateElements();
+
+    window.addEventListener("scroll", () => {
+      if (
+        this._animationFrameId === null &&
+        window.scrollY <= this._lowerBoundPx
+      ) {
+        this._animationFrameId = requestAnimationFrame(() => {
+          this.updateProgress();
+          this._animationFrameId = null;
+        });
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      this.updateElements();
+      this.updateProgress();
+    });
+
+    this.updateProgress();
+  }
+
+  private updateElements() {
     const elements = document.querySelectorAll<HTMLElement>("[data-scroll");
 
     for (const element of elements) {
@@ -24,23 +48,19 @@ export class AnimatedScroll {
         continue;
       }
 
+      const fromHeightPx = (parseInt(fromHeightVh) * window.innerHeight) / 100;
+      const toHeightPx = (parseInt(toHeightVh) * window.innerHeight) / 100;
+
       this._elements.push({
-        fromHeightPx: (parseInt(fromHeightVh) * window.innerHeight) / 100,
-        toHeightPx: (parseInt(toHeightVh) * window.innerHeight) / 100,
+        fromHeightPx,
+        toHeightPx,
         element,
       });
-    }
 
-    window.addEventListener("scroll", () => {
-      if (this._animationFrameId === null) {
-        this._animationFrameId = requestAnimationFrame(() => {
-          this.updateProgress();
-          this._animationFrameId = null;
-        });
+      if (toHeightPx > this._lowerBoundPx) {
+        this._lowerBoundPx = toHeightPx;
       }
-    });
-
-    this.updateProgress();
+    }
   }
 
   private updateProgress() {
@@ -51,10 +71,17 @@ export class AnimatedScroll {
         (scrollY - element.fromHeightPx) /
         (element.toHeightPx - element.fromHeightPx);
 
-      if (progress >= 0 && progress <= 1) {
-        this.updateElementProgress(element, progress);
-      }
+      this.updateElementProgress(element, this.cappedProgress(progress));
     }
+  }
+
+  /**
+   *
+   * @param progress
+   * @returns progress capped between 0 and 1
+   */
+  private cappedProgress(progress: number) {
+    return Math.max(0, Math.min(1, progress));
   }
 
   private updateElementProgress(
