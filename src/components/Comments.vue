@@ -184,6 +184,9 @@ img {
 a {
   color: gray;
   margin-top: 1rem;
+}
+
+a[emphasized="false"] {
   margin-left: 3rem;
 }
 

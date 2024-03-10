@@ -6,7 +6,7 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
 
 <main class="presentation">
   <section>
-    <h1 style="font-size: 4vw;">Arno Cellarier</h1>
+    <h1>Arno Cellarier</h1>
   </section>
   <section class="elba">
     <h2
@@ -140,15 +140,14 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
 </script>
 
 <style>
-  [data-scroll-css-progress] {
-    --smooth-progress: calc(
-      -1 + 1.4 * var(--progress) - 0.45 * pow(var(--progress), 2) + 0.05 * pow(var(--progress), 90)
-    );
-  }
-
   main,
   section {
     perspective: 900px;
+  }
+
+  h1 {
+    font-weight: 400;
+    font-size: max(12px, 2vw);
   }
 
   /* main.no-animations [data-scroll] {
