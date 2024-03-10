@@ -32,7 +32,7 @@ const rawCSS = projects
   <body>
     <nav>
       <span>
-        <span>Arno Cellarier —&nbsp;</span>
+        <span>Arno Cellarier —</span>
         {
           projects.map((project) => (
             <span id={"navtitle-" + project.id}>{project.title}</span>
@@ -216,15 +216,5 @@ const rawCSS = projects
     .for-dark-mode {
       display: none;
     }
-  }
-
-  .button {
-    padding: 12px 22px;
-    background-color: #007aff;
-    color: white;
-    border-radius: 999px;
-    text-decoration: none;
-    border: none;
-    width: fit-content;
   }
 </style>

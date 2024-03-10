@@ -2,6 +2,8 @@
 import { Image } from "astro:assets";
 import Heading from "../components/presentations/Heading.astro";
 import Comments from "../components/Comments.vue";
+import DeviceFrameSection from "../components/presentations/DeviceFrameSection.astro";
+import ExternalWebsiteButton from "../components/presentations/ExternalWebsiteButton.astro";
 import presentationImage from "../images/omsistuff/light/phone ipad.png";
 import presentationImageDark from "../images/omsistuff/dark/phone ipad.png";
 import discoverImage from "../images/omsistuff/light/discover.png";
@@ -12,71 +14,103 @@ import reviewsImage from "../images/omsistuff/light/reviews.png";
 import reviewsImageDark from "../images/omsistuff/dark/reviews.png";
 import highlightsImage from "../images/omsistuff/light/highlights.png";
 import highlightsImageDark from "../images/omsistuff/dark/highlights.png";
+import { getImageSize, ImageSizePreset } from "../utils/images";
 ---
 
 <section class="bs-omsistuff-content bento-content">
   <Heading title="Omsistuff" subtitle="Librairie de repaints pour OMSI 2." />
-  <Image class="for-light-mode" src={presentationImage} alt="" />
-  <Image class="for-dark-mode" src={presentationImageDark} alt="" />
+  <Image
+    class="for-light-mode"
+    style={getImageSize(ImageSizePreset.TabletAndPhone)}
+    src={presentationImage}
+    alt=""
+  />
+  <Image
+    class="for-dark-mode"
+    style={getImageSize(ImageSizePreset.TabletAndPhone)}
+    src={presentationImageDark}
+    alt=""
+  />
   <h3 style="margin-top: 20vh;">Plusieurs manières de découvrir.</h3>
   <p>
     Vous pouvez trouver des repaints via la carte du monde, les suggestions en
     page d'accueil ou les résultats de recherche Google.
   </p>
-  <Image class="for-light-mode" src={discoverImage} alt="" />
-  <Image class="for-dark-mode" src={discoverImageDark} alt="" />
-  <div role="rowgroup">
-    <div>
-      <h3>Connexion en<br />un clic.</h3>
-      <p>
-        Entrez votre adresse e-mail, et recevez le lien de connexion dans votre
-        boite mail.
-      </p>
-    </div>
+  <Image
+    class="for-light-mode"
+    style={getImageSize(ImageSizePreset.TabletAndPhone)}
+    src={discoverImage}
+    alt=""
+  />
+  <Image
+    class="for-dark-mode"
+    style={getImageSize(ImageSizePreset.TabletAndPhone)}
+    src={discoverImageDark}
+    alt=""
+  />
+  <DeviceFrameSection>
+    <h3>Connexion en<br />un clic.</h3>
+    <p>
+      Entrez votre adresse e-mail, et recevez le lien de connexion dans votre
+      boite mail.
+    </p>
     <Image
+      slot="rightFrame"
       class="for-light-mode"
-      style="height: 80vh; width: auto;"
+      style={getImageSize(ImageSizePreset.SinglePhone)}
       src={loginImage}
       alt=""
     />
     <Image
+      slot="rightFrame"
       class="for-dark-mode"
-      style="height: 80vh; width: auto;"
+      style={getImageSize(ImageSizePreset.SinglePhone)}
       src={loginImageDark}
       alt=""
     />
-  </div>
+  </DeviceFrameSection>
   <h3>Des vrais avis,<br /> pour vous aider à choisir.</h3>
-  <div role="rowgroup" style="gap: 5vw; height: unset;">
+  <DeviceFrameSection height="fitContent">
     <p>
       Notez chacun des repaints après les avoir testés, et consultez les avis.
       L'algorithme pondère les avis selon plusieurs facteurs pour faire
       ressortir les avis pertinents.
     </p>
     <Image
+      slot="rightFrame"
       class="for-light-mode"
-      style="height: auto; width: 70%;"
+      style={getImageSize(ImageSizePreset.ThreePhonesOrTablet)}
       src={reviewsImage}
       alt=""
     />
     <Image
+      slot="rightFrame"
       class="for-dark-mode"
-      style="height: auto; width: 70%;"
+      style={getImageSize(ImageSizePreset.ThreePhonesOrTablet)}
       src={reviewsImageDark}
       alt=""
     />
-  </div>
-  <div class="poro" role="rowgroup">
-    <div>
-      <h3>Un recap de votre année.</h3>
-      <p>
-        Découvrez vos temps forts de l'année et comparez avec l'année
-        précédente.
-      </p>
-    </div>
-    <Image class="first for-light-mode" src={highlightsImage} alt="" />
-    <Image class="first for-dark-mode" src={highlightsImageDark} alt="" />
-  </div>
+  </DeviceFrameSection>
+  <DeviceFrameSection>
+    <h3>Un recap de votre année.</h3>
+    <p>
+      Découvrez vos temps forts de l'année et comparez avec l'année précédente.
+    </p>
+    <Image
+      slot="rightFrame"
+      class="first for-light-mode"
+      style={getImageSize(ImageSizePreset.ThreePhonesOrTablet)}
+      src={highlightsImage}
+      alt=""
+    />
+    <Image
+      slot="rightFrame"
+      class="first for-dark-mode"
+      style={getImageSize(ImageSizePreset.ThreePhonesOrTablet)}
+      src={highlightsImageDark}
+      alt=""
+    />
+  </DeviceFrameSection>
   <h3 style="margin-top: 20vh; text-align: center;">Une communauté active.</h3>
   <div role="rowgroup" class="numbers">
     <p>
@@ -93,62 +127,13 @@ import highlightsImageDark from "../images/omsistuff/dark/highlights.png";
     </p>
   </div>
   <Comments githubIssueId={3} client:visible />
-  <a
-    class="button open"
-    target="_blank"
-    href="https://omsistuff.fr/?ref=arno.cl"
-  >
+  <ExternalWebsiteButton href="https://omsistuff.fr/?ref=arno.cl">
     Visiter le site
-  </a>
+  </ExternalWebsiteButton>
 </section>
 
 <style>
-  section {
-    width: 100%;
-    padding: 0 var(--navbar-horizontal-padding);
-  }
-
-  h2 {
-    margin-top: 0;
-    margin-bottom: 16px;
-    font-size: max(20px, 5vw);
-  }
-
-  h3 {
-    font-size: max(18px, 4vw);
-  }
-
-  small {
-    padding-left: 3vw;
-  }
-
-  p {
-    font-size: 2vw;
-    margin-bottom: 4vw;
-    opacity: 0.7;
-  }
-
-  img {
-    height: auto;
-    width: 100%;
-  }
-
-  .first {
-    height: auto;
-    width: 60%;
-  }
-
-  .poro {
-    height: 100vh;
-    gap: 10vw;
-  }
-
   .numbers span:first-child {
     color: #22a569;
-  }
-
-  .open {
-    display: block;
-    margin: 10vh auto;
   }
 </style>

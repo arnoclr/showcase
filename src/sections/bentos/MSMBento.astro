@@ -9,6 +9,8 @@ import localesImageDark from "../../images/msm/dark/locales.png";
 import searchImageDark from "../../images/msm/dark/search.png";
 import visitImageDark from "../../images/msm/dark/visit.png";
 import historyImageDark from "../../images/msm/dark/history.png";
+import { ImageSizePreset, getImageSize } from "../../utils/images";
+import DeviceFrameSection from "../../components/presentations/DeviceFrameSection.astro";
 ---
 
 <section class="bs-msm-content bento-content">
@@ -16,81 +18,56 @@ import historyImageDark from "../../images/msm/dark/history.png";
     title="Mont-Saint-Michel"
     subtitle="Projet en partenariat avec l'UNESCO"
   />
-  <Image class="fullwidth" src={mainImageDark} alt="" />
+  <Image
+    style={getImageSize(ImageSizePreset.TabletAndPhone)}
+    src={mainImageDark}
+    alt=""
+  />
   <div style="margin-top: 10vh;"></div>
   <Comments githubIssueId={2} client:visible />
-  <div class="poro" role="rowgroup">
+  <DeviceFrameSection>
     <h3>Découvrez l'histoire du Mont,<br /><small>avec notre guide.</small></h3>
-    <Image class="horizontal" src={historyImageDark} alt="" />
-  </div>
-  <div class="poro">
-    <h3>
-      <small>Visitez le Mont,</small>
-      <br />comme si vous y étiez,
-      <br />sans y être.
-    </h3>
-    <Image class="horizontal" src={visitImageDark} alt="" />
-  </div>
-  <div class="poro" role="rowgroup">
+    <Image
+      slot="rightFrame"
+      style={getImageSize(ImageSizePreset.ThreePhonesOrTablet)}
+      src={historyImageDark}
+      alt=""
+    />
+  </DeviceFrameSection>
+  <h3>
+    <small>Visitez le Mont,</small>
+    <br />comme si vous y étiez,
+    <br />sans y être.
+  </h3>
+  <Image
+    style={getImageSize(ImageSizePreset.TabletAndPhone)}
+    src={visitImageDark}
+    alt=""
+  />
+  <DeviceFrameSection>
     <h3>Parcourez le site,<br />depuis votre clavier.</h3>
-    <Image src={searchImageDark} alt="" />
-  </div>
-  <div class="poro" role="rowgroup">
-    <Video height="80vh" src={discoverPlacesVideoDark} />
+    <Image
+      slot="rightFrame"
+      style={getImageSize(ImageSizePreset.SinglePhone)}
+      src={searchImageDark}
+      alt=""
+    />
+  </DeviceFrameSection>
+  <DeviceFrameSection>
+    <Video slot="leftFrame" height="80vh" src={discoverPlacesVideoDark} />
     <h3>
       Programmez une visite.<br />
       <small>On fait en fonction de vos horaires.</small>
     </h3>
-  </div>
-  <div class="poro" role="rowgroup">
+  </DeviceFrameSection>
+  <DeviceFrameSection>
     <h3>Disponible en plusieurs langues.</h3>
-    <Image class="horizontal" src={localesImageDark} alt="" />
-  </div>
+    <Image
+      slot="rightFrame"
+      style={getImageSize(ImageSizePreset.ThreePhonesOrTablet)}
+      src={localesImageDark}
+      alt=""
+    />
+  </DeviceFrameSection>
   <!-- TODO: ajouter les membres de l'équipe -->
 </section>
-
-<style>
-  section {
-    width: 100%;
-    padding: 0 var(--navbar-horizontal-padding);
-  }
-
-  h2 {
-    margin-top: 0;
-    margin-bottom: 16px;
-    font-size: 4vw;
-  }
-
-  h3 {
-    font-size: max(18px, 4vw);
-  }
-
-  h3 small {
-    font-size: inherit;
-    opacity: 0.6;
-  }
-
-  .poro {
-    height: 100vh;
-    gap: 10vw;
-  }
-
-  p {
-    margin-bottom: 4vw;
-  }
-
-  img {
-    height: 80vh;
-    width: auto;
-  }
-
-  img.horizontal {
-    height: auto;
-    width: 60%;
-  }
-
-  img.fullwidth {
-    width: 100%;
-    height: auto;
-  }
-</style>

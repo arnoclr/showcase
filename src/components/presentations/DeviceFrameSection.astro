@@ -1,0 +1,31 @@
+---
+interface Props {
+  height?: "screen" | "fitContent";
+}
+
+const { height = "screen" } = Astro.props;
+
+function getCSSHeight() {
+  if (height === "screen") {
+    return "100vh";
+  }
+  return "unset";
+}
+---
+
+<section style={{ height: getCSSHeight() }}>
+  <slot name="leftFrame" />
+  <div class="text">
+    <slot />
+  </div>
+  <slot name="rightFrame" />
+</section>
+
+<style>
+  section {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10vw;
+  }
+</style>

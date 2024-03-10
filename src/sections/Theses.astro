@@ -11,13 +11,25 @@ import compareImage from "../images/theses/light/compare.png";
 import compareImageDark from "../images/theses/dark/compare.png";
 import alertImage from "../images/theses/light/alert.png";
 import alertImageDark from "../images/theses/dark/alert.png";
+import { ImageSizePreset, getImageSize } from "../utils/images";
+import DeviceFrameSection from "../components/presentations/DeviceFrameSection.astro";
 ---
 
 <section class="bs-theses-content bento-content">
   <Heading title="Thèses" subtitle="Recherchez, comparez, soyez alerté." />
-  <Image class="fullwidth for-light-mode" src={presentationImage} alt="" />
-  <Image class="fullwidth for-dark-mode" src={presentationImageDark} alt="" />
-  <div class="poro" role="rowgroup">
+  <Image
+    class="for-light-mode"
+    style={getImageSize(ImageSizePreset.TabletAndPhone)}
+    src={presentationImage}
+    alt=""
+  />
+  <Image
+    class="for-dark-mode"
+    style={getImageSize(ImageSizePreset.TabletAndPhone)}
+    src={presentationImageDark}
+    alt=""
+  />
+  <DeviceFrameSection>
     <div>
       <h3>Recherche localisée.</h3>
       <p>
@@ -26,20 +38,34 @@ import alertImageDark from "../images/theses/dark/alert.png";
       </p>
     </div>
     <Image
-      class="horizontal for-light-mode"
+      slot="rightFrame"
+      style={getImageSize(ImageSizePreset.ThreePhonesOrTablet)}
+      class="for-light-mode"
       src={geolocalizedSearchImage}
       alt=""
     />
     <Image
-      class="horizontal for-dark-mode"
+      slot="rightFrame"
+      style={getImageSize(ImageSizePreset.ThreePhonesOrTablet)}
+      class="for-dark-mode"
       src={geolocalizedSearchImageDark}
       alt=""
     />
-  </div>
+  </DeviceFrameSection>
   <h3>Comparez jusqu'à 4 recherches.<br /> En simultané.</h3>
-  <Image class="fullwidth for-light-mode" src={compareImage} alt="" />
-  <Image class="fullwidth for-dark-mode" src={compareImageDark} alt="" />
-  <div class="poro" role="rowgroup">
+  <Image
+    style={getImageSize(ImageSizePreset.TabletAndPhone)}
+    class="for-light-mode"
+    src={compareImage}
+    alt=""
+  />
+  <Image
+    style={getImageSize(ImageSizePreset.TabletAndPhone)}
+    class="for-dark-mode"
+    src={compareImageDark}
+    alt=""
+  />
+  <DeviceFrameSection>
     <div>
       <h3>Recherche avancée.</h3>
       <p>
@@ -48,16 +74,36 @@ import alertImageDark from "../images/theses/dark/alert.png";
         la manière de rechercher les mots clés.
       </p>
     </div>
-    <Image class="horizontal for-light-mode" src={advancedSearchImage} alt="" />
     <Image
-      class="horizontal for-dark-mode"
+      slot="rightFrame"
+      class="for-light-mode"
+      style={getImageSize(ImageSizePreset.ThreePhonesOrTablet)}
+      src={advancedSearchImage}
+      alt=""
+    />
+    <Image
+      slot="rightFrame"
+      class="for-dark-mode"
+      style={getImageSize(ImageSizePreset.ThreePhonesOrTablet)}
       src={advancedSearchImageDark}
       alt=""
     />
-  </div>
-  <div class="poro" role="rowgroup">
-    <Image class="for-light-mode" src={alertImage} alt="" />
-    <Image class="for-dark-mode" src={alertImageDark} alt="" />
+  </DeviceFrameSection>
+  <DeviceFrameSection>
+    <Image
+      slot="leftFrame"
+      class="for-light-mode"
+      style={getImageSize(ImageSizePreset.SinglePhone)}
+      src={alertImage}
+      alt=""
+    />
+    <Image
+      slot="leftFrame"
+      class="for-dark-mode"
+      style={getImageSize(ImageSizePreset.SinglePhone)}
+      src={alertImageDark}
+      alt=""
+    />
     <div>
       <h3>Créez des alertes.</h3>
       <p
@@ -67,48 +113,5 @@ import alertImageDark from "../images/theses/dark/alert.png";
         thèse correspondant à vos critères de recherche est publiée.
       </p>
     </div>
-  </div>
+  </DeviceFrameSection>
 </section>
-
-<style>
-  section {
-    width: 100%;
-    padding: 0 var(--navbar-horizontal-padding);
-  }
-
-  .poro {
-    height: 100vh;
-    gap: 10vw;
-  }
-
-  h2 {
-    margin-top: 0;
-    margin-bottom: 16px;
-    font-size: max(20px, 5vw);
-  }
-
-  h3 {
-    font-size: max(18px, 4vw);
-  }
-
-  p {
-    font-size: 2vw;
-    margin-bottom: 4vw;
-    opacity: 0.7;
-  }
-
-  img {
-    height: 80vh;
-    width: auto;
-  }
-
-  img.horizontal {
-    height: auto;
-    width: 60%;
-  }
-
-  img.fullwidth {
-    width: 100%;
-    height: auto;
-  }
-</style>

@@ -1,6 +1,8 @@
 ---
 import { Image } from "astro:assets";
 import Heading from "../../components/presentations/Heading.astro";
+import ExternalWebsiteButton from "../../components/presentations/ExternalWebsiteButton.astro";
+import DeviceFrameSection from "../../components/presentations/DeviceFrameSection.astro";
 import Comments from "../../components/Comments.vue";
 import Video from "../../components/Video.astro";
 import presentationImage from "../../images/wagon/light/phones.png";
@@ -10,35 +12,72 @@ import reportImage from "../../images/wagon/light/report.png";
 import reportImageDark from "../../images/wagon/dark/report.png";
 import searchImage from "../../images/wagon/light/search.png";
 import searchImageDark from "../../images/wagon/dark/search.png";
+import { ImageSizePreset, getImageSize } from "../../utils/images";
 ---
 
 <section class="bs-wagon-content bento-content">
   <Heading title="Wagon" subtitle="Prendre les transports, autrement." />
   <Comments githubIssueId={1} client:visible />
-  <div class="poro" role="rowgroup">
+  <DeviceFrameSection>
     <h3><small>Prochains passages,</small><br />en un coup d'œil.</h3>
-    <Image class="first for-light-mode" src={presentationImage} alt="" />
-    <Image class="first for-dark-mode" src={presentationImageDark} alt="" />
-  </div>
-  <div class="poro" role="rowgroup">
-    <Video height="80vh" src={liveJourneyVideo} />
+    <Image
+      slot="rightFrame"
+      class="first for-light-mode"
+      style={getImageSize(ImageSizePreset.ThreePhonesOrTablet)}
+      src={presentationImage}
+      alt=""
+    />
+    <Image
+      slot="rightFrame"
+      class="first for-dark-mode"
+      style={getImageSize(ImageSizePreset.ThreePhonesOrTablet)}
+      src={presentationImageDark}
+      alt=""
+    />
+  </DeviceFrameSection>
+  <DeviceFrameSection>
+    <Video slot="leftFrame" height="80vh" src={liveJourneyVideo} />
     <h3
       data-footnote="Fonctionnalité encore en développement. Elle sera disponible via une mise à jour sur TestFlight ultérieurement."
     >
       <small>On arrive quand ?</small><br />Ouvrez l'application,<br />on vous
       dira.
     </h3>
-  </div>
-  <div class="poro" role="rowgroup">
-    <Image class="for-light-mode" src={reportImage} alt="" />
-    <Image class="for-dark-mode" src={reportImageDark} alt="" />
+  </DeviceFrameSection>
+  <DeviceFrameSection>
+    <Image
+      slot="leftFrame"
+      class="for-light-mode"
+      style={getImageSize(ImageSizePreset.SinglePhone)}
+      src={reportImage}
+      alt=""
+    />
+    <Image
+      slot="leftFrame"
+      class="for-dark-mode"
+      style={getImageSize(ImageSizePreset.SinglePhone)}
+      src={reportImageDark}
+      alt=""
+    />
     <h3><small>Un imprévu ?</small><br />Dites le nous,<br />dites leur.</h3>
-  </div>
-  <div class="poro" role="rowgroup">
-    <Image class="for-light-mode" src={searchImage} alt="" />
-    <Image class="for-dark-mode" src={searchImageDark} alt="" />
+  </DeviceFrameSection>
+  <DeviceFrameSection>
+    <Image
+      slot="leftFrame"
+      class="for-light-mode"
+      style={getImageSize(ImageSizePreset.SinglePhone)}
+      src={searchImage}
+      alt=""
+    />
+    <Image
+      slot="leftFrame"
+      class="for-dark-mode"
+      style={getImageSize(ImageSizePreset.SinglePhone)}
+      src={searchImageDark}
+      alt=""
+    />
     <h3><small>Vous n'êtes pas sur place ?</small><br />Cherchez l'arrêt.</h3>
-  </div>
+  </DeviceFrameSection>
   <div role="rowgroup" class="numbers">
     <p>
       <span>1.2k</span>
@@ -59,55 +98,12 @@ import searchImageDark from "../../images/wagon/dark/search.png";
       <span>arrêts de bus référencés</span>
     </p>
   </div>
-  <a
-    class="button open"
-    target="_blank"
-    href="https://twitter.com/ridewithwagon"
-  >
+  <ExternalWebsiteButton href="https://twitter.com/ridewithwagon">
     Accéder au fil Twitter
-  </a>
+  </ExternalWebsiteButton>
 </section>
 
 <style>
-  section {
-    width: 100%;
-    padding: 0 var(--navbar-horizontal-padding);
-  }
-
-  .first {
-    height: auto;
-    width: 60%;
-  }
-
-  .eric {
-    opacity: 0.6;
-    font-size: 2vw;
-  }
-
-  a {
-    display: block;
-    margin: 10vh auto;
-  }
-
-  h3 {
-    font-size: max(18px, 4vw);
-  }
-
-  h3 small {
-    font-size: inherit;
-    opacity: 0.6;
-  }
-
-  .poro {
-    height: 100vh;
-    gap: 10vw;
-  }
-
-  img {
-    height: 80vh;
-    width: auto;
-  }
-
   .numbers span:first-child {
     color: #00aa83;
   }

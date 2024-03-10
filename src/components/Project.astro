@@ -37,6 +37,7 @@ const rawCSS = `
 
 <style>
   .content {
+    padding: 0 var(--navbar-horizontal-padding);
     display: none;
     position: relative;
     margin-top: -5vw;
@@ -68,5 +69,26 @@ const rawCSS = `
     width: 80px;
     height: auto;
     transform: translate(0, 30%);
+  }
+
+  :global(h2) {
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: max(20px, 5vw);
+  }
+
+  :global(h3) {
+    font-size: max(18px, 4vw);
+  }
+
+  :global(p) {
+    font-size: 2vw;
+    margin-bottom: 4vw;
+    opacity: 0.7;
+  }
+
+  :global(h3 small) {
+    font-size: inherit;
+    opacity: 0.6;
   }
 </style>
