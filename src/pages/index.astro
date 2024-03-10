@@ -14,20 +14,13 @@ import {
   msmProject,
   thesesProject,
   kppProject,
+  projects,
 } from "../projects";
 ---
 
 <Layout title="Welcome to Astro.">
   <FlyingTitles />
-  <ProjectsSelector
-    projects={[
-      wagonProject,
-      omsistuffProject,
-      msmProject,
-      thesesProject,
-      kppProject,
-    ]}
-  >
+  <ProjectsSelector projects={projects}>
     <Project project={wagonProject} nextProject={omsistuffProject}>
       <WagonBento />
     </Project>

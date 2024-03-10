@@ -35,3 +35,11 @@ export const kppProject: ProjectDetails = {
   title: "KPP Maker",
   frame: kppPhone,
 };
+
+export const projects = [
+  wagonProject,
+  omsistuffProject,
+  msmProject,
+  thesesProject,
+  kppProject,
+];
