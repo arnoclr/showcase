@@ -14,20 +14,22 @@ import reviewsImage from "../images/omsistuff/light/reviews.png";
 import reviewsImageDark from "../images/omsistuff/dark/reviews.png";
 import highlightsImage from "../images/omsistuff/light/highlights.png";
 import highlightsImageDark from "../images/omsistuff/dark/highlights.png";
-import { getImageSize, ImageSizePreset } from "../utils/images";
+import {
+  getImageSize,
+  ImageColorScheme,
+  ImageSizePreset,
+} from "../utils/images";
 ---
 
 <section class="bs-omsistuff-content bento-content">
   <Heading title="Omsistuff" subtitle="Librairie de repaints pour OMSI 2." />
   <Image
-    class="for-light-mode"
-    style={getImageSize(ImageSizePreset.TabletAndPhone)}
+    class:list={[ImageSizePreset.TabletAndPhone, ImageColorScheme.Light]}
     src={presentationImage}
     alt=""
   />
   <Image
-    class="for-dark-mode"
-    style={getImageSize(ImageSizePreset.TabletAndPhone)}
+    class:list={[ImageSizePreset.TabletAndPhone, ImageColorScheme.Dark]}
     src={presentationImageDark}
     alt=""
   />
@@ -37,14 +39,12 @@ import { getImageSize, ImageSizePreset } from "../utils/images";
     page d'accueil ou les résultats de recherche Google.
   </p>
   <Image
-    class="for-light-mode"
-    style={getImageSize(ImageSizePreset.TabletAndPhone)}
+    class:list={[ImageSizePreset.TabletAndPhone, ImageColorScheme.Light]}
     src={discoverImage}
     alt=""
   />
   <Image
-    class="for-dark-mode"
-    style={getImageSize(ImageSizePreset.TabletAndPhone)}
+    class:list={[ImageSizePreset.TabletAndPhone, ImageColorScheme.Dark]}
     src={discoverImageDark}
     alt=""
   />
@@ -56,15 +56,13 @@ import { getImageSize, ImageSizePreset } from "../utils/images";
     </p>
     <Image
       slot="rightFrame"
-      class="for-light-mode"
-      style={getImageSize(ImageSizePreset.SinglePhone)}
+      class:list={[ImageSizePreset.SinglePhone, ImageColorScheme.Light]}
       src={loginImage}
       alt=""
     />
     <Image
       slot="rightFrame"
-      class="for-dark-mode"
-      style={getImageSize(ImageSizePreset.SinglePhone)}
+      class:list={[ImageSizePreset.SinglePhone, ImageColorScheme.Dark]}
       src={loginImageDark}
       alt=""
     />
@@ -78,15 +76,13 @@ import { getImageSize, ImageSizePreset } from "../utils/images";
     </p>
     <Image
       slot="rightFrame"
-      class="for-light-mode"
-      style={getImageSize(ImageSizePreset.ThreePhonesOrTablet)}
+      class:list={[ImageSizePreset.ThreePhonesOrTablet, ImageColorScheme.Light]}
       src={reviewsImage}
       alt=""
     />
     <Image
       slot="rightFrame"
-      class="for-dark-mode"
-      style={getImageSize(ImageSizePreset.ThreePhonesOrTablet)}
+      class:list={[ImageSizePreset.ThreePhonesOrTablet, ImageColorScheme.Dark]}
       src={reviewsImageDark}
       alt=""
     />
@@ -98,15 +94,13 @@ import { getImageSize, ImageSizePreset } from "../utils/images";
     </p>
     <Image
       slot="rightFrame"
-      class="first for-light-mode"
-      style={getImageSize(ImageSizePreset.ThreePhonesOrTablet)}
+      class:list={[ImageSizePreset.ThreePhonesOrTablet, ImageColorScheme.Light]}
       src={highlightsImage}
       alt=""
     />
     <Image
       slot="rightFrame"
-      class="first for-dark-mode"
-      style={getImageSize(ImageSizePreset.ThreePhonesOrTablet)}
+      class:list={[ImageSizePreset.ThreePhonesOrTablet, ImageColorScheme.Dark]}
       src={highlightsImageDark}
       alt=""
     />

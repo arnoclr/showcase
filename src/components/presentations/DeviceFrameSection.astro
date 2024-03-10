@@ -4,16 +4,9 @@ interface Props {
 }
 
 const { height = "screen" } = Astro.props;
-
-function getCSSHeight() {
-  if (height === "screen") {
-    return "100vh";
-  }
-  return "unset";
-}
 ---
 
-<section style={{ height: getCSSHeight() }}>
+<section class:list={height}>
   <slot name="leftFrame" />
   <div class="text">
     <slot />
@@ -27,5 +20,15 @@ function getCSSHeight() {
     display: flex;
     align-items: center;
     gap: 10vw;
+  }
+
+  .screen {
+    min-height: 100vh;
+  }
+
+  @media (max-width: 900px) {
+    section {
+      flex-direction: column;
+    }
   }
 </style>

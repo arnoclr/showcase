@@ -64,7 +64,7 @@ const rawCSS = projects
 <style is:inline set:html={rawCSS}></style>
 <style>
   :root {
-    --navbar-horizontal-padding: 10vw;
+    --navbar-horizontal-padding: max(18px, 10vw);
   }
 
   nav {
@@ -199,6 +199,21 @@ const rawCSS = projects
 
   [role="rowgroup"].numbers span:last-child {
     text-align: center;
+  }
+
+  .threePhonesOrTablet {
+    width: 60%;
+    height: auto;
+  }
+
+  .singlePhone {
+    width: auto;
+    height: 80vh;
+  }
+
+  .tabletAndPhone {
+    width: 100%;
+    height: auto;
   }
 
   @media (prefers-color-scheme: dark) {

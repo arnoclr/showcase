@@ -12,7 +12,11 @@ import reportImage from "../../images/wagon/light/report.png";
 import reportImageDark from "../../images/wagon/dark/report.png";
 import searchImage from "../../images/wagon/light/search.png";
 import searchImageDark from "../../images/wagon/dark/search.png";
-import { ImageSizePreset, getImageSize } from "../../utils/images";
+import {
+  ImageColorScheme,
+  ImageSizePreset,
+  getImageSize,
+} from "../../utils/images";
 ---
 
 <section class="bs-wagon-content bento-content">
@@ -22,15 +26,13 @@ import { ImageSizePreset, getImageSize } from "../../utils/images";
     <h3><small>Prochains passages,</small><br />en un coup d'œil.</h3>
     <Image
       slot="rightFrame"
-      class="first for-light-mode"
-      style={getImageSize(ImageSizePreset.ThreePhonesOrTablet)}
+      class:list={[ImageSizePreset.ThreePhonesOrTablet, ImageColorScheme.Light]}
       src={presentationImage}
       alt=""
     />
     <Image
       slot="rightFrame"
-      class="first for-dark-mode"
-      style={getImageSize(ImageSizePreset.ThreePhonesOrTablet)}
+      class:list={[ImageSizePreset.ThreePhonesOrTablet, ImageColorScheme.Dark]}
       src={presentationImageDark}
       alt=""
     />
@@ -47,15 +49,13 @@ import { ImageSizePreset, getImageSize } from "../../utils/images";
   <DeviceFrameSection>
     <Image
       slot="leftFrame"
-      class="for-light-mode"
-      style={getImageSize(ImageSizePreset.SinglePhone)}
+      class:list={[ImageSizePreset.SinglePhone, ImageColorScheme.Light]}
       src={reportImage}
       alt=""
     />
     <Image
       slot="leftFrame"
-      class="for-dark-mode"
-      style={getImageSize(ImageSizePreset.SinglePhone)}
+      class:list={[ImageSizePreset.SinglePhone, ImageColorScheme.Dark]}
       src={reportImageDark}
       alt=""
     />
@@ -64,15 +64,13 @@ import { ImageSizePreset, getImageSize } from "../../utils/images";
   <DeviceFrameSection>
     <Image
       slot="leftFrame"
-      class="for-light-mode"
-      style={getImageSize(ImageSizePreset.SinglePhone)}
+      class:list={[ImageSizePreset.SinglePhone, ImageColorScheme.Light]}
       src={searchImage}
       alt=""
     />
     <Image
       slot="leftFrame"
-      class="for-dark-mode"
-      style={getImageSize(ImageSizePreset.SinglePhone)}
+      class:list={[ImageSizePreset.SinglePhone, ImageColorScheme.Dark]}
       src={searchImageDark}
       alt=""
     />

@@ -9,7 +9,11 @@ import localesImageDark from "../../images/msm/dark/locales.png";
 import searchImageDark from "../../images/msm/dark/search.png";
 import visitImageDark from "../../images/msm/dark/visit.png";
 import historyImageDark from "../../images/msm/dark/history.png";
-import { ImageSizePreset, getImageSize } from "../../utils/images";
+import {
+  ImageColorScheme,
+  ImageSizePreset,
+  getImageSize,
+} from "../../utils/images";
 import DeviceFrameSection from "../../components/presentations/DeviceFrameSection.astro";
 ---
 
@@ -19,7 +23,7 @@ import DeviceFrameSection from "../../components/presentations/DeviceFrameSectio
     subtitle="Projet en partenariat avec l'UNESCO"
   />
   <Image
-    style={getImageSize(ImageSizePreset.TabletAndPhone)}
+    class:list={[ImageSizePreset.TabletAndPhone]}
     src={mainImageDark}
     alt=""
   />
@@ -29,7 +33,7 @@ import DeviceFrameSection from "../../components/presentations/DeviceFrameSectio
     <h3>Découvrez l'histoire du Mont,<br /><small>avec notre guide.</small></h3>
     <Image
       slot="rightFrame"
-      style={getImageSize(ImageSizePreset.ThreePhonesOrTablet)}
+      class:list={[ImageSizePreset.ThreePhonesOrTablet]}
       src={historyImageDark}
       alt=""
     />
@@ -40,7 +44,7 @@ import DeviceFrameSection from "../../components/presentations/DeviceFrameSectio
     <br />sans y être.
   </h3>
   <Image
-    style={getImageSize(ImageSizePreset.TabletAndPhone)}
+    class:list={[ImageSizePreset.TabletAndPhone]}
     src={visitImageDark}
     alt=""
   />
@@ -48,7 +52,7 @@ import DeviceFrameSection from "../../components/presentations/DeviceFrameSectio
     <h3>Parcourez le site,<br />depuis votre clavier.</h3>
     <Image
       slot="rightFrame"
-      style={getImageSize(ImageSizePreset.SinglePhone)}
+      class:list={[ImageSizePreset.SinglePhone]}
       src={searchImageDark}
       alt=""
     />
@@ -64,7 +68,7 @@ import DeviceFrameSection from "../../components/presentations/DeviceFrameSectio
     <h3>Disponible en plusieurs langues.</h3>
     <Image
       slot="rightFrame"
-      style={getImageSize(ImageSizePreset.ThreePhonesOrTablet)}
+      class:list={[ImageSizePreset.ThreePhonesOrTablet]}
       src={localesImageDark}
       alt=""
     />

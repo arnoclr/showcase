@@ -11,21 +11,23 @@ import compareImage from "../images/theses/light/compare.png";
 import compareImageDark from "../images/theses/dark/compare.png";
 import alertImage from "../images/theses/light/alert.png";
 import alertImageDark from "../images/theses/dark/alert.png";
-import { ImageSizePreset, getImageSize } from "../utils/images";
+import {
+  ImageColorScheme,
+  ImageSizePreset,
+  getImageSize,
+} from "../utils/images";
 import DeviceFrameSection from "../components/presentations/DeviceFrameSection.astro";
 ---
 
 <section class="bs-theses-content bento-content">
   <Heading title="Thèses" subtitle="Recherchez, comparez, soyez alerté." />
   <Image
-    class="for-light-mode"
-    style={getImageSize(ImageSizePreset.TabletAndPhone)}
+    class:list={[ImageSizePreset.TabletAndPhone, ImageColorScheme.Light]}
     src={presentationImage}
     alt=""
   />
   <Image
-    class="for-dark-mode"
-    style={getImageSize(ImageSizePreset.TabletAndPhone)}
+    class:list={[ImageSizePreset.TabletAndPhone, ImageColorScheme.Dark]}
     src={presentationImageDark}
     alt=""
   />
@@ -39,29 +41,25 @@ import DeviceFrameSection from "../components/presentations/DeviceFrameSection.a
     </div>
     <Image
       slot="rightFrame"
-      style={getImageSize(ImageSizePreset.ThreePhonesOrTablet)}
-      class="for-light-mode"
+      class:list={[ImageSizePreset.ThreePhonesOrTablet, ImageColorScheme.Light]}
       src={geolocalizedSearchImage}
       alt=""
     />
     <Image
       slot="rightFrame"
-      style={getImageSize(ImageSizePreset.ThreePhonesOrTablet)}
-      class="for-dark-mode"
+      class:list={[ImageSizePreset.ThreePhonesOrTablet, ImageColorScheme.Dark]}
       src={geolocalizedSearchImageDark}
       alt=""
     />
   </DeviceFrameSection>
   <h3>Comparez jusqu'à 4 recherches.<br /> En simultané.</h3>
   <Image
-    style={getImageSize(ImageSizePreset.TabletAndPhone)}
-    class="for-light-mode"
+    class:list={[ImageSizePreset.TabletAndPhone, ImageColorScheme.Light]}
     src={compareImage}
     alt=""
   />
   <Image
-    style={getImageSize(ImageSizePreset.TabletAndPhone)}
-    class="for-dark-mode"
+    class:list={[ImageSizePreset.TabletAndPhone, ImageColorScheme.Dark]}
     src={compareImageDark}
     alt=""
   />
@@ -76,15 +74,13 @@ import DeviceFrameSection from "../components/presentations/DeviceFrameSection.a
     </div>
     <Image
       slot="rightFrame"
-      class="for-light-mode"
-      style={getImageSize(ImageSizePreset.ThreePhonesOrTablet)}
+      class:list={[ImageSizePreset.ThreePhonesOrTablet, ImageColorScheme.Light]}
       src={advancedSearchImage}
       alt=""
     />
     <Image
       slot="rightFrame"
-      class="for-dark-mode"
-      style={getImageSize(ImageSizePreset.ThreePhonesOrTablet)}
+      class:list={[ImageSizePreset.ThreePhonesOrTablet, ImageColorScheme.Dark]}
       src={advancedSearchImageDark}
       alt=""
     />
@@ -92,15 +88,13 @@ import DeviceFrameSection from "../components/presentations/DeviceFrameSection.a
   <DeviceFrameSection>
     <Image
       slot="leftFrame"
-      class="for-light-mode"
-      style={getImageSize(ImageSizePreset.SinglePhone)}
+      class:list={[ImageSizePreset.SinglePhone, ImageColorScheme.Light]}
       src={alertImage}
       alt=""
     />
     <Image
       slot="leftFrame"
-      class="for-dark-mode"
-      style={getImageSize(ImageSizePreset.SinglePhone)}
+      class:list={[ImageSizePreset.SinglePhone, ImageColorScheme.Dark]}
       src={alertImageDark}
       alt=""
     />
