@@ -102,7 +102,13 @@ onMounted(() => {
           </div>
         </li>
         <li>
-          <a target="_blank" :href="leaveCommentUrl">Écrire un avis</a>
+          <a
+            target="_blank"
+            :href="leaveCommentUrl"
+            :emphasized="state.comments.length === 0"
+          >
+            Écrire un avis
+          </a>
         </li>
       </ul>
     </div>
@@ -179,6 +185,17 @@ a {
   color: gray;
   margin-top: 1rem;
   margin-left: 3rem;
+}
+
+a[emphasized="true"] {
+  display: block;
+  padding: 12px 22px;
+  background-color: #007aff;
+  color: white;
+  border-radius: 999px;
+  text-decoration: none;
+  border: none;
+  width: fit-content;
 }
 
 @media (prefers-color-scheme: dark) {

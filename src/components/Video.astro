@@ -3,14 +3,21 @@ import ReplayIcon from "../icons/replay_FILL0_wght200_GRAD200_opsz20.svg?raw";
 
 interface Props {
   src: string;
-  height: string;
+  height?: string;
+  width?: string;
+  frame?: "iPhone15" | "iPad10";
 }
 
-const { src, height } = Astro.props;
+const { src, height, width, frame = "iPhone15" } = Astro.props;
 ---
 
 <phone-video>
-  <video style={"--height:" + height} muted autoplay src={src}></video>
+  <video
+    style={{ "--height": height, "--width": width }}
+    muted
+    autoplay
+    class:list={frame}
+    src={src}></video>
   <button class="hidden">
     <span>Revoir</span>
     <Fragment set:html={ReplayIcon} />
@@ -52,12 +59,21 @@ const { src, height } = Astro.props;
     gap: 1rem;
   }
 
-  video {
-    --height: 80vh;
+  .iPhone15 {
     --border-width: calc(var(--height) * 59 / 2556);
     border-radius: calc(var(--height) * 159 / 2556 + var(--border-width));
-    height: 80vh;
+    height: var(--height);
     width: auto;
+  }
+
+  .iPad10 {
+    --border-width: calc(var(--width) * 113 / 2360);
+    border-radius: calc(var(--width) * 48 / 2360 + var(--border-width));
+    height: auto;
+    width: var(--width);
+  }
+
+  video {
     border: var(--border-width) solid black;
   }
 

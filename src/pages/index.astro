@@ -8,6 +8,7 @@ import MSMBento from "../sections/bentos/MSMBento.astro";
 import Theses from "../sections/Theses.astro";
 import Omsistuff from "../sections/Omsistuff.astro";
 import Project from "../components/Project.astro";
+import KPP from "../sections/KPP.astro";
 import {
   wagonProject,
   omsistuffProject,
@@ -30,8 +31,11 @@ import {
     <Project project={msmProject} nextProject={thesesProject}>
       <MSMBento />
     </Project>
-    <Project project={thesesProject}>
+    <Project project={thesesProject} nextProject={kppProject}>
       <Theses />
+    </Project>
+    <Project project={kppProject}>
+      <KPP />
     </Project>
   </ProjectsSelector>
   <Footer />
