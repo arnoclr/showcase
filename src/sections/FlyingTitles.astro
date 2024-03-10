@@ -6,17 +6,20 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
 
 <main class="presentation">
   <section>
-    <h1 data-scroll data-scroll-speed="-0.3" style="font-size: 4vw;">
-      Arno Cellarier
-    </h1>
+    <h1 style="font-size: 4vw;">Arno Cellarier</h1>
   </section>
   <section class="elba">
-    <h2 data-scroll data-scroll-event-progress="flyingTitleProgressEvent">
+    <h2
+      data-scroll
+      data-scroll-from-height-vh="0"
+      data-scroll-to-height-vh="100"
+    >
       Je crée des sites web<br />et des applications.
     </h2>
     <Image
       data-scroll
-      data-scroll-event-progress="flyingTitleProgressEvent"
+      data-scroll-from-height-vh="20"
+      data-scroll-to-height-vh="120"
       data-scroll-event-bezier=".11,.86,.54,.96"
       src={horizontalDevice}
       alt="Mon site web sur le mont-saint-michel affiché sur un iPhone 8"
@@ -25,8 +28,9 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
   <section
     class="zjir"
     data-scroll
-    data-scroll-event-progress="flyingTitleProgressEvent"
-    data-scroll-event-bezier=".47,.11,.49,.91;.8,.12,.22,.76;1,0,.91,.07;.54,.02,.49,.99"
+    data-scroll-from-height-vh="150"
+    data-scroll-to-height-vh="330"
+    data-scroll-bezier=".47,.11,.49,.91;.8,.12,.22,.76;1,0,.91,.07;.54,.02,.49,.99"
   >
     <div role="group">
       <h2 data-scroll data-scroll-event-progress="flyingTitleProgressEvent">
@@ -36,16 +40,18 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
         src={verticalDevice}
         alt="Application Wagon sur un iPhone 8, avec les prochains départs des bus à proximité"
         data-scroll
-        data-scroll-event-progress="flyingTitleProgressEvent"
-        data-scroll-event-bezier=".11,.86,.54,.96"
+        data-scroll-from-height-vh="150"
+        data-scroll-to-height-vh="330"
+        data-scroll-bezier=".11,.86,.54,.96"
       />
     </div>
   </section>
   <section
     class="zaco"
     data-scroll
-    data-scroll-event-progress="flyingTitleProgressEvent"
-    data-scroll-event-bezier=".47,.11,.49,.91;.8,.12,.22,.76"
+    data-scroll-from-height-vh="350"
+    data-scroll-to-height-vh="550"
+    data-scroll-bezier=".47,.11,.49,.91;.8,.12,.22,.76"
   >
     <h2>Au design,</h2>
   </section>
@@ -53,8 +59,9 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
     role="rowgroup"
     class="faca"
     data-scroll
-    data-scroll-event-progress="flyingTitleProgressEvent"
-    data-scroll-event-bezier=".47,.11,.49,.91;.8,.12,.22,.76"
+    data-scroll-from-height-vh="550"
+    data-scroll-to-height-vh="750"
+    data-scroll-bezier=".47,.11,.49,.91;.8,.12,.22,.76"
   >
     <div role="group">
       <svg
@@ -70,11 +77,9 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
           d="M78 51.9999C75.7083 51.9999 73.7465 51.1839 72.1146 49.552C70.4826 47.9201 69.6667 45.9583 69.6667 43.6666C69.6667 41.3749 70.4826 39.4131 72.1146 37.7812C73.7465 36.1492 75.7083 35.3333 78 35.3333C80.2917 35.3333 82.2535 36.1492 83.8854 37.7812C85.5174 39.4131 86.3333 41.3749 86.3333 43.6666C86.3333 45.9583 85.5174 47.9201 83.8854 49.552C82.2535 51.1839 80.2917 51.9999 78 51.9999ZM65.5 118.667V64.4999C61.3333 64.1527 57.0972 63.6319 52.7917 62.9374C48.4861 62.243 44.3889 61.3749 40.5 60.3333L42.5833 51.9999C48 53.4583 53.7639 54.5173 59.875 55.177C65.9861 55.8367 72.0278 56.1666 78 56.1666C83.9722 56.1666 90.0139 55.8367 96.125 55.177C102.236 54.5173 108 53.4583 113.417 51.9999L115.5 60.3333C111.611 61.3749 107.514 62.243 103.208 62.9374C98.9028 63.6319 94.6667 64.1527 90.5 64.4999V118.667H82.1667V93.6666H73.8333V118.667H65.5Z"
           fill="white"></path>
       </svg>
-      <small>role=presentation</small>
     </div>
     <div role="row">
       <h2>Et à l'accessibilité.</h2>
-      <small>Contraste 21:1</small>
     </div>
   </section>
 </main>
