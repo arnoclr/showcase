@@ -1,17 +1,17 @@
 ---
 interface Props {
   height?: "screen" | "fitContent";
+  placement?: "frameFirst" | "textFirst";
 }
 
-const { height = "screen" } = Astro.props;
+const { height = "screen", placement = "textFirst" } = Astro.props;
 ---
 
-<section class:list={height}>
-  <slot name="leftFrame" />
+<section class:list={[height, placement]}>
   <div class="text">
     <slot />
   </div>
-  <slot name="rightFrame" />
+  <slot name="frame" />
 </section>
 
 <style>
@@ -20,6 +20,11 @@ const { height = "screen" } = Astro.props;
     display: flex;
     align-items: center;
     gap: 10vw;
+    justify-content: start;
+  }
+
+  .frameFirst {
+    flex-direction: row-reverse;
   }
 
   .screen {
@@ -27,8 +32,14 @@ const { height = "screen" } = Astro.props;
   }
 
   @media (max-width: 900px) {
-    section {
+    section.textFirst,
+    section.frameFirst {
       flex-direction: column;
+    }
+
+    .screen {
+      min-height: unset;
+      margin: 10vh 0;
     }
   }
 </style>

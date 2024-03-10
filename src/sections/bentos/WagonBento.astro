@@ -1,22 +1,18 @@
 ---
 import { Image } from "astro:assets";
-import Heading from "../../components/presentations/Heading.astro";
-import ExternalWebsiteButton from "../../components/presentations/ExternalWebsiteButton.astro";
-import DeviceFrameSection from "../../components/presentations/DeviceFrameSection.astro";
 import Comments from "../../components/Comments.vue";
 import Video from "../../components/Video.astro";
-import presentationImage from "../../images/wagon/light/phones.png";
+import DeviceFrameSection from "../../components/presentations/DeviceFrameSection.astro";
+import ExternalWebsiteButton from "../../components/presentations/ExternalWebsiteButton.astro";
+import Heading from "../../components/presentations/Heading.astro";
 import presentationImageDark from "../../images/wagon/dark/phones.png";
-import liveJourneyVideo from "../../videos/wagon live journey.mp4";
-import reportImage from "../../images/wagon/light/report.png";
 import reportImageDark from "../../images/wagon/dark/report.png";
-import searchImage from "../../images/wagon/light/search.png";
 import searchImageDark from "../../images/wagon/dark/search.png";
-import {
-  ImageColorScheme,
-  ImageSizePreset,
-  getImageSize,
-} from "../../utils/images";
+import presentationImage from "../../images/wagon/light/phones.png";
+import reportImage from "../../images/wagon/light/report.png";
+import searchImage from "../../images/wagon/light/search.png";
+import { ImageColorScheme, ImageSizePreset } from "../../utils/images";
+import liveJourneyVideo from "../../videos/wagon live journey.mp4";
 ---
 
 <section class="bs-wagon-content bento-content">
@@ -25,20 +21,20 @@ import {
   <DeviceFrameSection>
     <h3><small>Prochains passages,</small><br />en un coup d'œil.</h3>
     <Image
-      slot="rightFrame"
+      slot="frame"
       class:list={[ImageSizePreset.ThreePhonesOrTablet, ImageColorScheme.Light]}
       src={presentationImage}
       alt=""
     />
     <Image
-      slot="rightFrame"
+      slot="frame"
       class:list={[ImageSizePreset.ThreePhonesOrTablet, ImageColorScheme.Dark]}
       src={presentationImageDark}
       alt=""
     />
   </DeviceFrameSection>
-  <DeviceFrameSection>
-    <Video slot="leftFrame" height="80vh" src={liveJourneyVideo} />
+  <DeviceFrameSection placement="frameFirst">
+    <Video slot="frame" height="80vh" src={liveJourneyVideo} />
     <h3
       data-footnote="Fonctionnalité encore en développement. Elle sera disponible via une mise à jour sur TestFlight ultérieurement."
     >
@@ -46,30 +42,30 @@ import {
       dira.
     </h3>
   </DeviceFrameSection>
-  <DeviceFrameSection>
+  <DeviceFrameSection placement="frameFirst">
     <Image
-      slot="leftFrame"
+      slot="frame"
       class:list={[ImageSizePreset.SinglePhone, ImageColorScheme.Light]}
       src={reportImage}
       alt=""
     />
     <Image
-      slot="leftFrame"
+      slot="frame"
       class:list={[ImageSizePreset.SinglePhone, ImageColorScheme.Dark]}
       src={reportImageDark}
       alt=""
     />
     <h3><small>Un imprévu ?</small><br />Dites le nous,<br />dites leur.</h3>
   </DeviceFrameSection>
-  <DeviceFrameSection>
+  <DeviceFrameSection placement="frameFirst">
     <Image
-      slot="leftFrame"
+      slot="frame"
       class:list={[ImageSizePreset.SinglePhone, ImageColorScheme.Light]}
       src={searchImage}
       alt=""
     />
     <Image
-      slot="leftFrame"
+      slot="frame"
       class:list={[ImageSizePreset.SinglePhone, ImageColorScheme.Dark]}
       src={searchImageDark}
       alt=""

@@ -1,24 +1,20 @@
 ---
 import { Image } from "astro:assets";
-import Heading from "../components/presentations/Heading.astro";
 import Comments from "../components/Comments.vue";
 import DeviceFrameSection from "../components/presentations/DeviceFrameSection.astro";
 import ExternalWebsiteButton from "../components/presentations/ExternalWebsiteButton.astro";
-import presentationImage from "../images/omsistuff/light/phone ipad.png";
-import presentationImageDark from "../images/omsistuff/dark/phone ipad.png";
-import discoverImage from "../images/omsistuff/light/discover.png";
+import Heading from "../components/presentations/Heading.astro";
 import discoverImageDark from "../images/omsistuff/dark/discover.png";
-import loginImage from "../images/omsistuff/light/login.png";
-import loginImageDark from "../images/omsistuff/dark/login.png";
-import reviewsImage from "../images/omsistuff/light/reviews.png";
-import reviewsImageDark from "../images/omsistuff/dark/reviews.png";
-import highlightsImage from "../images/omsistuff/light/highlights.png";
 import highlightsImageDark from "../images/omsistuff/dark/highlights.png";
-import {
-  getImageSize,
-  ImageColorScheme,
-  ImageSizePreset,
-} from "../utils/images";
+import loginImageDark from "../images/omsistuff/dark/login.png";
+import presentationImageDark from "../images/omsistuff/dark/phone ipad.png";
+import reviewsImageDark from "../images/omsistuff/dark/reviews.png";
+import discoverImage from "../images/omsistuff/light/discover.png";
+import highlightsImage from "../images/omsistuff/light/highlights.png";
+import loginImage from "../images/omsistuff/light/login.png";
+import presentationImage from "../images/omsistuff/light/phone ipad.png";
+import reviewsImage from "../images/omsistuff/light/reviews.png";
+import { ImageColorScheme, ImageSizePreset } from "../utils/images";
 ---
 
 <section class="bs-omsistuff-content bento-content">
@@ -55,13 +51,13 @@ import {
       boite mail.
     </p>
     <Image
-      slot="rightFrame"
+      slot="frame"
       class:list={[ImageSizePreset.SinglePhone, ImageColorScheme.Light]}
       src={loginImage}
       alt=""
     />
     <Image
-      slot="rightFrame"
+      slot="frame"
       class:list={[ImageSizePreset.SinglePhone, ImageColorScheme.Dark]}
       src={loginImageDark}
       alt=""
@@ -75,13 +71,13 @@ import {
       ressortir les avis pertinents.
     </p>
     <Image
-      slot="rightFrame"
+      slot="frame"
       class:list={[ImageSizePreset.ThreePhonesOrTablet, ImageColorScheme.Light]}
       src={reviewsImage}
       alt=""
     />
     <Image
-      slot="rightFrame"
+      slot="frame"
       class:list={[ImageSizePreset.ThreePhonesOrTablet, ImageColorScheme.Dark]}
       src={reviewsImageDark}
       alt=""
@@ -93,13 +89,13 @@ import {
       Découvrez vos temps forts de l'année et comparez avec l'année précédente.
     </p>
     <Image
-      slot="rightFrame"
+      slot="frame"
       class:list={[ImageSizePreset.ThreePhonesOrTablet, ImageColorScheme.Light]}
       src={highlightsImage}
       alt=""
     />
     <Image
-      slot="rightFrame"
+      slot="frame"
       class:list={[ImageSizePreset.ThreePhonesOrTablet, ImageColorScheme.Dark]}
       src={highlightsImageDark}
       alt=""

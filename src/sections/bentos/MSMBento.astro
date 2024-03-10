@@ -2,19 +2,15 @@
 import { Image } from "astro:assets";
 import Comments from "../../components/Comments.vue";
 import Video from "../../components/Video.astro";
+import DeviceFrameSection from "../../components/presentations/DeviceFrameSection.astro";
 import Heading from "../../components/presentations/Heading.astro";
-import discoverPlacesVideoDark from "../../videos/msm discover dark.mp4";
-import mainImageDark from "../../images/msm/dark/main.png";
+import historyImageDark from "../../images/msm/dark/history.png";
 import localesImageDark from "../../images/msm/dark/locales.png";
+import mainImageDark from "../../images/msm/dark/main.png";
 import searchImageDark from "../../images/msm/dark/search.png";
 import visitImageDark from "../../images/msm/dark/visit.png";
-import historyImageDark from "../../images/msm/dark/history.png";
-import {
-  ImageColorScheme,
-  ImageSizePreset,
-  getImageSize,
-} from "../../utils/images";
-import DeviceFrameSection from "../../components/presentations/DeviceFrameSection.astro";
+import { ImageSizePreset } from "../../utils/images";
+import discoverPlacesVideoDark from "../../videos/msm discover dark.mp4";
 ---
 
 <section class="bs-msm-content bento-content">
@@ -32,7 +28,7 @@ import DeviceFrameSection from "../../components/presentations/DeviceFrameSectio
   <DeviceFrameSection>
     <h3>Découvrez l'histoire du Mont,<br /><small>avec notre guide.</small></h3>
     <Image
-      slot="rightFrame"
+      slot="frame"
       class:list={[ImageSizePreset.ThreePhonesOrTablet]}
       src={historyImageDark}
       alt=""
@@ -51,14 +47,14 @@ import DeviceFrameSection from "../../components/presentations/DeviceFrameSectio
   <DeviceFrameSection>
     <h3>Parcourez le site,<br />depuis votre clavier.</h3>
     <Image
-      slot="rightFrame"
+      slot="frame"
       class:list={[ImageSizePreset.SinglePhone]}
       src={searchImageDark}
       alt=""
     />
   </DeviceFrameSection>
-  <DeviceFrameSection>
-    <Video slot="leftFrame" height="80vh" src={discoverPlacesVideoDark} />
+  <DeviceFrameSection placement="frameFirst">
+    <Video slot="frame" height="80vh" src={discoverPlacesVideoDark} />
     <h3>
       Programmez une visite.<br />
       <small>On fait en fonction de vos horaires.</small>
@@ -67,7 +63,7 @@ import DeviceFrameSection from "../../components/presentations/DeviceFrameSectio
   <DeviceFrameSection>
     <h3>Disponible en plusieurs langues.</h3>
     <Image
-      slot="rightFrame"
+      slot="frame"
       class:list={[ImageSizePreset.ThreePhonesOrTablet]}
       src={localesImageDark}
       alt=""

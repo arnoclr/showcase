@@ -1,22 +1,18 @@
 ---
 import { Image } from "astro:assets";
-import Heading from "../components/presentations/Heading.astro";
-import presentationImage from "../images/theses/light/presentation.png";
-import presentationImageDark from "../images/theses/dark/presentation.png";
-import geolocalizedSearchImage from "../images/theses/light/geolocalized.png";
-import geolocalizedSearchImageDark from "../images/theses/dark/geolocalized.png";
-import advancedSearchImage from "../images/theses/light/advanced search.png";
-import advancedSearchImageDark from "../images/theses/dark/advanced search.png";
-import compareImage from "../images/theses/light/compare.png";
-import compareImageDark from "../images/theses/dark/compare.png";
-import alertImage from "../images/theses/light/alert.png";
-import alertImageDark from "../images/theses/dark/alert.png";
-import {
-  ImageColorScheme,
-  ImageSizePreset,
-  getImageSize,
-} from "../utils/images";
 import DeviceFrameSection from "../components/presentations/DeviceFrameSection.astro";
+import Heading from "../components/presentations/Heading.astro";
+import advancedSearchImageDark from "../images/theses/dark/advanced search.png";
+import alertImageDark from "../images/theses/dark/alert.png";
+import compareImageDark from "../images/theses/dark/compare.png";
+import geolocalizedSearchImageDark from "../images/theses/dark/geolocalized.png";
+import presentationImageDark from "../images/theses/dark/presentation.png";
+import advancedSearchImage from "../images/theses/light/advanced search.png";
+import alertImage from "../images/theses/light/alert.png";
+import compareImage from "../images/theses/light/compare.png";
+import geolocalizedSearchImage from "../images/theses/light/geolocalized.png";
+import presentationImage from "../images/theses/light/presentation.png";
+import { ImageColorScheme, ImageSizePreset } from "../utils/images";
 ---
 
 <section class="bs-theses-content bento-content">
@@ -40,13 +36,13 @@ import DeviceFrameSection from "../components/presentations/DeviceFrameSection.a
       </p>
     </div>
     <Image
-      slot="rightFrame"
+      slot="frame"
       class:list={[ImageSizePreset.ThreePhonesOrTablet, ImageColorScheme.Light]}
       src={geolocalizedSearchImage}
       alt=""
     />
     <Image
-      slot="rightFrame"
+      slot="frame"
       class:list={[ImageSizePreset.ThreePhonesOrTablet, ImageColorScheme.Dark]}
       src={geolocalizedSearchImageDark}
       alt=""
@@ -73,39 +69,37 @@ import DeviceFrameSection from "../components/presentations/DeviceFrameSection.a
       </p>
     </div>
     <Image
-      slot="rightFrame"
+      slot="frame"
       class:list={[ImageSizePreset.ThreePhonesOrTablet, ImageColorScheme.Light]}
       src={advancedSearchImage}
       alt=""
     />
     <Image
-      slot="rightFrame"
+      slot="frame"
       class:list={[ImageSizePreset.ThreePhonesOrTablet, ImageColorScheme.Dark]}
       src={advancedSearchImageDark}
       alt=""
     />
   </DeviceFrameSection>
-  <DeviceFrameSection>
+  <DeviceFrameSection placement="frameFirst">
     <Image
-      slot="leftFrame"
+      slot="frame"
       class:list={[ImageSizePreset.SinglePhone, ImageColorScheme.Light]}
       src={alertImage}
       alt=""
     />
     <Image
-      slot="leftFrame"
+      slot="frame"
       class:list={[ImageSizePreset.SinglePhone, ImageColorScheme.Dark]}
       src={alertImageDark}
       alt=""
     />
-    <div>
-      <h3>Créez des alertes.</h3>
-      <p
-        data-footnote="La fonctionnalité d'alertes n'est pas terminée. Actuellement, elle envoie seulement un mail au moment de la souscription à l'alerte. "
-      >
-        Vous pouvez créer des alertes pour être notifié dès qu'une nouvelle
-        thèse correspondant à vos critères de recherche est publiée.
-      </p>
-    </div>
+    <h3>Créez des alertes.</h3>
+    <p
+      data-footnote="La fonctionnalité d'alertes n'est pas terminée. Actuellement, elle envoie seulement un mail au moment de la souscription à l'alerte. "
+    >
+      Vous pouvez créer des alertes pour être notifié dès qu'une nouvelle thèse
+      correspondant à vos critères de recherche est publiée.
+    </p>
   </DeviceFrameSection>
 </section>
