@@ -109,9 +109,10 @@ const rawCSS = projects
 
     nav {
       gap: 8px;
-      justify-content: center;
+      justify-content: start;
       align-items: center;
       flex-direction: column;
+      background-color: white;
     }
 
     nav ul {
@@ -127,6 +128,12 @@ const rawCSS = projects
     nav {
       background-color: #000b;
       border-color: #222;
+    }
+  }
+
+  @media (prefers-color-scheme: dark) and (max-width: 580px) {
+    nav {
+      background-color: #000;
     }
   }
 </style>
