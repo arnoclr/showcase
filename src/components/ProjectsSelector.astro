@@ -141,6 +141,16 @@ const name = v4();
     }
   }
 
+  @supports (font: -apple-system-body) and (-webkit-appearance: none) {
+    ul {
+      gap: 12px;
+    }
+
+    li {
+      transform: none !important;
+    }
+  }
+
   @media (max-width: 799px) {
     ul {
       gap: 6px;
