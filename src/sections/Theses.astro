@@ -13,6 +13,7 @@ import compareImage from "../images/theses/light/compare.png";
 import geolocalizedSearchImage from "../images/theses/light/geolocalized.png";
 import presentationImage from "../images/theses/light/presentation.png";
 import { ImageColorScheme, ImageSizePreset } from "../utils/images";
+import Comments from "../components/Comments.vue";
 ---
 
 <section class="bs-theses-content bento-content">
@@ -101,5 +102,6 @@ import { ImageColorScheme, ImageSizePreset } from "../utils/images";
       Vous pouvez créer des alertes pour être notifié dès qu'une nouvelle thèse
       correspondant à vos critères de recherche est publiée.
     </p>
+    <Comments githubIssueId={5} client:visible />
   </DeviceFrameSection>
 </section>
