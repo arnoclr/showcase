@@ -257,7 +257,7 @@ a[emphasized="true"] {
 }
 
 @media (prefers-color-scheme: dark) {
-  ul {
+  .transitionOnHeight {
     --bubble-background-color: #333;
   }
 }
