@@ -20,7 +20,7 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
       data-scroll
       data-scroll-from-height-vh="20"
       data-scroll-to-height-vh="120"
-      data-scroll-event-bezier=".11,.86,.54,.96"
+      data-scroll-bezier=".11,.86,.54,.96"
       src={horizontalDevice}
       alt="Mon site web sur le mont-saint-michel affiché sur un iPhone 8"
     />
@@ -88,57 +88,6 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
   </section>
 </main>
 
-<script>
-  import { type LocomotiveEvent } from "../types/Locomotive";
-  import CubicBezier from "@thednp/bezier-easing";
-
-  function cubicBezier(
-    x1: number,
-    y1: number,
-    x2: number,
-    y2: number,
-    at: number
-  ): number {
-    const cubic = new CubicBezier(x1, y1, x2, y2) as unknown as (
-      x: number
-    ) => number;
-    return cubic(at);
-  }
-
-  window.addEventListener("flyingTitleProgressEvent", (e: unknown) => {
-    const { detail } = e as LocomotiveEvent;
-
-    const beziers = detail.target.getAttribute("data-scroll-event-bezier");
-
-    const entries =
-      beziers === null ? [null].entries() : beziers.split(";").entries();
-
-    for (const [i, bezier] of entries) {
-      const bezierArray =
-        bezier === null
-          ? [0.07, 0.55, 0.67, 0.42]
-          : bezier.split(",").map(Number);
-
-      const progress = cubicBezier(
-        bezierArray[0],
-        bezierArray[1],
-        bezierArray[2],
-        bezierArray[3],
-        detail.progress
-      );
-
-      const cssVarName = i == 0 ? "--progress" : `--progress-${i}`;
-
-      detail.target.style.setProperty(cssVarName, progress.toString());
-    }
-  });
-
-  window.addEventListener("hidePresentation", () => {
-    const main = document.querySelector("main.presentation") as HTMLElement;
-    main.classList.add("no-animations");
-  });
-</script>
-
 <style>
   main,
   section {
@@ -192,7 +141,7 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
   }
 
   .elba img {
-    transform: translateY(max(-10vh, calc(-40vh * var(--progress) + 20vh)))
+    transform: translateY(max(-10vh, calc(-20vh * var(--progress) + 20vh)))
       rotate3d(-1, 0, 0, calc(10deg * var(--progress) - 10deg));
   }
 
