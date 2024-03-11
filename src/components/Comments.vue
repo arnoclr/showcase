@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { ref, onMounted } from "vue";
 import { removeHtmlTags } from "../utils/strings";
+import type { GithubAPICommentsResponse } from "../external/GithubApiCommentsResponse";
 
 const props = defineProps<{
   githubIssueId: number;
@@ -50,7 +51,7 @@ async function fetchComments(): Promise<void> {
     };
   }
 
-  const json = (await response.json()) as GithubApiCommentsResponse;
+  const json = (await response.json()) as GithubAPICommentsResponse;
 
   state.value = {
     type: "ok",
@@ -58,7 +59,7 @@ async function fetchComments(): Promise<void> {
   };
 }
 
-function getCommentsFromJson(json: GithubApiCommentsResponse): Comment[] {
+function getCommentsFromJson(json: GithubAPICommentsResponse): Comment[] {
   return json.map((comment) => ({
     profilePic: comment.user.avatar_url,
     username: comment.user.login,
@@ -73,14 +74,30 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="transitionOnHeight" :loading="state.type === 'loading'">
+  <span v-if="state.type === 'error'">
+    Impossible de charger les commentaires pour le moment.
+  </span>
+  <div class="transitionOnHeight" :aria-hidden="state.type !== 'loading'">
     <div class="overflowHidden">
-      <span v-if="state.type === 'loading'">Chargement ...</span>
-      <span v-if="state.type === 'error'">
-        Impossible de charger les commentaires pour le moment.
-      </span>
+      <div class="loading">
+        <span>Un utilisateur est train d'écrire</span>
+        <div class="bubble">
+          <div class="dots">
+            <div class="dot dot1"></div>
+            <div class="dot dot2"></div>
+            <div class="dot dot3"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="transitionOnHeight" :aria-hidden="state.type !== 'ok'">
+    <div class="overflowHidden">
       <ul v-if="state.type === 'ok'">
-        <li v-for="comment in state.comments">
+        <li
+          v-for="(comment, i) in state.comments"
+          :style="{ '--transition-delay': 1000 + i * 800 + 'ms' }"
+        >
           <div></div>
           <span class="name">{{ comment.username }}</span>
           <img :src="comment.profilePic" aria-hidden="true" alt="" />
@@ -117,12 +134,14 @@ onMounted(() => {
 
 <style scoped>
 .transitionOnHeight {
+  --bubble-background-color: #eee;
+  --horizontal-padding: 1rem;
   display: grid;
   grid-template-rows: 1fr;
   transition: grid-template-rows 0.7s ease-in;
 }
 
-.transitionOnHeight[loading="true"] {
+.transitionOnHeight[aria-hidden="true"] {
   grid-template-rows: 0fr;
 }
 
@@ -130,9 +149,14 @@ onMounted(() => {
   overflow: hidden;
 }
 
+.loading {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-left: 2.5rem;
+}
+
 ul {
-  --bubble-background-color: #eee;
-  --horizontal-padding: 1rem;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -164,6 +188,27 @@ li {
   border-radius: 1.4rem;
 }
 
+.dots {
+  display: flex;
+  gap: 0.3rem;
+}
+
+.dot {
+  width: 0.7rem;
+  height: 0.7rem;
+  background-color: rgba(126, 126, 126, 0.8);
+  border-radius: 50%;
+  animation: blink 1.4s infinite;
+}
+
+.dot2 {
+  animation-delay: 0.2s;
+}
+
+.dot3 {
+  animation-delay: 0.4s;
+}
+
 img {
   width: 2rem;
   height: 2rem;
@@ -179,6 +224,12 @@ img {
   transform: translateX(-36%);
   fill: var(--bubble-background-color);
   z-index: -1;
+}
+
+li {
+  opacity: 0;
+  animation: appear 0.8s cubic-bezier(0.67, 0.15, 0.34, 1.15)
+    var(--transition-delay) forwards;
 }
 
 a {
@@ -204,6 +255,29 @@ a[emphasized="true"] {
 @media (prefers-color-scheme: dark) {
   ul {
     --bubble-background-color: #333;
+  }
+}
+
+@keyframes blink {
+  0% {
+    opacity: 0.2;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+
+@keyframes appear {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
   }
 }
 </style>
