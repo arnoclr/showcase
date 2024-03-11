@@ -118,7 +118,11 @@ onMounted(() => {
             </svg>
           </div>
         </li>
-        <li>
+        <li
+          :style="{
+            '--transition-delay': 500 + state.comments.length * 800 + 'ms',
+          }"
+        >
           <a
             target="_blank"
             :href="leaveCommentUrl"
