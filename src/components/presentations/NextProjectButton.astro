@@ -31,21 +31,29 @@ const { projectTargetId } = Astro.props;
       }
 
       button.addEventListener("click", () => {
-        const projectTarget = document.getElementById(
+        const projectRadio = document.getElementById(
           "checkbox-" + projectTargetId
         ) as HTMLInputElement | null;
 
-        if (projectTarget === null) {
+        const projectTarget = document.querySelector<HTMLElement>(
+          '[data-scroll-anchor="projectsTitle"]'
+        );
+
+        if (projectRadio === null) {
           throw new Error(
             `NextProjectButton could not find a project with id ${projectTargetId}`
           );
         }
 
-        projectTarget.scrollIntoView({ behavior: "smooth" });
+        if (projectTarget === null) {
+          throw new Error(`No anchor to scroll to`);
+        }
+
+        projectTarget.scrollIntoView({ behavior: "smooth", block: "start" });
 
         setTimeout(() => {
-          projectTarget.checked = true;
-        }, 1000);
+          projectRadio.checked = true;
+        }, 800);
       });
     }
   }

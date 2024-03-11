@@ -22,7 +22,7 @@ if (projects.length !== 5) {
 const name = v4();
 ---
 
-<h2>Mes projets</h2>
+<h2 data-scroll-anchor="projectsTitle">Mes projets</h2>
 <ul>
   {
     projects.map((project, i) => (
@@ -48,6 +48,7 @@ const name = v4();
     font-size: max(32px, 4vw);
     color: gray;
     text-align: center;
+    scroll-margin: 14vh;
   }
 
   ul {
