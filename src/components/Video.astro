@@ -17,7 +17,6 @@ const { src, height, width, frame = "iPhone15" } = Astro.props;
     muted
     autoplay
     preload="none"
-    playsinline
     class:list={frame}
     src={src}></video>
   <button class="hidden">
@@ -33,9 +32,15 @@ const { src, height, width, frame = "iPhone15" } = Astro.props;
 
       const video = this.querySelector("video");
       const button = this.querySelector("button");
+      const isMobile = window.matchMedia("(hover: none)").matches;
 
       if (!video || !button) {
         throw new Error("Missing video or button element");
+      }
+
+      if (isMobile) {
+        video.setAttribute("controls", "");
+        video.removeAttribute("autoplay");
       }
 
       button.addEventListener("click", () => {
