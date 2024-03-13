@@ -6,7 +6,14 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
 
 <main class="presentation">
   <section>
-    <h1>Arno Cellarier</h1>
+    <div class="header">
+      <h1>Arno Cellarier</h1>
+      <span
+        >Vous cherchez l'ancienne version de mon portfolio ?
+        <a href="https://djin.arno.cl">cliquez ici</a>
+        .</span
+      >
+    </div>
   </section>
   <section class="elba">
     <h2
@@ -115,7 +122,21 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
     min-height: 70vh;
   }
 
+  .header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 22px;
+    font-size: 11px;
+  }
+
+  .header span {
+    opacity: 0.4;
+  }
+
   h1 {
+    margin: 0;
     opacity: 0.5;
   }
 
