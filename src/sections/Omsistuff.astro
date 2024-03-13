@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import Comments from "../components/Comments.vue";
 import DeviceFrameSection from "../components/presentations/DeviceFrameSection.astro";
+import Statistics from "../components/presentations/Statistics.astro";
 import ExternalWebsiteButton from "../components/presentations/ExternalWebsiteButton.astro";
 import Heading from "../components/presentations/Heading.astro";
 import discoverImageDark from "../images/omsistuff/dark/discover.png";
@@ -102,28 +103,27 @@ import { ImageColorScheme, ImageSizePreset } from "../utils/images";
     />
   </DeviceFrameSection>
   <h3 style="margin-top: 20vh; text-align: center;">Une communauté active.</h3>
-  <div role="rowgroup" class="numbers">
-    <p>
-      <span>17.4k</span>
-      <span data-footnote="Données pour février 2023.">Visites par mois</span>
-    </p>
-    <p>
-      <span>250</span>
-      <span>créations postées en 2023</span>
-    </p>
-    <p>
-      <span>900</span>
-      <span>membres au total</span>
-    </p>
-  </div>
+  <Statistics
+    color="#22a569"
+    rows={[
+      {
+        number: 17400,
+        footnote: "Données pour février 2023.",
+        headline: "Visites par mois",
+      },
+      {
+        number: 250,
+        headline: "créations postées en 2023",
+      },
+      {
+        number: 900,
+        headline: "membres au total",
+      },
+    ]}
+  />
+  <br /><br />
   <Comments githubIssueId={3} client:visible />
   <ExternalWebsiteButton href="https://omsistuff.fr/?ref=arno.cl">
     Visiter le site
   </ExternalWebsiteButton>
 </section>
-
-<style>
-  .numbers span:first-child {
-    color: #22a569;
-  }
-</style>

@@ -13,6 +13,7 @@ import reportImage from "../../images/wagon/light/report.png";
 import searchImage from "../../images/wagon/light/search.png";
 import { ImageColorScheme, ImageSizePreset } from "../../utils/images";
 import liveJourneyVideo from "../../videos/wagon live journey.webm";
+import Statistics from "../../components/presentations/Statistics.astro";
 ---
 
 <section class="bs-wagon-content bento-content">
@@ -72,33 +73,23 @@ import liveJourneyVideo from "../../videos/wagon live journey.webm";
     />
     <h3><small>Vous n'êtes pas sur place ?</small><br />Cherchez l'arrêt.</h3>
   </DeviceFrameSection>
-  <div role="rowgroup" class="numbers">
-    <p>
-      <span>1.2k</span>
-      <span data-footnote="Données pour février 2023. X (anciennement Twitter)">
-        abonnés sur X
-      </span>
-    </p>
-    <p>
-      <span>600</span>
-      <span
-        data-footnote="600 testeurs sur TestFlight. Nombre de places limité"
-      >
-        testeurs
-      </span>
-    </p>
-    <p>
-      <span>55.8k</span>
-      <span>arrêts de bus référencés</span>
-    </p>
-  </div>
+  <Statistics
+    color="#00aa83"
+    rows={[
+      {
+        number: 1297,
+        headline: "abonnés sur X",
+        footnote: "Données pour février 2023. X (anciennement Twitter)",
+      },
+      {
+        number: 600,
+        headline: "testeurs",
+        footnote: "600 testeurs sur TestFlight. Nombre de places limité.",
+      },
+      { number: 55800, headline: "arrêts de bus référencés" },
+    ]}
+  />
   <ExternalWebsiteButton href="https://twitter.com/ridewithwagon">
     Accéder au fil Twitter
   </ExternalWebsiteButton>
 </section>
-
-<style>
-  .numbers span:first-child {
-    color: #00aa83;
-  }
-</style>
