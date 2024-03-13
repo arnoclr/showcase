@@ -40,6 +40,8 @@ export class AnimatedScroll {
     for (const element of elements) {
       const fromHeightVh = element.dataset.scrollFromHeightVh;
       const toHeightVh = element.dataset.scrollToHeightVh;
+      const fromAnchorId = element.dataset.scrollAnchorFrom;
+      const toAnchorId = element.dataset.scrollAnchorTo;
 
       if (fromHeightVh === undefined || toHeightVh === undefined) {
         console.error(
@@ -48,8 +50,35 @@ export class AnimatedScroll {
         continue;
       }
 
-      const fromHeightPx = (parseInt(fromHeightVh) * window.innerHeight) / 100;
-      const toHeightPx = (parseInt(toHeightVh) * window.innerHeight) / 100;
+      let fromHeightOffset = 0;
+      let toHeightOffset = 0;
+
+      if (fromAnchorId !== undefined) {
+        const anchor = document.getElementById(fromAnchorId);
+
+        if (anchor === null) {
+          console.error(`Element with id ${fromAnchorId} not found`);
+          continue;
+        }
+
+        fromHeightOffset = this.getTop(anchor);
+      }
+
+      if (toAnchorId !== undefined) {
+        const anchor = document.getElementById(toAnchorId);
+
+        if (anchor === null) {
+          console.error(`Element with id ${toAnchorId} not found`);
+          continue;
+        }
+
+        toHeightOffset = this.getTop(anchor);
+      }
+
+      const fromHeightPx =
+        (parseInt(fromHeightVh) * window.innerHeight) / 100 + fromHeightOffset;
+      const toHeightPx =
+        (parseInt(toHeightVh) * window.innerHeight) / 100 + toHeightOffset;
 
       this._elements.push({
         fromHeightPx,
@@ -82,6 +111,20 @@ export class AnimatedScroll {
    */
   private cappedProgress(progress: number) {
     return Math.max(0, Math.min(1, progress));
+  }
+
+  /**
+   * @returns the top border of the element in pixels counting from the top of the document
+   */
+  private getTop(of: HTMLElement): number {
+    let top = 0;
+
+    while (of) {
+      top += of.offsetTop;
+      of = of.offsetParent as HTMLElement;
+    }
+
+    return top;
   }
 
   private updateElementProgress(

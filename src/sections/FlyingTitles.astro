@@ -32,18 +32,23 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
       alt="Mon site web sur le mont-saint-michel affiché sur un iPhone 8"
     />
   </section>
+  <div id="section-anchor1"></div>
   <section
     class="zjir"
     data-scroll
-    data-scroll-from-height-vh="150"
-    data-scroll-to-height-vh="330"
+    data-scroll-anchor-from="section-anchor1"
+    data-scroll-anchor-to="section-anchor2"
+    data-scroll-from-height-vh="-100"
+    data-scroll-to-height-vh="-90"
     data-scroll-bezier=".47,.11,.49,.91;.8,.12,.22,.76;1,0,.91,.07;.54,.02,.49,.99"
   >
     <div role="group">
       <h2
         data-scroll
-        data-scroll-from-height-vh="150"
-        data-scroll-to-height-vh="330"
+        data-scroll-anchor-from="section-anchor1"
+        data-scroll-anchor-to="section-anchor2"
+        data-scroll-from-height-vh="-100"
+        data-scroll-to-height-vh="-50"
       >
         J’accorde une grande importance à l’expérience utilisateur,
       </h2>
@@ -51,27 +56,35 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
         src={verticalDevice}
         alt="Application Wagon sur un iPhone 8, avec les prochains départs des bus à proximité"
         data-scroll
-        data-scroll-from-height-vh="150"
-        data-scroll-to-height-vh="330"
+        data-scroll-anchor-from="section-anchor1"
+        data-scroll-anchor-to="section-anchor2"
+        data-scroll-from-height-vh="-100"
+        data-scroll-to-height-vh="-100"
         data-scroll-bezier=".11,.86,.54,.96"
       />
     </div>
   </section>
+  <div id="section-anchor2"></div>
   <section
     class="zaco"
     data-scroll
-    data-scroll-from-height-vh="350"
-    data-scroll-to-height-vh="550"
+    data-scroll-anchor-from="section-anchor2"
+    data-scroll-anchor-to="section-anchor3"
+    data-scroll-from-height-vh="-100"
+    data-scroll-to-height-vh="-100"
     data-scroll-bezier=".47,.11,.49,.91;.8,.12,.22,.76"
   >
     <h2>Au design,</h2>
   </section>
+  <div id="section-anchor3"></div>
   <section
     role="rowgroup"
     class="faca"
     data-scroll
-    data-scroll-from-height-vh="550"
-    data-scroll-to-height-vh="750"
+    data-scroll-anchor-from="section-anchor3"
+    data-scroll-anchor-to="section-anchor4"
+    data-scroll-from-height-vh="-100"
+    data-scroll-to-height-vh="-30"
     data-scroll-bezier=".47,.11,.49,.91;.8,.12,.22,.76"
   >
     <div role="group">
@@ -93,6 +106,7 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
       <h2>Et à l'accessibilité.</h2>
     </div>
   </section>
+  <div id="section-anchor4"></div>
 </main>
 
 <style>
@@ -135,6 +149,10 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
     opacity: 0.4;
   }
 
+  .header a {
+    color: inherit;
+  }
+
   h1 {
     margin: 0;
     opacity: 0.5;
@@ -154,6 +172,10 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
     width: 100%;
     height: auto;
     object-fit: contain;
+  }
+
+  .elba {
+    padding-bottom: 30vh;
   }
 
   .elba h2 {
