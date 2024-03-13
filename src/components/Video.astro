@@ -16,6 +16,8 @@ const { src, height, width, frame = "iPhone15" } = Astro.props;
     style={{ "--height": height, "--width": width }}
     muted
     autoplay
+    preload="none"
+    playsinline
     class:list={frame}
     src={src}></video>
   <button class="hidden">
