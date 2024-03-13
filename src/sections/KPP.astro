@@ -2,6 +2,7 @@
 import Heading from "../components/presentations/Heading.astro";
 import Video from "../components/Video.astro";
 import kppScrollingDemo from "../videos/kpp scrolling.webm";
+import kppScrollingDemoPoster from "../videos/kpp scrolling.png";
 import shareImageDark from "../images/kpp/dark/share.png";
 import DeviceFrameSection from "../components/presentations/DeviceFrameSection.astro";
 import { Image } from "astro:assets";
@@ -12,6 +13,7 @@ import Comments from "../components/Comments.vue";
 <Heading title="KPP Maker" subtitle="Créez vos girouettes pour OMSI 2." />
 <Video
   src={kppScrollingDemo}
+  poster={kppScrollingDemoPoster}
   width="calc(100vw - var(--navbar-horizontal-padding) * 2)"
   frame="iPad10"
 />

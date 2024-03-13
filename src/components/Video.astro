@@ -1,24 +1,23 @@
 ---
+import type { ImageMetadata } from "astro";
 import ReplayIcon from "../icons/replay_FILL0_wght200_GRAD200_opsz20.svg?raw";
+import { Image } from "astro:assets";
 
 interface Props {
   src: string;
+  poster: ImageMetadata;
   height?: string;
   width?: string;
   frame?: "iPhone15" | "iPad10";
 }
 
-const { src, height, width, frame = "iPhone15" } = Astro.props;
+const { src, poster, height, width, frame = "iPhone15" } = Astro.props;
 ---
 
-<phone-video>
-  <video
-    style={{ "--height": height, "--width": width }}
-    muted
-    autoplay
-    preload="none"
-    class:list={frame}
-    src={src}></video>
+<phone-video style={{ "--height": height, "--width": width }}>
+  <video muted autoplay playsinline preload="none" class:list={frame} src={src}
+  ></video>
+  <Image class:list={frame} src={poster} alt="" />
   <button class="hidden">
     <span>Revoir</span>
     <Fragment set:html={ReplayIcon} />
@@ -80,6 +79,7 @@ const { src, height, width, frame = "iPhone15" } = Astro.props;
     width: var(--width);
   }
 
+  img,
   video {
     border: var(--border-width) solid black;
   }
@@ -112,8 +112,27 @@ const { src, height, width, frame = "iPhone15" } = Astro.props;
   }
 
   @media (prefers-color-scheme: dark) {
+    img,
     video {
       border-color: #353535;
+    }
+  }
+
+  img {
+    display: none;
+  }
+
+  /** Webm videos crash on Safari iOS 17. So will replace it with images. */
+  @supports (font: -apple-system-body) and (-webkit-appearance: none) {
+    @media screen and (pointer: coarse) {
+      img {
+        display: block;
+      }
+
+      video,
+      button {
+        display: none;
+      }
     }
   }
 </style>

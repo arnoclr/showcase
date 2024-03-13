@@ -13,6 +13,7 @@ import reportImage from "../../images/wagon/light/report.png";
 import searchImage from "../../images/wagon/light/search.png";
 import { ImageColorScheme, ImageSizePreset } from "../../utils/images";
 import liveJourneyVideo from "../../videos/wagon live journey.webm";
+import liveJourneyPhoto from "../../videos/wagon live journey.png";
 import Statistics from "../../components/presentations/Statistics.astro";
 ---
 
@@ -35,7 +36,12 @@ import Statistics from "../../components/presentations/Statistics.astro";
     />
   </DeviceFrameSection>
   <DeviceFrameSection placement="frameFirst">
-    <Video slot="frame" height="80vh" src={liveJourneyVideo} />
+    <Video
+      slot="frame"
+      height="80vh"
+      src={liveJourneyVideo}
+      poster={liveJourneyPhoto}
+    />
     <h3
       data-footnote="Fonctionnalité encore en développement. Elle sera disponible via une mise à jour sur TestFlight ultérieurement."
     >

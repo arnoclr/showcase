@@ -12,6 +12,7 @@ import searchImageDark from "../../images/msm/dark/search.png";
 import visitImageDark from "../../images/msm/dark/visit.png";
 import { ImageSizePreset } from "../../utils/images";
 import discoverPlacesVideoDark from "../../videos/msm discover dark.webm";
+import discoverPlacesImageDark from "../../videos/msm discover dark.png";
 
 const arnoCellarier = {
   firstname: "Arno",
@@ -100,7 +101,12 @@ const gabrielFrancois = {
     />
   </DeviceFrameSection>
   <DeviceFrameSection placement="frameFirst">
-    <Video slot="frame" height="80vh" src={discoverPlacesVideoDark} />
+    <Video
+      slot="frame"
+      height="80vh"
+      src={discoverPlacesVideoDark}
+      poster={discoverPlacesImageDark}
+    />
     <h3>
       Programmez une visite.<br />
       <small>On fait en fonction de vos horaires.</small>
