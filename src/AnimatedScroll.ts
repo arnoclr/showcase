@@ -34,6 +34,11 @@ export class AnimatedScroll {
     this.updateProgress();
   }
 
+  public update() {
+    this.updateElements();
+    this.updateProgress();
+  }
+
   private updateElements() {
     const elements = document.querySelectorAll<HTMLElement>("[data-scroll");
 

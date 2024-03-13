@@ -109,6 +109,21 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
   <div id="section-anchor4"></div>
 </main>
 
+<script>
+  import { AnimatedScroll } from "../AnimatedScroll";
+
+  const animatedScroll = new AnimatedScroll();
+  const main = document.querySelector("main.presentation");
+
+  const resizeObserver = new ResizeObserver((entries) => {
+    animatedScroll.update();
+  });
+
+  if (main) {
+    resizeObserver.observe(main);
+  }
+</script>
+
 <style>
   main,
   section {
