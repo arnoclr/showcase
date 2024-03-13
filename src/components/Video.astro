@@ -14,9 +14,8 @@ interface Props {
 const { src, poster, height, width, frame = "iPhone15" } = Astro.props;
 ---
 
-<phone-video style={{ "--height": height, "--width": width }}>
-  <video muted autoplay playsinline preload="none" class:list={frame} src={src}
-  ></video>
+<phone-video style={{ "--height": height, "--width": width }} data-src={src}>
+  <video muted autoplay playsinline preload="none" class:list={frame}></video>
   <Image class:list={frame} src={poster} alt="" />
   <button class="hidden">
     <span>Revoir</span>
@@ -25,6 +24,8 @@ const { src, poster, height, width, frame = "iPhone15" } = Astro.props;
 </phone-video>
 
 <script>
+  import { isSafariMobile } from "../utils/navigator";
+
   class PhoneVideo extends HTMLElement {
     constructor() {
       super();
@@ -40,6 +41,10 @@ const { src, poster, height, width, frame = "iPhone15" } = Astro.props;
       if (isMobile) {
         video.setAttribute("controls", "");
         video.removeAttribute("autoplay");
+      }
+
+      if (!isSafariMobile() && this.dataset.src) {
+        video.src = this.dataset.src;
       }
 
       button.addEventListener("click", () => {
