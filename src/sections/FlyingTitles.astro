@@ -7,7 +7,7 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
 <main class="presentation">
   <section>
     <div class="header">
-      <h1>Arno Cellarier</h1>
+      <p role="presentation">Arno Cellarier</p>
       <span
         >Vous cherchez l'ancienne version de mon portfolio ?
         <a href="https://djin.arno.cl">cliquez ici</a>
@@ -130,14 +130,12 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
     perspective: 900px;
   }
 
-  h1 {
-    font-weight: 400;
+  .header p {
+    margin: 0;
+    opacity: 0.5;
+    font-weight: 500;
     font-size: max(12px, 2vw);
   }
-
-  /* main.no-animations [data-scroll] {
-    transform: none !important;
-  } */
 
   section {
     min-height: 100vh;
@@ -161,16 +159,11 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
   }
 
   .header span {
-    opacity: 0.4;
+    opacity: 0.6;
   }
 
   .header a {
     color: inherit;
-  }
-
-  h1 {
-    margin: 0;
-    opacity: 0.5;
   }
 
   p {
