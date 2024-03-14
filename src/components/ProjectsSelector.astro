@@ -1,6 +1,7 @@
 ---
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
+import { Display } from "../utils/css";
 import { v4 } from "uuid";
 
 export interface ProjectDetails {
@@ -22,7 +23,7 @@ if (projects.length !== 5) {
 const name = v4();
 ---
 
-<h2 data-scroll-anchor="projectsTitle">Mes projets</h2>
+<h1 data-scroll-anchor="projectsTitle">Mes projets</h1>
 <ul>
   {
     projects.map((project, i) => (
@@ -33,7 +34,13 @@ const name = v4();
           id={"checkbox-" + project.id}
           checked={i === 0}
         />
-        <Image src={project.frame} alt={project.title} />
+        <Image src={project.frame} alt="" />
+        <label
+          class:list={[Display.OnlyForScreenReader]}
+          for={"checkbox-" + project.id}
+        >
+          Projet {project.title}
+        </label>
       </li>
     ))
   }
@@ -41,11 +48,12 @@ const name = v4();
 <slot />
 
 <style>
-  h2 {
+  h1 {
     margin: 0 var(--navbar-horizontal-padding);
     margin-bottom: 10vh;
     margin-top: 20vh;
     font-size: max(32px, 4vw);
+    font-weight: 500;
     color: gray;
     text-align: center;
     scroll-margin: 14vh;

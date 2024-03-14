@@ -32,10 +32,12 @@ const rawCSS = projects
   <body>
     <nav>
       <span>
-        <span>Arno Cellarier —</span>
+        <span>Arno Cellarier</span>
         {
           projects.map((project) => (
-            <span id={"navtitle-" + project.id}>{project.title}</span>
+            <span aria-hidden="true" id={"navtitle-" + project.id}>
+              — {project.title}
+            </span>
           ))
         }
       </span>
@@ -194,6 +196,17 @@ const rawCSS = projects
     gap: 20vw;
     display: flex;
     align-items: center;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
   }
 
   .threePhonesOrTablet {

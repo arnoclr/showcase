@@ -15,6 +15,7 @@ import { ImageColorScheme, ImageSizePreset } from "../../utils/images";
 import liveJourneyVideo from "../../videos/wagon live journey.webm";
 import liveJourneyPhoto from "../../videos/wagon live journey.png";
 import Statistics from "../../components/presentations/Statistics.astro";
+import { Display } from "../../utils/css";
 ---
 
 <section class="bs-wagon-content bento-content">
@@ -22,6 +23,12 @@ import Statistics from "../../components/presentations/Statistics.astro";
   <Comments githubIssueId={1} client:visible />
   <DeviceFrameSection>
     <h3><small>Prochains passages,</small><br />en un coup d'œil.</h3>
+    <p class:list={[Display.OnlyForScreenReader]}>
+      On ouvrant Wagon, toutes les lignes à proximité et leurs départs en temps
+      réel sont affichés. En cliquant sur une ligne, on accède aux horaires de
+      la journée pour les différentes destinations. Enfin, en cliquant sur un
+      départ, on peut consulter les horaires de passage à chaque arrêt.
+    </p>
     <Image
       slot="frame"
       class:list={[ImageSizePreset.ThreePhonesOrTablet, ImageColorScheme.Light]}
@@ -48,6 +55,12 @@ import Statistics from "../../components/presentations/Statistics.astro";
       <small>On arrive quand ?</small><br />Ouvrez l'application,<br />on vous
       dira.
     </h3>
+    <p class:list={[Display.OnlyForScreenReader]}>
+      Quand vous ouvrez l'application, Wagon détecte que vous êtes en mouvement
+      et va chercher la ligne dans laquelle vous êtes. Si plusieurs lignes sont
+      disponibles, il vous sera demandé de préciser laquelle, après ca, la liste
+      des arrêts desservis et le prochain arrêt s'affichent à l'écran.
+    </p>
   </DeviceFrameSection>
   <DeviceFrameSection placement="frameFirst">
     <Image
@@ -63,6 +76,12 @@ import Statistics from "../../components/presentations/Statistics.astro";
       alt=""
     />
     <h3><small>Un imprévu ?</small><br />Dites le nous,<br />dites leur.</h3>
+    <p class:list={[Display.OnlyForScreenReader]}>
+      En cas de forte affluence, d'ascenseur en panne, ou encore de présence de
+      pickpocket, vous pouvez signaler l'incident pour qu'il soit affiché aux
+      autres utilisateurs. Les signalements sont rattachés aux arrêts où ils ont
+      été renseignés.
+    </p>
   </DeviceFrameSection>
   <DeviceFrameSection placement="frameFirst">
     <Image
@@ -78,6 +97,10 @@ import Statistics from "../../components/presentations/Statistics.astro";
       alt=""
     />
     <h3><small>Vous n'êtes pas sur place ?</small><br />Cherchez l'arrêt.</h3>
+    <p class:list={[Display.OnlyForScreenReader]}>
+      La barre de recherche permet de trouver un arrêt et de déplacer la carte
+      dessus pour consulter les horaires en temps réel.
+    </p>
   </DeviceFrameSection>
   <Statistics
     color="#00aa83"

@@ -16,13 +16,13 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
     </div>
   </section>
   <section class="elba">
-    <h2
+    <p
       data-scroll
       data-scroll-from-height-vh="0"
       data-scroll-to-height-vh="100"
     >
       Je crée des sites web<br />et des applications.
-    </h2>
+    </p>
     <Image
       data-scroll
       data-scroll-from-height-vh="20"
@@ -43,7 +43,7 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
     data-scroll-bezier=".47,.11,.49,.91;.8,.12,.22,.76;1,0,.91,.07;.54,.02,.49,.99"
   >
     <div role="group">
-      <h2
+      <p
         data-scroll
         data-scroll-anchor-from="section-anchor1"
         data-scroll-anchor-to="section-anchor2"
@@ -51,7 +51,7 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
         data-scroll-to-height-vh="-50"
       >
         J’accorde une grande importance à l’expérience utilisateur,
-      </h2>
+      </p>
       <Image
         src={verticalDevice}
         alt="Application Wagon sur un iPhone 8, avec les prochains départs des bus à proximité"
@@ -74,7 +74,7 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
     data-scroll-to-height-vh="-100"
     data-scroll-bezier=".47,.11,.49,.91;.8,.12,.22,.76"
   >
-    <h2>Au design,</h2>
+    <p>Au design,</p>
   </section>
   <div id="section-anchor3"></div>
   <section
@@ -103,7 +103,7 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
       </svg>
     </div>
     <div role="row">
-      <h2>Et à l'accessibilité.</h2>
+      <p>Et à l'accessibilité.</p>
     </div>
   </section>
   <div id="section-anchor4"></div>
@@ -173,8 +173,15 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
     opacity: 0.5;
   }
 
+  p {
+    margin: 0;
+    font-weight: 500;
+    opacity: 1;
+    display: block;
+  }
+
   h1,
-  h2 {
+  p {
     text-align: center;
   }
 
@@ -193,7 +200,7 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
     padding-bottom: 30vh;
   }
 
-  .elba h2 {
+  .elba p {
     font-size: max(40px, 7vw);
     transform: rotate3d(1, -1, 0, calc(10deg * var(--progress) - 5deg));
   }
@@ -212,7 +219,7 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
     perspective: 900px;
   }
 
-  .zjir h2 {
+  .zjir p {
     font-size: max(40px, 5vw);
     text-align: left;
     padding-left: 4vw;
@@ -234,7 +241,7 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
       rotate3d(-1, 1, 0, calc(30deg * var(--progress-1) - 25deg));
   }
 
-  .zaco h2 {
+  .zaco p {
     font-size: max(40px, 10vw);
   }
 
@@ -244,7 +251,7 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
       rotate3d(-1, 1, 0, calc(-5deg * var(--progress-1) + 5deg));
   }
 
-  .faca h2 {
+  .faca p {
     margin: 1vw 0;
     font-size: max(40px, 8vw);
   }
@@ -303,7 +310,7 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
       min-height: 10vh;
     }
 
-    h2 {
+    p {
       text-wrap: balance;
     }
 
@@ -316,7 +323,7 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
       align-items: end;
     }
 
-    .zjir h2 {
+    .zjir p {
       padding: 2vw;
       text-align: center;
     }

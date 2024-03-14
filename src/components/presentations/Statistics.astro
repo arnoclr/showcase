@@ -1,4 +1,6 @@
 ---
+import { Display } from "../../utils/css";
+
 interface Statistic {
   number: number;
   unit?: string;
@@ -24,7 +26,8 @@ function formatNumber(number: number) {
   {
     rows.map((row) => (
       <li>
-        <span>{formatNumber(row.number)}</span>
+        <span aria-hidden="true">{formatNumber(row.number)}</span>
+        <span class:list={[Display.OnlyForScreenReader]}>{row.number}</span>
         <span data-footnote={row.footnote}>{row.headline}</span>
       </li>
     ))

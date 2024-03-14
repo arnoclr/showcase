@@ -14,7 +14,11 @@ interface Props {
 const { src, poster, height, width, frame = "iPhone15" } = Astro.props;
 ---
 
-<phone-video style={{ "--height": height, "--width": width }} data-src={src}>
+<phone-video
+  aria-hidden="true"
+  style={{ "--height": height, "--width": width }}
+  data-src={src}
+>
   <video muted autoplay playsinline preload="none" class:list={frame}></video>
   <Image class:list={frame} src={poster} alt="" />
   <button class="hidden">

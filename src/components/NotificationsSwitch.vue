@@ -5,6 +5,7 @@ import {
   subscribe,
   unsubscribe,
 } from "../utils/notifications";
+import { Display } from "../utils/css";
 
 const subscribed = ref<boolean>(false);
 const loading = ref<boolean>(false);
@@ -33,11 +34,15 @@ async function onChange() {
 <template>
   <form :aria-busy="loading">
     <input
+      aria-labelledby="notifications-switch-label"
       type="checkbox"
       role="switch"
       v-model="subscribed"
       @change="onChange"
     />
+    <span id="notifications-switch-label" :class="Display.OnlyForScreenReader">
+      Activer les notifications
+    </span>
   </form>
 </template>
 

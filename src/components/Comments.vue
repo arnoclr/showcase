@@ -2,6 +2,7 @@
 import { ref, onMounted } from "vue";
 import { removeHtmlTags } from "../utils/strings";
 import type { GithubAPICommentsResponse } from "../external/GithubApiCommentsResponse";
+import { Display } from "../utils/css";
 
 const props = defineProps<{
   githubIssueId: number;
@@ -99,7 +100,12 @@ onMounted(() => {
           :style="{ '--transition-delay': 1000 + i * 800 + 'ms' }"
         >
           <div></div>
-          <span class="name">{{ comment.username }}</span>
+          <span class="name">
+            {{ comment.username }}
+            <span :class="Display.OnlyForScreenReader">
+              a écrit un commentaire
+            </span>
+          </span>
           <img :src="comment.profilePic" aria-hidden="true" alt="" />
           <div class="bubble">
             <span>{{ comment.textContent }}</span>
