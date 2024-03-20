@@ -1,12 +1,13 @@
 ---
 interface Props {
   href: string;
+  align?: "left" | "center";
 }
 
-const { href } = Astro.props;
+const { href, align = "center" } = Astro.props;
 ---
 
-<a href={href} target="_blank">
+<a data-align={align} href={href} target="_blank">
   <slot />
 </a>
 
@@ -21,5 +22,9 @@ const { href } = Astro.props;
     text-decoration: none;
     border: none;
     width: fit-content;
+  }
+
+  a[data-align="left"] {
+    margin: 0;
   }
 </style>

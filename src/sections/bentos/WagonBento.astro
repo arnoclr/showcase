@@ -15,6 +15,7 @@ import { ImageColorScheme, ImageSizePreset } from "../../utils/images";
 import liveJourneyVideo from "../../videos/wagon live journey.webm";
 import liveJourneyPhoto from "../../videos/wagon live journey.png";
 import Statistics from "../../components/presentations/Statistics.astro";
+import testFlightButton from "../../images/wagon/testflight button.png";
 import { Display } from "../../utils/css";
 ---
 
@@ -118,7 +119,46 @@ import { Display } from "../../utils/css";
       { number: 55800, headline: "arrêts de bus référencés" },
     ]}
   />
-  <ExternalWebsiteButton href="https://twitter.com/ridewithwagon">
-    Accéder au fil Twitter
-  </ExternalWebsiteButton>
+  <section style="margin: 20vh 0">
+    <h3>Obtenir Wagon</h3>
+    <div role="row">
+      <a
+        href="https://testflight.apple.com/join/M2xoL0bC"
+        title="Obtenir l'application sur TestFlight"
+        target="_blank"
+      >
+        <Image
+          src={testFlightButton}
+          alt="Disponible sur TestFlight"
+          height={56}
+          quality={100}
+        />
+      </a>
+      <ExternalWebsiteButton
+        align="left"
+        href="https://twitter.com/ridewithwagon"
+      >
+        Accéder au fil Twitter
+      </ExternalWebsiteButton>
+    </div>
+    <ul>
+      <li>
+        <small>Cette application requiert iOS 17.0 ou supérieur.</small>
+      </li>
+      <li>
+        <small>
+          Disponible pour les villes suivantes : Île-de-France (réseau IDF
+          Mobilités).
+        </small>
+      </li>
+    </ul>
+  </section>
 </section>
+
+<style>
+  [role="row"] {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+</style>
