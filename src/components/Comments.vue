@@ -69,6 +69,10 @@ function getCommentsFromJson(json: GithubAPICommentsResponse): Comment[] {
   }));
 }
 
+function delayForComment(i: number): string {
+  return `${1000 + Math.log10(1 + i) * 3000}ms`;
+}
+
 onMounted(() => {
   fetchComments();
 });
@@ -97,7 +101,7 @@ onMounted(() => {
       <ul v-if="state.type === 'ok'">
         <li
           v-for="(comment, i) in state.comments"
-          :style="{ '--transition-delay': 1000 + i * 800 + 'ms' }"
+          :style="{ '--transition-delay': delayForComment(i) }"
         >
           <div></div>
           <span class="name">
@@ -126,7 +130,7 @@ onMounted(() => {
         </li>
         <li
           :style="{
-            '--transition-delay': 500 + state.comments.length * 800 + 'ms',
+            '--transition-delay': delayForComment(state.comments.length),
           }"
         >
           <a
