@@ -40,7 +40,7 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
     data-scroll-anchor-to="section-anchor2"
     data-scroll-from-height-vh="-100"
     data-scroll-to-height-vh="-90"
-    data-scroll-bezier=".47,.11,.49,.91;.8,.12,.22,.76;1,0,.91,.07;.54,.02,.49,.99"
+    data-scroll-bezier=".47,.11,.49,.91;.8,.12,.22,.76;1,0,.91,.07;.77,.1,.55,.2"
   >
     <div role="group">
       <p
@@ -146,7 +146,7 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
   }
 
   section:first-child {
-    min-height: 70vh;
+    min-height: 30vh;
   }
 
   .header {
@@ -195,16 +195,15 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
 
   .elba p {
     font-size: max(40px, 7vw);
-    transform: rotate3d(1, -1, 0, calc(10deg * var(--progress) - 5deg));
+    transform: rotate3d(1, -1, 0, calc(3deg * var(--progress)));
   }
 
   .elba img {
-    transform: translateY(max(-10vh, calc(-20vh * var(--progress) + 20vh)))
-      rotate3d(-1, 0, 0, calc(10deg * var(--progress) - 10deg));
+    transform: rotate3d(-1, 0, 0, calc(4deg * var(--progress) - 4deg));
   }
 
   .zjir {
-    transform: translateY(calc(100vh * var(--progress) - 50vh));
+    transform: translateY(calc(100vh * var(--progress) - 85vh));
   }
 
   .zjir div {
@@ -217,8 +216,8 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
     text-align: left;
     padding-left: 4vw;
     transform-origin: top;
-    transform: translateY(calc(var(--progress-2) * -100vh))
-      rotate3d(-1, 1, 0, calc(-25deg * var(--progress-3)));
+    transform: translateY(calc(var(--progress-2) * -100vh));
+    opacity: calc(1 - var(--progress-3));
   }
 
   .zjir img {
@@ -230,8 +229,11 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
   }
 
   .zaco {
-    transform: translateY(calc(100vh * var(--progress) - 50vh))
-      rotate3d(-1, 1, 0, calc(30deg * var(--progress-1) - 25deg));
+    position: sticky;
+    opacity: var(--progress-1);
+    transform-origin: top;
+    transform: translateY(calc(var(--progress) * 20vh - 20vh))
+      scale(var(--progress));
   }
 
   .zaco p {
@@ -240,8 +242,8 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
 
   .faca {
     align-items: center;
-    transform: translateY(calc(100vh * var(--progress) - 50vh))
-      rotate3d(-1, 1, 0, calc(-5deg * var(--progress-1) + 5deg));
+    opacity: calc(var(--progress) * 2);
+    transform: translateY(calc(100vh * var(--progress) - 50vh));
   }
 
   .faca p {
@@ -283,13 +285,16 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
       margin-bottom: 20vh;
     }
 
-    .zaco,
     .zjir {
-      margin-bottom: 80vh;
+      margin-bottom: 10vh;
+    }
+
+    .zaco {
+      margin-bottom: 40vh;
     }
 
     .faca {
-      margin-bottom: 40vh;
+      margin-bottom: 60vh;
     }
   }
 
