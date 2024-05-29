@@ -27,7 +27,7 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
       data-scroll
       data-scroll-from-height-vh="20"
       data-scroll-to-height-vh="120"
-      data-scroll-bezier=".11,.86,.54,.96"
+      data-scroll-bezier="0,.32,.24,.81"
       src={horizontalDevice}
       alt="Mon site web sur le mont-saint-michel affiché sur un iPhone 8"
     />
@@ -200,7 +200,7 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
   }
 
   .elba img {
-    transform: rotate3d(-1, 0, 0, calc(4deg * var(--progress) - 4deg));
+    transform: rotate3d(-1, 0, 0, calc(2deg * (var(--progress) + 0.4) - 2deg));
   }
 
   .zjir {
