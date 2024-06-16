@@ -3,7 +3,8 @@ interface Person {
   firstname: string;
   lastname: string;
   role: string;
-  linkedinUrl: string;
+  roles?: string[];
+  linkedinUrl?: string;
 }
 
 interface Props {
@@ -23,6 +24,7 @@ const { people } = Astro.props;
             {person.firstname} {person.lastname}
           </a>
           <span>{person.role}</span>
+          {person.roles && <small>{person.roles.join(" • ")}</small>}
         </li>
       ))
   }
@@ -44,8 +46,15 @@ const { people } = Astro.props;
     border-bottom: 1px solid rgba(155, 155, 155, 0.2);
   }
 
-  span {
+  span,
+  small {
     opacity: 0.4;
+  }
+
+  small {
+    display: block;
+    font-size: 0.6em;
+    margin-top: 4px;
   }
 
   a {

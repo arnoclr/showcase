@@ -17,6 +17,35 @@ import liveJourneyPhoto from "../../videos/wagon live journey.png";
 import Statistics from "../../components/presentations/Statistics.astro";
 import testFlightButton from "../../images/wagon/testflight button.png";
 import { Display } from "../../utils/css";
+import Team from "../../components/presentations/Team.astro";
+
+const arnoCellarier = {
+  firstname: "Arno",
+  lastname: "Cellarier",
+  role: "Chef de projet",
+  roles: ["Développeur API & iOS", "Designer UX/UI", "Community manager"],
+  linkedinUrl: "https://www.linkedin.com/in/arno-cellarier/",
+};
+
+const remyCellarier = {
+  firstname: "Rémy",
+  lastname: "Cellarier",
+  role: "Designer produit",
+};
+
+const leonEdmee = {
+  firstname: "Léon",
+  lastname: "Edmee",
+  role: "Community manager & testeur",
+  linkedinUrl: "https://www.linkedin.com/in/léon-edmee/",
+};
+
+const matthieuCloet = {
+  firstname: "Matthieu",
+  lastname: "Cloët",
+  role: "Développeur Android",
+  linkedinUrl: "https://www.linkedin.com/in/matthieu-cloët-77b0631a4/",
+};
 ---
 
 <section class="bs-wagon-content bento-content">
@@ -119,6 +148,8 @@ import { Display } from "../../utils/css";
       { number: 55800, headline: "arrêts de bus référencés" },
     ]}
   />
+  <h3 style="padding-top: 56px;">L'équipe.</h3>
+  <Team people={[arnoCellarier, remyCellarier, leonEdmee, matthieuCloet]} />
   <section style="margin: 20vh 0">
     <h3>Obtenir Wagon</h3>
     <div role="row">
