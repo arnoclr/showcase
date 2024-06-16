@@ -14,6 +14,8 @@ import searchImage from "../../images/wagon/light/search.png";
 import { ImageColorScheme, ImageSizePreset } from "../../utils/images";
 import liveJourneyVideo from "../../videos/wagon live journey.webm";
 import liveJourneyPhoto from "../../videos/wagon live journey.png";
+import androidImage from "../../images/wagon/light/android.png";
+import androidImageDark from "../../images/wagon/dark/android.png";
 import Statistics from "../../components/presentations/Statistics.astro";
 import testFlightButton from "../../images/wagon/testflight button.png";
 import { Display } from "../../utils/css";
@@ -131,6 +133,21 @@ const matthieuCloet = {
       La barre de recherche permet de trouver un arrêt et de déplacer la carte
       dessus pour consulter les horaires en temps réel.
     </p>
+  </DeviceFrameSection>
+  <DeviceFrameSection>
+    <h3>Bientôt sur Android.</h3>
+    <Image
+      slot="frame"
+      class:list={[ImageSizePreset.ThreePhonesOrTablet, ImageColorScheme.Light]}
+      src={androidImage}
+      alt=""
+    />
+    <Image
+      slot="frame"
+      class:list={[ImageSizePreset.ThreePhonesOrTablet, ImageColorScheme.Dark]}
+      src={androidImageDark}
+      alt=""
+    />
   </DeviceFrameSection>
   <Statistics
     color="#00aa83"
