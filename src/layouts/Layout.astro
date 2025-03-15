@@ -7,16 +7,6 @@ interface Props {
 }
 
 const { title } = Astro.props;
-
-const rawCSS = projects
-  .map((project) => {
-    return `
-    body:not(:has(#checkbox-${project.id}:checked)) #navtitle-${project.id} {
-      display: none;
-    }
-  `;
-  })
-  .join("\n");
 ---
 
 <!doctype html>
@@ -31,16 +21,22 @@ const rawCSS = projects
   </head>
   <body>
     <nav>
-      <span>
+      <div class="left">
         <span>Arno Cellarier</span>
-        {
-          projects.map((project) => (
-            <span aria-hidden="true" id={"navtitle-" + project.id}>
-              — {project.title}
-            </span>
-          ))
-        }
-      </span>
+        <ul>
+          <li>
+            <a href="/">Mes projets</a>
+          </li>
+          <li>
+            <a href="/swift-student-challenge-2025">
+              Swift Student Challenge 2025
+            </a>
+          </li>
+          <li>
+            <a href="/outils"> Outils pour les développeurs</a>
+          </li>
+        </ul>
+      </div>
       <ul>
         <li>
           <a target="_blank" href="https://cdn1.arno.cl/2024/03/CV%202024.pdf">
@@ -74,7 +70,6 @@ const rawCSS = projects
   </script>
 </html>
 
-<style is:inline set:html={rawCSS}></style>
 <style>
   :root {
     --navbar-horizontal-padding: 10vw;
@@ -117,6 +112,16 @@ const rawCSS = projects
 
   nav a:not(.bubble):hover {
     text-decoration: underline;
+  }
+
+  nav .left {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  nav .left ul {
+    gap: 1rem;
   }
 
   .bubble {

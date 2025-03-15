@@ -2,17 +2,13 @@
 import { Image } from "astro:assets";
 import horizontalDevice from "../images/presentation/website horizontal.png";
 import verticalDevice from "../images/presentation/wagon vertical.png";
+import syspadScreen from "../images/presentation/syspad.png";
 ---
 
 <main class="presentation">
-  <section>
+  <section class="qbik">
     <div class="header">
       <p role="presentation">Arno Cellarier</p>
-      <span
-        >Vous cherchez l'ancienne version de mon portfolio ?
-        <a href="https://djin.arno.cl">cliquez ici</a>
-        .</span
-      >
     </div>
   </section>
   <section class="elba">
@@ -27,9 +23,9 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
       data-scroll
       data-scroll-from-height-vh="20"
       data-scroll-to-height-vh="120"
-      data-scroll-bezier="0,.32,.24,.81"
-      src={horizontalDevice}
-      alt="Mon site web sur le mont-saint-michel affiché sur un iPhone 8"
+      data-scroll-bezier=".82,.01,.99,.78"
+      src={syspadScreen}
+      alt="Ecran d'information voyageur type RATP, indiquant la dessserte du prochain train RER B"
     />
   </section>
   <div id="section-anchor1"></div>
@@ -136,6 +132,7 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
     opacity: 0.5;
     font-weight: 500;
     font-size: max(12px, 2vw);
+    transform: translateY(10vh);
   }
 
   section {
@@ -200,7 +197,8 @@ import verticalDevice from "../images/presentation/wagon vertical.png";
   }
 
   .elba img {
-    transform: rotate3d(-1, 0, 0, calc(2deg * (var(--progress) + 0.4) - 2deg));
+    transform: translateY(-10%)
+      rotate3d(-1, 0, 0, calc(6deg * (var(--progress) + 0.1)));
   }
 
   .zjir {

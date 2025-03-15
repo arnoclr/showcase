@@ -2,42 +2,10 @@
 import Layout from "../layouts/Layout.astro";
 import FlyingTitles from "../sections/FlyingTitles.astro";
 import Footer from "../sections/Footer.astro";
-import ProjectsSelector from "../components/ProjectsSelector.astro";
-import WagonBento from "../sections/bentos/WagonBento.astro";
-import MSMBento from "../sections/bentos/MSMBento.astro";
-import Theses from "../sections/Theses.astro";
-import Omsistuff from "../sections/Omsistuff.astro";
-import Project from "../components/Project.astro";
-import KPP from "../sections/KPP.astro";
-import {
-  wagonProject,
-  omsistuffProject,
-  msmProject,
-  thesesProject,
-  kppProject,
-  projects,
-} from "../projects";
 ---
 
 <Layout title="Arno Cellarier — Développeur">
   <FlyingTitles />
-  <ProjectsSelector projects={projects}>
-    <Project project={wagonProject} nextProject={omsistuffProject}>
-      <WagonBento />
-    </Project>
-    <Project project={omsistuffProject} nextProject={msmProject}>
-      <Omsistuff />
-    </Project>
-    <Project project={msmProject} nextProject={thesesProject}>
-      <MSMBento />
-    </Project>
-    <Project project={thesesProject} nextProject={kppProject}>
-      <Theses />
-    </Project>
-    <Project project={kppProject}>
-      <KPP />
-    </Project>
-  </ProjectsSelector>
   <Footer />
 </Layout>
 
