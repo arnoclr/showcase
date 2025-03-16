@@ -3,12 +3,157 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Swift Student Challenge 2025">
+  <div class="grid-array-6">
+    <div class="ssc-color-orange-bg"></div>
+    <div class="ssc-color-pink-bg"></div>
+    <div class="ssc-color-dark-blue-bg"></div>
+    <div class="ssc-color-light-blue-bg"></div>
+    <div class="ssc-color-green-bg"></div>
+  </div>
   <section>
     <h1>Ma participation au <br /><mark>Swift Student Challenge</mark> 2025</h1>
+
+    <h2>Halobus</h2>
+    <p>
+      Halobus est une application hors ligne qui affiche l’ensemble du réseau de
+      transports en commun de Nice, avec la position actuelle de tous les bus et
+      tramways. Elle met en valeur l’étendue du réseau et invite les
+      utilisateurs à explorer la ville sans voiture.
+    </p>
+
+    <h2>Idée</h2>
+    <p>
+      J'ai eu l'idée de cette application en prenant connaissance des
+      contraintes imposées pour ce défi. En effet, il faut une application :
+      <ul>
+        <li>Légère (25 MB)</li>
+        <li>Qui fonctionne hors-ligne</li>
+        <li>Qui puisse se tester en moins de 3 minutes.</li>
+      </ul>
+    </p>
+    <p>
+      J'ai voulu réinvestir mes connaissances aqcquises en développant Wagon,
+      j'ai donc reflechi à une application sur la thématique des transports en
+      commun, qui intégrerait ces contraintes.
+    </p>
+    <p>
+      Mais je ne voulais pas une application trop basique, il me fallait un côté
+      "Waouh". C'est ainsi que m'est venue l'idée : une application 100%
+      hors-ligne, ou l'on verrait les bus bouger sur une carte ; <mark
+        >simple en apparence</mark
+      >, mais plutot technique à réaliser.
+    </p>
+
+    <h2>Défis techniques</h2>
+    <p>
+      Pour respecter les contraintes, j'ai fait face à quelques difficultés en
+      réalisant mon app.
+    </p>
+
+    <h3>Carte hors-ligne</h3>
+    <p>
+      Bien qu'Apple Plan propose un mode hors-ligne depuis iOS 17, le SDK
+      disponible dans Swift UI ne propose pas d'option analogue. Voici la parade
+      que j'ai trouvé :
+    </p>
+    <ol>
+      <li>
+        Utiliser Apple Plan en mode satellite pour retirer tous les labels par
+        défaut
+      </li>
+      <li>Extraire les données OpenStreetMap dans un fichier JSON</li>
+      <li>
+        Itérer sur chaque type de surface et dessiner des polygones sur la carte
+        Apple Plan
+      </li>
+    </ol>
+    <h3>Taille des données</h3>
+    <p>
+      C'est un choix crucial pour l'application : Comment stocker efficacement
+      les données pour être capable d'afficher tous les bus du réseau <mark
+        >à chaque instant</mark
+      >, de manière précise et ce pour tous les jours de l'année ?
+    </p>
+    <p>
+      J'ai d'abord pensé à stocker, pour chaque moment dans la journée (disons
+      toutes les 10 secondes) la position de tous les véhicules en service. Mais
+      les données étaient beaucoup trop volumineuses. En stockant de cette
+      manière, on avait trop de répétitions de données.
+    </p>
+    <!-- https://gtfs.org -->
+    <p>
+      J'ai donc opté pour une approche plus proche du format de stockage dans le
+      GTFS, en retirant le maximum d'informations inutiles à mon app. Je me
+      retrouve donc avec 5 extraits JSON :
+      <ul>
+        <li>
+          <code>calendar</code> qui liste tous les services et leur période de validité.
+          Par exemple, c'est ce fichier qui dira que le service <code>1839</code
+          > est valide du 1er janvier au 1er juillet, mais uniquement les dimanches.
+        </li>
+        <li>
+          <code>calendar_dates</code> qui spécifie toutes les exceptions (jours fériés
+          et vacances entre autres) liées aux services précédemment cités.
+        </li>
+        <li>
+          <code>trips</code> contient tous les trajets possibles, i.e. la suite des
+          arrêts desservis et l'heure de passage.
+        </li>
+        <li><code>stops</code> liste tous les arrêts de la ville.</li>
+        <li><code>routes</code> liste toutes les lignes de la ville</li>
+        <li>
+          <code>shapes</code> repertorie les routes liées aux trajets. Pour optimiser
+          les formes, j'ai réduit la précision des coordonnées GPS et j'ai appliqué
+          l'algortihme de <a
+            href="https://fr.wikipedia.org/wiki/Algorithme_de_Douglas-Peucker"
+            >Douglas-Peucker</a
+          >.
+        </li>
+      </ul>
+    </p>
+    <p>
+      Une autre optimisation consiste en la rénumérotation des IDs du GTFS, qui
+      sont étrangement extremement verbeux.
+      <br /><br />
+      <code>102031</code>
+      <i>au lieu de</i>
+      <code> chouette:TimeTable:43c17fa7-3a55-4e11-95e1-7ac11d989e14:LOC </code>
+    </p>
+    <h3>Tester le Playground</h3>
+    <a href="">Télécharger le Playground</a>
+    <small
+      >Requiert un Mac ou un iPad avec l'application Swift Playground
+      d'installée.</small
+    >
   </section>
 </Layout>
 
 <style>
+  .grid-array-6 {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    height: calc(15px + 64px);
+  }
+
+  .ssc-color-orange-bg {
+    background-color: #fd5d00;
+  }
+  .ssc-color-pink-bg {
+    background-color: #b143ae;
+  }
+  .ssc-color-purple-bg {
+    background-color: #451ea9;
+  }
+  .ssc-color-dark-blue-bg {
+    background-color: #272acf;
+  }
+  .ssc-color-light-blue-bg {
+    background-color: #00a0fd;
+  }
+  .ssc-color-green-bg {
+    background-color: #009966;
+  }
+
   section {
     padding: 0 var(--navbar-horizontal-padding);
     padding-top: 20vh;
@@ -16,6 +161,24 @@ import Layout from "../layouts/Layout.astro";
 
   h1 {
     font-size: max(40px, 4vw);
+  }
+
+  h2 {
+    font-size: 40px;
+  }
+
+  h3 {
+    font-size: 32px;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  code {
+    padding: 2px 4px;
+    background-color: rgba(155, 155, 155, 0.2);
+    border-radius: 4px;
   }
 
   mark {
