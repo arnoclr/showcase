@@ -1,5 +1,12 @@
 ---
+import Image from "astro/components/Image.astro";
 import Layout from "../layouts/Layout.astro";
+import { ImageSizePreset } from "../utils/images";
+import heroImage from "../images/ssc25/hero.png";
+import DeviceFrameSection from "../components/presentations/DeviceFrameSection.astro";
+import mapImage from "../images/ssc25/15.png";
+import Footer from "../sections/Footer.astro";
+import appIcon from "../images/ssc25/logo.png";
 ---
 
 <Layout title="Swift Student Challenge 2025">
@@ -10,63 +17,91 @@ import Layout from "../layouts/Layout.astro";
     <div class="ssc-color-light-blue-bg"></div>
     <div class="ssc-color-green-bg"></div>
   </div>
-  <section>
+  <section class="hero">
     <h1>Ma participation au <br /><mark>Swift Student Challenge</mark> 2025</h1>
+    <small>English version coming later</small>
 
-    <h2>Halobus</h2>
-    <p>
-      Halobus est une application hors ligne qui affiche l’ensemble du réseau de
-      transports en commun de Nice, avec la position actuelle de tous les bus et
-      tramways. Elle met en valeur l’étendue du réseau et invite les
-      utilisateurs à explorer la ville sans voiture.
-    </p>
+    <DeviceFrameSection>
+      <Image
+        class:list={[ImageSizePreset.TabletAndPhone]}
+        src={heroImage}
+        alt=""
+      />
+    </DeviceFrameSection>
+  </section>
+  <section class="content">
+    <DeviceFrameSection placement="frameFirst" height="fitContent">
+      <Image slot="frame" src={appIcon} alt="" class:list={["icon"]} />
+      <div>
+        <h2>Halobus</h2>
+        <p class="important">
+          Halobus est une application hors ligne qui affiche l’ensemble du
+          réseau de transports en commun de Nice, avec la position actuelle de
+          tous les bus et tramways. Elle met en valeur l’étendue du réseau et
+          invite les utilisateurs à explorer la ville sans voiture.
+        </p>
+      </div>
+    </DeviceFrameSection>
 
-    <h2>Idée</h2>
-    <p>
-      J'ai eu l'idée de cette application en prenant connaissance des
-      contraintes imposées pour ce défi. En effet, il faut une application :
-      <ul>
-        <li>Légère (25 MB)</li>
-        <li>Qui fonctionne hors-ligne</li>
-        <li>Qui puisse se tester en moins de 3 minutes.</li>
-      </ul>
-    </p>
-    <p>
-      J'ai voulu réinvestir mes connaissances aqcquises en développant Wagon,
-      j'ai donc reflechi à une application sur la thématique des transports en
-      commun, qui intégrerait ces contraintes.
-    </p>
-    <p>
-      Mais je ne voulais pas une application trop basique, il me fallait un côté
-      "Waouh". C'est ainsi que m'est venue l'idée : une application 100%
-      hors-ligne, ou l'on verrait les bus bouger sur une carte ; <mark
-        >simple en apparence</mark
-      >, mais plutot technique à réaliser.
-    </p>
+    <div class="idea">
+      <h2>Idée</h2>
+      <p>
+        J'ai eu l'idée de cette application en prenant connaissance des
+        contraintes imposées pour ce défi. En effet, il faut une application :
+        <ul>
+          <li>Légère (25 MB)</li>
+          <li>Qui fonctionne hors-ligne</li>
+          <li>Qui puisse se tester en moins de 3 minutes.</li>
+        </ul>
+      </p>
+      <p>
+        J'ai voulu réinvestir mes connaissances aqcquises en développant Wagon,
+        j'ai donc reflechi à une application sur la thématique des transports en
+        commun, qui intégrerait ces contraintes.
+      </p>
+      <p>
+        Mais je ne voulais pas une application trop basique, il me fallait un
+        côté "Waouh". C'est ainsi que m'est venue l'idée : une application 100%
+        hors-ligne, ou l'on verrait les bus bouger sur une carte ; <mark
+          >simple en apparence</mark
+        >, mais plutot technique à réaliser.
+      </p>
+    </div>
 
-    <h2>Défis techniques</h2>
-    <p>
-      Pour respecter les contraintes, j'ai fait face à quelques difficultés en
-      réalisant mon app.
-    </p>
+    <div style="height: 20vh"></div>
 
-    <h3>Carte hors-ligne</h3>
-    <p>
-      Bien qu'Apple Plan propose un mode hors-ligne depuis iOS 17, le SDK
-      disponible dans Swift UI ne propose pas d'option analogue. Voici la parade
-      que j'ai trouvé :
-    </p>
-    <ol>
-      <li>
-        Utiliser Apple Plan en mode satellite pour retirer tous les labels par
-        défaut
-      </li>
-      <li>Extraire les données OpenStreetMap dans un fichier JSON</li>
-      <li>
-        Itérer sur chaque type de surface et dessiner des polygones sur la carte
-        Apple Plan
-      </li>
-    </ol>
+    <DeviceFrameSection height="fitContent">
+      <div>
+        <h2>Défis techniques</h2>
+        <p>
+          Pour respecter les contraintes, j'ai fait face à quelques difficultés
+          en réalisant mon app.
+        </p>
+        <h3>Carte hors-ligne</h3>
+        <p>
+          Bien qu'Apple Plan propose un mode hors-ligne depuis iOS 17, le SDK
+          disponible dans Swift UI ne propose pas d'option analogue. Voici la
+          parade que j'ai trouvé :
+        </p>
+        <ol>
+          <li>
+            Utiliser Apple Plan en mode satellite pour retirer tous les labels
+            par défaut
+          </li>
+          <li>Extraire les données OpenStreetMap dans un fichier JSON</li>
+          <li>
+            Itérer sur chaque type de surface et dessiner des polygones sur la
+            carte Apple Plan
+          </li>
+        </ol>
+      </div>
+      <Image
+        slot="frame"
+        class:list={[ImageSizePreset.CroppedPhone]}
+        src={mapImage}
+        alt=""
+      />
+    </DeviceFrameSection>
     <h3>Taille des données</h3>
     <p>
       C'est un choix crucial pour l'application : Comment stocker efficacement
@@ -85,32 +120,32 @@ import Layout from "../layouts/Layout.astro";
       J'ai donc opté pour une approche plus proche du format de stockage dans le
       GTFS, en retirant le maximum d'informations inutiles à mon app. Je me
       retrouve donc avec 5 extraits JSON :
-      <ul>
-        <li>
-          <code>calendar</code> qui liste tous les services et leur période de validité.
-          Par exemple, c'est ce fichier qui dira que le service <code>1839</code
-          > est valide du 1er janvier au 1er juillet, mais uniquement les dimanches.
-        </li>
-        <li>
-          <code>calendar_dates</code> qui spécifie toutes les exceptions (jours fériés
-          et vacances entre autres) liées aux services précédemment cités.
-        </li>
-        <li>
-          <code>trips</code> contient tous les trajets possibles, i.e. la suite des
-          arrêts desservis et l'heure de passage.
-        </li>
-        <li><code>stops</code> liste tous les arrêts de la ville.</li>
-        <li><code>routes</code> liste toutes les lignes de la ville</li>
-        <li>
-          <code>shapes</code> repertorie les routes liées aux trajets. Pour optimiser
-          les formes, j'ai réduit la précision des coordonnées GPS et j'ai appliqué
-          l'algortihme de <a
-            href="https://fr.wikipedia.org/wiki/Algorithme_de_Douglas-Peucker"
-            >Douglas-Peucker</a
-          >.
-        </li>
-      </ul>
     </p>
+    <ul>
+      <li>
+        <code>calendar</code> qui liste tous les services et leur période de validité.
+        Par exemple, c'est ce fichier qui dira que le service <code>1839</code> est
+        valide du 1er janvier au 1er juillet, mais uniquement les dimanches.
+      </li>
+      <li>
+        <code>calendar_dates</code> qui spécifie toutes les exceptions (jours fériés
+        et vacances entre autres) liées aux services précédemment cités.
+      </li>
+      <li>
+        <code>trips</code> contient tous les trajets possibles, i.e. la suite des
+        arrêts desservis et l'heure de passage.
+      </li>
+      <li><code>stops</code> liste tous les arrêts de la ville.</li>
+      <li><code>routes</code> liste toutes les lignes de la ville</li>
+      <li>
+        <code>shapes</code> repertorie les routes liées aux trajets. Pour optimiser
+        les formes, j'ai réduit la précision des coordonnées GPS et j'ai appliqué
+        l'algortihme de <a
+          href="https://fr.wikipedia.org/wiki/Algorithme_de_Douglas-Peucker"
+          >Douglas-Peucker</a
+        >.
+      </li>
+    </ul>
     <p>
       Une autre optimisation consiste en la rénumérotation des IDs du GTFS, qui
       sont étrangement extremement verbeux.
@@ -120,12 +155,16 @@ import Layout from "../layouts/Layout.astro";
       <code> chouette:TimeTable:43c17fa7-3a55-4e11-95e1-7ac11d989e14:LOC </code>
     </p>
     <h3>Tester le Playground</h3>
-    <a href="">Télécharger le Playground</a>
-    <small
-      >Requiert un Mac ou un iPad avec l'application Swift Playground
-      d'installée.</small
-    >
+    <a class="download" href="https://cdn1.arno.cl/2025/03/HaloBus.swiftpm.zip">
+      Télécharger le Playground
+    </a>
+    <br /><br />
+    <small>
+      Requiert un Mac ou un iPad avec l'application Swift Playground
+      d'installée.
+    </small>
   </section>
+  <Footer />
 </Layout>
 
 <style>
@@ -154,9 +193,29 @@ import Layout from "../layouts/Layout.astro";
     background-color: #009966;
   }
 
+  section.hero {
+    padding-top: 20vh;
+    padding-bottom: 10vh;
+    background: linear-gradient(
+      to bottom,
+      #fd5d0000 20%,
+      #fd5d0030 80%,
+      #b143ae70 100%
+    );
+  }
+
   section {
     padding: 0 var(--navbar-horizontal-padding);
-    padding-top: 20vh;
+  }
+
+  section.content {
+    margin-top: -16vh;
+    padding-top: 10vh;
+    padding-bottom: 10vh;
+  }
+
+  .idea {
+    padding-left: calc(40vh + 10vw);
   }
 
   h1 {
@@ -164,6 +223,8 @@ import Layout from "../layouts/Layout.astro";
   }
 
   h2 {
+    margin-top: 56px;
+    margin-bottom: 22px;
     font-size: 40px;
   }
 
@@ -171,8 +232,27 @@ import Layout from "../layouts/Layout.astro";
     font-size: 32px;
   }
 
-  p {
+  p,
+  ol,
+  ul {
+    margin: 16px 0;
     font-size: 18px;
+    opacity: 0.7;
+  }
+
+  p.important {
+    font-size: 22px;
+  }
+
+  .icon {
+    height: 40vh;
+    width: auto;
+    border-radius: 24%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+
+  a.download {
+    font-size: 20px;
   }
 
   code {
