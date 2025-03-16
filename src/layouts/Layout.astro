@@ -7,6 +7,7 @@ interface Props {
 }
 
 const { title } = Astro.props;
+const currentUrl = Astro.url;
 ---
 
 <!doctype html>
@@ -25,7 +26,9 @@ const { title } = Astro.props;
         <span>Arno Cellarier</span>
         <ul>
           <li>
-            <a href="/">Mes projets</a>
+            <a href={currentUrl.pathname === "/" ? "#projets" : "/"}>
+              Mes projets
+            </a>
           </li>
           <li>
             <a href="/swift-student-challenge-2025">
@@ -209,6 +212,35 @@ const { title } = Astro.props;
     font-size: max(11px, 0.3em);
     color: gray;
     vertical-align: super;
+  }
+
+  h1,
+  h2 {
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: max(40px, 5vw);
+    font-weight: 500;
+  }
+
+  h3 {
+    font-size: max(36px, 4vw);
+    font-weight: 500;
+  }
+
+  p {
+    font-size: max(18px, 2vw);
+    margin-bottom: 4vw;
+    opacity: 0.7;
+  }
+
+  h3 small {
+    font-size: inherit;
+    opacity: 0.6;
+  }
+
+  .bento-content {
+    padding: 20vh var(--navbar-horizontal-padding);
+    padding-bottom: 0;
   }
 
   .bento-content [role="rowgroup"] {

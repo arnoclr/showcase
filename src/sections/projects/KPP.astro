@@ -1,0 +1,52 @@
+---
+import kppScrollingDemo from "../../videos/kpp scrolling.webm";
+import kppScrollingDemoPoster from "../../videos/kpp scrolling.png";
+import shareImageDark from "../../images/kpp/dark/share.png";
+import { Image } from "astro:assets";
+import Heading from "../../components/presentations/Heading.astro";
+import Video from "../../components/Video.astro";
+import DeviceFrameSection from "../../components/presentations/DeviceFrameSection.astro";
+import { ImageSizePreset } from "../../utils/images";
+import Comments from "../../components/Comments.vue";
+import Team from "../../components/presentations/Team.astro";
+
+const arnoCellarier = {
+  firstname: "Arno",
+  lastname: "Cellarier",
+  role: "Développeur",
+  linkedinUrl: "https://www.linkedin.com/in/arno-cellarier/",
+};
+
+const adamMathieson = {
+  firstname: "Adam",
+  lastname: "Mathieson",
+  role: "Développeur",
+  linkedinUrl: "https://www.linkedin.com/in/adamdmathieson/",
+};
+---
+
+<section class="bento-content">
+  <Heading title="KPP Maker" subtitle="Créez vos girouettes pour OMSI 2." />
+  <Video
+    src={kppScrollingDemo}
+    poster={kppScrollingDemoPoster}
+    width="calc(100vw - var(--navbar-horizontal-padding) * 2)"
+    frame="iPad10"
+  />
+  <p>Crée par</p>
+  <Team people={[arnoCellarier, adamMathieson]} />
+  <DeviceFrameSection>
+    <h3>Partagez les avec<br /> un simple lien.</h3>
+    <p>
+      Générez un lien que vous pouvez réouvrir à tout moment sur n'importe quel
+      appareil.
+    </p>
+    <Image
+      slot="frame"
+      class:list={[ImageSizePreset.ThreePhonesOrTablet]}
+      src={shareImageDark}
+      alt=""
+    />
+  </DeviceFrameSection>
+  <Comments githubIssueId={4} client:visible />
+</section>
