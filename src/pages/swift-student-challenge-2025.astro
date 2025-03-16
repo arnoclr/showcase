@@ -7,6 +7,7 @@ import DeviceFrameSection from "../components/presentations/DeviceFrameSection.a
 import mapImage from "../images/ssc25/15.png";
 import Footer from "../sections/Footer.astro";
 import appIcon from "../images/ssc25/logo.png";
+import Comments from "../components/Comments.vue";
 ---
 
 <Layout title="Swift Student Challenge 2025">
@@ -38,12 +39,13 @@ import appIcon from "../images/ssc25/logo.png";
           Halobus est une application hors ligne qui affiche l’ensemble du
           réseau de transports en commun de Nice, avec la position actuelle de
           tous les bus et tramways. Elle met en valeur l’étendue du réseau et
-          invite les utilisateurs à explorer la ville sans voiture.
+          invite les utilisateurs à <mark>explorer la ville sans voiture</mark>.
         </p>
       </div>
     </DeviceFrameSection>
 
     <div class="idea">
+      <Comments githubIssueId={6} client:visible />
       <h2>Idée</h2>
       <p>
         J'ai eu l'idée de cette application en prenant connaissance des
@@ -55,7 +57,7 @@ import appIcon from "../images/ssc25/logo.png";
         </ul>
       </p>
       <p>
-        J'ai voulu réinvestir mes connaissances aqcquises en développant Wagon,
+        J'ai voulu réinvestir mes connaissances acquises en développant Wagon,
         j'ai donc reflechi à une application sur la thématique des transports en
         commun, qui intégrerait ces contraintes.
       </p>
@@ -64,7 +66,7 @@ import appIcon from "../images/ssc25/logo.png";
         côté "Waouh". C'est ainsi que m'est venue l'idée : une application 100%
         hors-ligne, ou l'on verrait les bus bouger sur une carte ; <mark
           >simple en apparence</mark
-        >, mais plutot technique à réaliser.
+        >, mais plutôt technique à réaliser.
       </p>
     </div>
 
