@@ -38,7 +38,12 @@ import map6Image from "../images/ssc25/map6.png";
   </section>
   <section class="content">
     <DeviceFrameSection placement="frameFirst" height="fitContent">
-      <Image slot="frame" src={appIcon} alt="" class:list={["icon"]} />
+      <Image
+        slot="frame"
+        src={appIcon}
+        alt="Icône de l'application représentant un tramway sur l'écran d'un radar vert"
+        class:list={[ImageSizePreset.AppIcon]}
+      />
       <div>
         <h2>Halobus</h2>
         <p class="important">
@@ -111,7 +116,7 @@ import map6Image from "../images/ssc25/map6.png";
       <Image src={map6Image} alt="" />
       <ol>
         <li>Initialisation de la carte Apple Plan, centrée sur Nice.</li>
-        <li>Affichage en mode satellite, pour retirer les labels.</li>
+        <li>Affichage en mode satellite pour retirer les labels.</li>
         <li>
           Itération sur l'extrait OSM pour dessiner des polygones de couleur sur
           la carte.
@@ -273,13 +278,6 @@ import map6Image from "../images/ssc25/map6.png";
 
   p.important {
     font-size: 22px;
-  }
-
-  .icon {
-    height: 40vh;
-    width: auto;
-    border-radius: 24%;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   }
 
   a.download {

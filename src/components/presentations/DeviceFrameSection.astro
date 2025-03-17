@@ -1,7 +1,7 @@
 ---
 interface Props {
   height?: "screen" | "fitContent";
-  placement?: "frameFirst" | "textFirst";
+  placement?: "frameFirst" | "textFirst" | "frameFirstOnDesktop";
 }
 
 const { height = "screen", placement = "textFirst" } = Astro.props;
@@ -39,6 +39,10 @@ const { height = "screen", placement = "textFirst" } = Astro.props;
     section.textFirst,
     section.frameFirst {
       flex-direction: column;
+    }
+
+    section.frameFirst {
+      flex-direction: column-reverse;
     }
 
     .screen {

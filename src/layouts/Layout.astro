@@ -298,6 +298,13 @@ const currentUrl = Astro.url;
     height: auto;
   }
 
+  .appIcon {
+    height: 40vh;
+    width: auto;
+    border-radius: 24%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+
   @keyframes appearWithBlur {
     from {
       transform-origin: top;
@@ -319,6 +326,10 @@ const currentUrl = Astro.url;
     .threePhonesOrTablet {
       width: 100%;
     }
+
+    .appIcon {
+      height: 30vh;
+    }
   }
 
   @media (max-width: 500px) {
@@ -328,6 +339,11 @@ const currentUrl = Astro.url;
       object-fit: cover;
       transform: scale(1.2);
       margin: 5vh 0;
+    }
+
+    .appIcon {
+      height: auto;
+      width: 50vw;
     }
   }
 
