@@ -8,6 +8,12 @@ import appIcon from "../images/ssc25/logo.png";
 import Layout from "../layouts/Layout.astro";
 import Footer from "../sections/Footer.astro";
 import { ImageSizePreset } from "../utils/images";
+import map1Image from "../images/ssc25/map1.png";
+import map2Image from "../images/ssc25/map2.png";
+import map3Image from "../images/ssc25/map3.png";
+import map4Image from "../images/ssc25/map4.png";
+import map5Image from "../images/ssc25/map5.png";
+import map6Image from "../images/ssc25/map6.png";
 ---
 
 <Layout title="Swift Student Challenge 2025">
@@ -69,41 +75,53 @@ import { ImageSizePreset } from "../utils/images";
         >, mais plutôt technique à réaliser.
       </p>
     </div>
+  </section>
 
-    <div style="height: 20vh"></div>
+  <section class="technical">
+    <h2>Défis techniques</h2>
+    <p>
+      Pour respecter les contraintes, j'ai fait face à quelques difficultés en
+      réalisant mon app.
+    </p>
+    <h3>Carte hors-ligne</h3>
+    <p>
+      Bien qu'Apple Plan propose un mode hors-ligne depuis iOS 17, le SDK
+      disponible dans Swift UI ne propose pas d'option analogue. J'ai recréé ma
+      propre carte à partir des données OpenStreetMap et des options permises
+      par MapKit.
+    </p>
+  </section>
 
-    <DeviceFrameSection height="fitContent">
-      <div>
-        <h2>Défis techniques</h2>
-        <p>
-          Pour respecter les contraintes, j'ai fait face à quelques difficultés
-          en réalisant mon app.
-        </p>
-        <h3>Carte hors-ligne</h3>
-        <p>
-          Bien qu'Apple Plan propose un mode hors-ligne depuis iOS 17, le SDK
-          disponible dans Swift UI ne propose pas d'option analogue. Voici la
-          parade que j'ai trouvé :
-        </p>
-        <ol>
-          <li>
-            Utiliser Apple Plan en mode satellite pour retirer tous les labels
-            par défaut
-          </li>
-          <li>Extraire les données OpenStreetMap dans un fichier JSON</li>
-          <li>
-            Itérer sur chaque type de surface et dessiner des polygones sur la
-            carte Apple Plan
-          </li>
-        </ol>
-      </div>
-      <Image
-        slot="frame"
-        class:list={[ImageSizePreset.CroppedPhone]}
-        src={mapImage}
-        alt=""
-      />
-    </DeviceFrameSection>
+  <div id="map-anchor-start"></div>
+  <section style="padding: 0">
+    <div
+      class="mapSticky"
+      data-scroll
+      data-scroll-anchor-from="map-anchor-start"
+      data-scroll-anchor-to="map-anchor-end"
+      data-scroll-from-height-vh="-80"
+      data-scroll-to-height-vh="0"
+      data-scroll-bezier="0,0,1,1"
+    >
+      <Image src={map1Image} alt="" />
+      <Image src={map2Image} alt="" />
+      <Image src={map3Image} alt="" />
+      <Image src={map4Image} alt="" />
+      <Image src={map5Image} alt="" />
+      <Image src={map6Image} alt="" />
+      <ol>
+        <li>Initialisation de la carte Apple Plan, centrée sur Nice.</li>
+        <li>Affichage en mode satellite, pour retirer les labels.</li>
+        <li>
+          Itération sur l'extrait OSM pour dessiner des polygones de couleur sur
+          la carte.
+        </li>
+      </ol>
+    </div>
+  </section>
+  <div id="map-anchor-end"></div>
+
+  <section style="padding-top: 0;">
     <h3>Taille des données</h3>
     <p>
       C'est un choix crucial pour l'application : Comment stocker efficacement
@@ -214,6 +232,17 @@ import { ImageSizePreset } from "../utils/images";
     margin-top: -16vh;
     padding-top: 10vh;
     padding-bottom: 10vh;
+    background: linear-gradient(
+      to bottom,
+      rgba(180, 180, 180, 0),
+      rgba(180, 180, 180, 0.16) 20%,
+      rgba(180, 180, 180, 0.16)
+    );
+  }
+
+  section.technical {
+    padding-top: 5vh;
+    padding-bottom: 10vh;
   }
 
   .idea {
@@ -265,5 +294,71 @@ import { ImageSizePreset } from "../utils/images";
 
   mark {
     background-color: #ffc089;
+  }
+
+  .mapSticky {
+    position: relative;
+    height: 200vh;
+    transform: translateY(calc(var(--progress) * 100vh - 50vh));
+    user-select: none;
+    pointer-events: none;
+  }
+
+  .mapSticky img {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    transform: translateY(-50%);
+  }
+
+  .mapSticky img:nth-child(2) {
+    opacity: calc(var(--progress) * 6);
+  }
+
+  .mapSticky img:nth-child(3) {
+    opacity: calc((-0.3 + var(--progress)) * 10);
+  }
+
+  .mapSticky img:nth-child(4) {
+    opacity: calc((-0.4 + var(--progress)) * 12);
+  }
+
+  .mapSticky img:nth-child(5) {
+    opacity: calc((-0.5 + var(--progress)) * 14);
+  }
+
+  .mapSticky img:nth-child(6) {
+    opacity: calc((-0.6 + var(--progress)) * 18);
+  }
+
+  .mapSticky ol {
+    display: flex;
+    flex-direction: column;
+    gap: 10vh;
+    padding: 0 var(--navbar-horizontal-padding);
+    position: fixed;
+    top: 30%;
+    left: 0;
+    font-size: 40px;
+    color: black;
+    transform: translateY(calc(var(--progress) * -50vh));
+  }
+
+  .mapSticky ol li:nth-child(1) {
+    color: black;
+    opacity: calc(1 + var(--progress) * -10);
+  }
+
+  .mapSticky ol li:nth-child(2) {
+    opacity: calc((-0 + var(--progress)) * 4);
+    color: white;
+    text-shadow: 0 0 10px black;
+  }
+
+  .mapSticky ol li:nth-child(3) {
+    opacity: calc((-0.2 + var(--progress)) * 4);
+    color: black;
   }
 </style>
