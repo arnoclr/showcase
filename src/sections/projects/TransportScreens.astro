@@ -14,7 +14,7 @@ import rerScreenImage from "../../images/prochains-trains/rer.png";
   >
     <h1>Écrans d'informations<br />voyageur</h1>
     <div class="merged">
-      <video muted src="/images/syspad.webm"></video>
+      <video muted src="https://cdn1.arno.cl/2025/03/syspad.webm"></video>
       <Image class="syspad" src={syspadImage} alt="" />
     </div>
     <Image src={panamImage} alt="" class="panam" />
@@ -32,7 +32,6 @@ import rerScreenImage from "../../images/prochains-trains/rer.png";
     if (!video) return;
     const progress = window.scrollY / progressRange[1];
     video.currentTime = video.duration * progress;
-    console.log(progress);
   });
 </script>
 
