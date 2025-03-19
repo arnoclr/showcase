@@ -1,0 +1,62 @@
+---
+import { Image } from "astro:assets";
+import syspadImage from "../../images/prochains-trains/syspad.png";
+---
+
+<section class="header">
+  <div
+    class="elements"
+    data-scroll
+    data-scroll-from-height-vh="0"
+    data-scroll-to-height-vh="200"
+  >
+    <div class="merged">
+      <video muted src="/images/syspad.webm"></video>
+      <Image class="syspad" src={syspadImage} alt="" />
+    </div>
+  </div>
+  <h1>Écrans</h1>
+  <div style="height: 400vh"></div>
+</section>
+
+<script>
+  const video = document.querySelector("video");
+  const progressRange = [100, window.innerHeight * 2];
+
+  window.addEventListener("scroll", (e) => {
+    if (!video) return;
+    const progress = window.scrollY / progressRange[1];
+    video.currentTime = video.duration * progress;
+    console.log(progress);
+  });
+</script>
+
+<style>
+  .elements {
+    height: 280vh;
+    background-color: #f3edeb;
+  }
+
+  .merged {
+    /* overflow-x: hidden; */
+    position: sticky;
+    top: 0;
+    transform: translateY(calc(50vh - 20vw))
+      scale(min(1, calc(1.4 - var(--progress) * 0.9)));
+  }
+
+  video {
+    background-color: rgba(255, 0, 0, 0.4);
+    width: 100vw;
+    height: auto;
+    opacity: calc(var(--progress) * 2);
+  }
+
+  .syspad {
+    display: block;
+    width: 100vw;
+    height: auto;
+    transform: translateY(-47vw) scale(1.135);
+    opacity: calc(var(--progress) * 4 - 1.6);
+  }
+</style>

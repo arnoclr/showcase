@@ -3,10 +3,10 @@ import MessageBubble from "../components/MessageBubble.astro";
 
 interface Props {
   title: string;
+  overflowX?: "hidden" | "visible";
 }
 
 const { title } = Astro.props;
-const currentUrl = Astro.url;
 ---
 
 <!doctype html>
@@ -193,7 +193,7 @@ const currentUrl = Astro.url;
 
   body,
   html {
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
     margin: 0;
     padding: 0;
   }
