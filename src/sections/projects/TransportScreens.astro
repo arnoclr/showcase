@@ -1,6 +1,8 @@
 ---
 import { Image } from "astro:assets";
 import syspadImage from "../../images/prochains-trains/syspad.png";
+import panamImage from "../../images/prochains-trains/panam.png";
+import rerScreenImage from "../../images/prochains-trains/rer.png";
 ---
 
 <section class="header">
@@ -10,12 +12,15 @@ import syspadImage from "../../images/prochains-trains/syspad.png";
     data-scroll-from-height-vh="0"
     data-scroll-to-height-vh="200"
   >
+    <h1>Écrans d'informations<br />voyageur</h1>
     <div class="merged">
       <video muted src="/images/syspad.webm"></video>
       <Image class="syspad" src={syspadImage} alt="" />
     </div>
+    <Image src={panamImage} alt="" class="panam" />
+    <Image src={rerScreenImage} alt="" class="rerScreen" />
   </div>
-  <h1>Écrans</h1>
+  <div class="safeArea"></div>
   <div style="height: 400vh"></div>
 </section>
 
@@ -32,24 +37,47 @@ import syspadImage from "../../images/prochains-trains/syspad.png";
 </script>
 
 <style>
+  .header {
+    --small-screens-scroll-height: 0vh;
+    --centered-translateY: calc(50vh - 12vw);
+  }
+
   .elements {
-    height: 280vh;
+    position: relative;
+    height: 250vh;
     background-color: #f3edeb;
+  }
+
+  h1 {
+    position: absolute;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    width: max-content;
+    opacity: calc(0.8 - var(--progress) * 8);
   }
 
   .merged {
     /* overflow-x: hidden; */
     position: sticky;
+    height: calc(30vw);
     top: 0;
-    transform: translateY(calc(50vh - 20vw))
-      scale(min(1, calc(1.4 - var(--progress) * 0.9)));
+    transform-origin: bottom;
+    transform: translateY(var(--centered-translateY))
+      scale(min(1, calc(1.4 - var(--progress) * 0.94)));
+  }
+
+  .safeArea {
+    width: 100vw;
+    height: var(--centered-translateY);
+    /* background-color: red; */
+    background: linear-gradient(to bottom, #f3edeb, transparent);
   }
 
   video {
-    background-color: rgba(255, 0, 0, 0.4);
     width: 100vw;
     height: auto;
-    opacity: calc(var(--progress) * 2);
+    opacity: calc(var(--progress) * 2 - 0.4);
   }
 
   .syspad {
@@ -58,5 +86,26 @@ import syspadImage from "../../images/prochains-trains/syspad.png";
     height: auto;
     transform: translateY(-47vw) scale(1.135);
     opacity: calc(var(--progress) * 4 - 1.6);
+  }
+
+  .panam,
+  .rerScreen {
+    height: 25vw;
+    width: auto;
+    position: absolute;
+    bottom: 0;
+    opacity: calc(var(--progress) * 10 - 9);
+  }
+
+  .panam {
+    left: 0;
+    transform: translateY(calc(var(--centered-translateY) + 10%))
+      translateX(-18vw);
+  }
+
+  .rerScreen {
+    right: 0;
+    transform: translateY(calc(var(--centered-translateY) + 10%))
+      translateX(8vw);
   }
 </style>
