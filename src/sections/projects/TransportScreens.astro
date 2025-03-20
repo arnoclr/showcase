@@ -15,7 +15,7 @@ import Comments from "../../components/Comments.vue";
     data-scroll
     data-scroll-from-height-vh="0"
     data-scroll-to-height-vh="200"
-    data-scroll-bezier="0,.1,.6,1"
+    data-scroll-bezier=".86,.63,.78,.98"
   >
     <h1>Écrans d'informations<br />voyageur</h1>
     <div class="merged">
@@ -66,7 +66,7 @@ import Comments from "../../components/Comments.vue";
 
 <script>
   const video = document.querySelector("video");
-  const progressRange = [100, window.innerHeight * 1.6];
+  const progressRange = [120, window.innerHeight * 1.6];
   // @ts-ignore
   const isSafari = window.safari !== undefined;
 
@@ -75,7 +75,8 @@ import Comments from "../../components/Comments.vue";
       video?.play();
     } else {
       if (!video) return;
-      const progress = window.scrollY / progressRange[1];
+      const progress = (window.scrollY - progressRange[0]) / progressRange[1];
+      if (progress < 0) return;
       video.currentTime = video.duration * progress;
     }
   });
@@ -103,6 +104,12 @@ import Comments from "../../components/Comments.vue";
     color: #3e2b25;
   }
 
+  @media (max-width: 800px) {
+    h1 {
+      font-size: 8vw;
+    }
+  }
+
   .merged {
     position: sticky;
     height: calc(30vw);
@@ -122,7 +129,7 @@ import Comments from "../../components/Comments.vue";
   video {
     width: 100vw;
     height: auto;
-    opacity: calc(var(--progress) * 2 - 0.4);
+    opacity: calc(var(--progress) * 2 - 0.2);
   }
 
   .syspad {
@@ -149,7 +156,7 @@ import Comments from "../../components/Comments.vue";
     width: auto;
     position: absolute;
     bottom: 0;
-    opacity: calc(var(--progress) * 10 - 9);
+    opacity: calc((var(--progress) * 10 - 9.8) * 5);
   }
 
   .panam {
