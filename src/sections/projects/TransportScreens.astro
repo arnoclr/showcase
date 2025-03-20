@@ -61,7 +61,6 @@ import bitmojisImage from "../../images/prochains-trains/bitmojis.png";
       encore plus d’écrans, ainsi que des informations pour d’autres villes,
       notamment les départs en gare SNCF.
     </p>
-    <Comments githubIssueId={7} client:visible />
   </div>
   <Image src={bitmojisImage} alt="" />
 </section>
@@ -76,6 +75,9 @@ import bitmojisImage from "../../images/prochains-trains/bitmojis.png";
       <Image src={screensPodiumImage} alt="" />
     </div>
     <p>Les lignes et écrans de RER sont les plus utilisés.</p>
+  </div>
+  <div class="comments">
+    <Comments githubIssueId={7} client:visible />
   </div>
 </section>
 
@@ -94,7 +96,7 @@ import bitmojisImage from "../../images/prochains-trains/bitmojis.png";
       },
       {
         number: 86400,
-        headline: "Reqûetes traitées par jour",
+        headline: "Requêtes traitées par jour",
         footnote: "Selon les jours. Moyenne sur des jours à forte demande.",
       },
     ]}
@@ -274,6 +276,10 @@ import bitmojisImage from "../../images/prochains-trains/bitmojis.png";
     box-shadow:
       inset 4px 2px 60px rgba(255, 45, 85, 0.12),
       4px 2px 60px rgba(255, 45, 85, 0.12);
+  }
+
+  .comments {
+    padding: 22px 56px;
   }
 
   @media (prefers-color-scheme: dark) {
