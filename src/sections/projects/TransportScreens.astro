@@ -125,6 +125,7 @@ import bitmojisImage from "../../images/prochains-trains/bitmojis.png";
   .header {
     --small-screens-scroll-height: 0vh;
     --centered-translateY: calc(50vh - 12vw);
+    --header-bg: #f3edeb;
   }
 
   .header small {
@@ -137,7 +138,7 @@ import bitmojisImage from "../../images/prochains-trains/bitmojis.png";
   .elements {
     position: relative;
     height: 250vh;
-    background-color: #f3edeb;
+    background-color: var(--header-bg);
   }
 
   h1 {
@@ -169,7 +170,7 @@ import bitmojisImage from "../../images/prochains-trains/bitmojis.png";
     width: 100vw;
     height: var(--centered-translateY);
     /* background-color: red; */
-    background: linear-gradient(to bottom, #f3edeb, transparent);
+    background: linear-gradient(to bottom, var(--header-bg), transparent);
   }
 
   video {
@@ -273,6 +274,20 @@ import bitmojisImage from "../../images/prochains-trains/bitmojis.png";
     box-shadow:
       inset 4px 2px 60px rgba(255, 45, 85, 0.12),
       4px 2px 60px rgba(255, 45, 85, 0.12);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    h1 {
+      color: #f3edeb;
+    }
+
+    .header {
+      --header-bg: #222;
+    }
+
+    .favorites {
+      background-color: rgba(251, 104, 131, 0.14);
+    }
   }
 
   @media (max-width: 880px) {
