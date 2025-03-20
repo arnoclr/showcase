@@ -7,6 +7,7 @@ import Statistics from "../../components/presentations/Statistics.astro";
 import linesPodiumImage from "../../images/prochains-trains/routes.png";
 import screensPodiumImage from "../../images/prochains-trains/screens.png";
 import Comments from "../../components/Comments.vue";
+import bitmojisImage from "../../images/prochains-trains/bitmojis.png";
 ---
 
 <section class="header">
@@ -29,12 +30,57 @@ import Comments from "../../components/Comments.vue";
     <Image src={rerScreenImage} alt="" class="rerScreen" />
   </div>
   <div class="safeArea"></div>
+  <small
+    data-footnote="Ces écrans sont des reproductions d'écrans RATP et SNCF, il ne s'agit en aucun cas d'écrans officiels et les informations affichées peuvent différer."
+    >Ecrans : prochains départs métro (PANAM), prochain départ RER (Syspad),
+    prochains départs RER.</small
+  >
 </section>
 
-<section></section>
+<section class="team">
+  <div>
+    <h2>Un travail d'équipe</h2>
+    <p>
+      Avec Léon Edmee, nous avons recréé une large gamme d’écrans d’information
+      voyageur en nous basant sur des photos trouvées sur Twitter, Discord,
+      ainsi que sur nos propres clichés pris en gare.
+    </p>
+    <p>
+      Pendant plusieurs mois, nous avons analysé l’API IDFM pour évaluer la
+      fiabilité des données en temps réel, allant même jusqu’à faire des retours
+      à leur équipe sur Slack.
+    </p>
+    <p>
+      Chaque écran a été développé de notre côté, puis centralisé sur un hub
+      commun afin de mutualiser le paramétrage (choix des arrêts et lignes).
+      Grâce à des composants réutilisables, Léon a pu livrer 8 écrans en un
+      temps record.
+    </p>
+    <p>
+      Le site est en ligne et continue d’évoluer : nous prévoyons d’ajouter
+      encore plus d’écrans, ainsi que des informations pour d’autres villes,
+      notamment les départs en gare SNCF.
+    </p>
+    <Comments githubIssueId={7} client:visible />
+  </div>
+  <Image src={bitmojisImage} alt="" />
+</section>
+
+<section>
+  <div class="favorites">
+    <h3 data-footnote="Données Mars 2025">
+      Vos coups de <span style="color: var(--pink)">coeur</span>
+    </h3>
+    <div class="podiums">
+      <Image src={linesPodiumImage} alt="" />
+      <Image src={screensPodiumImage} alt="" />
+    </div>
+    <p>Les lignes et écrans de RER sont les plus utilisés.</p>
+  </div>
+</section>
 
 <section class="statistics">
-  <h3>Chiffres clés</h3>
+  <h3 data-footnote="En mars 2025">Chiffres clés</h3>
   <Statistics
     color="#da291c"
     rows={[
@@ -53,16 +99,9 @@ import Comments from "../../components/Comments.vue";
       },
     ]}
   />
-  <h3 style="margin-top: 20vh;" data-footnote="Données Mars 2025">
-    Vos coups de <span style="color: rgb(255, 45, 85);">coeur</span>
-  </h3>
-  <div class="podiums">
-    <Image src={linesPodiumImage} alt="" />
-    <Image src={screensPodiumImage} alt="" />
-  </div>
-  <p>Les lignes et écrans de RER sont les plus utilisés.</p>
-  <Comments githubIssueId={7} client:visible />
 </section>
+
+<section></section>
 
 <script>
   const video = document.querySelector("video");
@@ -86,6 +125,13 @@ import Comments from "../../components/Comments.vue";
   .header {
     --small-screens-scroll-height: 0vh;
     --centered-translateY: calc(50vh - 12vw);
+  }
+
+  .header small {
+    display: block;
+    padding: 0 var(--navbar-horizontal-padding);
+    opacity: 0.4;
+    transform: translateY(5vh);
   }
 
   .elements {
@@ -172,16 +218,75 @@ import Comments from "../../components/Comments.vue";
   }
 
   section:not(.header) {
-    padding: 10vh var(--navbar-horizontal-padding);
+    margin: 10vh var(--navbar-horizontal-padding);
+  }
+
+  h2 {
+    font-size: 3rem;
+  }
+
+  p {
+    margin: 1.2rem 0;
+    font-size: 1.4rem;
+  }
+
+  .team {
+    padding-top: 10vh;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 5vw;
+  }
+
+  .team img {
+    width: 100%;
+    height: auto;
+  }
+
+  @media (max-width: 1100px) {
+    .team {
+      grid-template-columns: 1fr;
+    }
+
+    .team img {
+      height: 200px;
+      width: auto;
+      order: -1;
+    }
   }
 
   .podiums {
-    display: flex;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 10vw;
   }
 
   .podiums img {
     width: 100%;
     height: auto;
+  }
+
+  .favorites {
+    padding: 42px 56px;
+    border-radius: 32px;
+    background-color: rgba(255, 45, 85, 0.04);
+    box-shadow:
+      inset 4px 2px 60px rgba(255, 45, 85, 0.12),
+      4px 2px 60px rgba(255, 45, 85, 0.12);
+  }
+
+  @media (max-width: 880px) {
+    .podiums {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .favorites h3 {
+    margin-top: 0;
+  }
+
+  .favorites p {
+    margin: 0;
+    color: var(--pink);
   }
 </style>
