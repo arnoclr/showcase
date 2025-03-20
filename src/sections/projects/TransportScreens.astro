@@ -3,6 +3,10 @@ import { Image } from "astro:assets";
 import syspadImage from "../../images/prochains-trains/syspad.png";
 import panamImage from "../../images/prochains-trains/panam.png";
 import rerScreenImage from "../../images/prochains-trains/rer.png";
+import Statistics from "../../components/presentations/Statistics.astro";
+import linesPodiumImage from "../../images/prochains-trains/routes.png";
+import screensPodiumImage from "../../images/prochains-trains/screens.png";
+import Comments from "../../components/Comments.vue";
 ---
 
 <section class="header">
@@ -21,12 +25,44 @@ import rerScreenImage from "../../images/prochains-trains/rer.png";
     <Image src={rerScreenImage} alt="" class="rerScreen" />
   </div>
   <div class="safeArea"></div>
-  <div style="height: 400vh"></div>
+</section>
+
+<section></section>
+
+<section class="statistics">
+  <h3>Chiffres clés</h3>
+  <Statistics
+    color="#da291c"
+    rows={[
+      {
+        number: 10,
+        headline: "Écrans disponibles",
+      },
+      {
+        number: 3300,
+        headline: "Utilisateurs uniques",
+      },
+      {
+        number: 86400,
+        headline: "Reqûetes traitées par jour",
+        footnote: "Selon les jours. Moyenne sur des jours à forte demande.",
+      },
+    ]}
+  />
+  <h3 style="margin-top: 20vh;" data-footnote="Données Mars 2025">
+    Vos coups de <span style="color: rgb(255, 45, 85);">coeur</span>
+  </h3>
+  <div class="podiums">
+    <Image src={linesPodiumImage} alt="" />
+    <Image src={screensPodiumImage} alt="" />
+  </div>
+  <p>Les lignes et écrans de RER sont les plus utilisés.</p>
+  <Comments githubIssueId={7} client:visible />
 </section>
 
 <script>
   const video = document.querySelector("video");
-  const progressRange = [100, window.innerHeight * 2];
+  const progressRange = [100, window.innerHeight * 1.6];
 
   window.addEventListener("scroll", (e) => {
     if (!video) return;
@@ -85,7 +121,7 @@ import rerScreenImage from "../../images/prochains-trains/rer.png";
     width: 100vw;
     height: auto;
     transform: translateY(-47vw) scale(1.135);
-    opacity: calc(var(--progress) * 4 - 1.6);
+    opacity: calc(var(--progress) * 4 - 2);
   }
 
   .panam,
@@ -107,5 +143,19 @@ import rerScreenImage from "../../images/prochains-trains/rer.png";
     right: 0;
     transform: translateY(calc(var(--centered-translateY) + 10%))
       translateX(8vw);
+  }
+
+  section:not(.header) {
+    padding: 10vh var(--navbar-horizontal-padding);
+  }
+
+  .podiums {
+    display: flex;
+    gap: 10vw;
+  }
+
+  .podiums img {
+    width: 100%;
+    height: auto;
   }
 </style>
