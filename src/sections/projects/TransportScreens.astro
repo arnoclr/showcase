@@ -15,10 +15,14 @@ import Comments from "../../components/Comments.vue";
     data-scroll
     data-scroll-from-height-vh="0"
     data-scroll-to-height-vh="200"
+    data-scroll-bezier="0,.1,.6,1"
   >
     <h1>Écrans d'informations<br />voyageur</h1>
     <div class="merged">
-      <video muted src="https://cdn1.arno.cl/2025/03/syspad.webm"></video>
+      <video
+        muted
+        preload="metadata"
+        src="https://cdn1.arno.cl/2025/03/syspad.webm"></video>
       <Image class="syspad" src={syspadImage} alt="" />
     </div>
     <Image src={panamImage} alt="" class="panam" />
@@ -63,11 +67,17 @@ import Comments from "../../components/Comments.vue";
 <script>
   const video = document.querySelector("video");
   const progressRange = [100, window.innerHeight * 1.6];
+  // @ts-ignore
+  const isSafari = window.safari !== undefined;
 
-  window.addEventListener("scroll", (e) => {
-    if (!video) return;
-    const progress = window.scrollY / progressRange[1];
-    video.currentTime = video.duration * progress;
+  window.addEventListener("scroll", () => {
+    if (isSafari) {
+      video?.play();
+    } else {
+      if (!video) return;
+      const progress = window.scrollY / progressRange[1];
+      video.currentTime = video.duration * progress;
+    }
   });
 </script>
 
@@ -94,7 +104,6 @@ import Comments from "../../components/Comments.vue";
   }
 
   .merged {
-    /* overflow-x: hidden; */
     position: sticky;
     height: calc(30vw);
     top: 0;
@@ -122,6 +131,16 @@ import Comments from "../../components/Comments.vue";
     height: auto;
     transform: translateY(-47vw) scale(1.135);
     opacity: calc(var(--progress) * 4 - 2);
+  }
+
+  @supports (font: -apple-system-body) and (-webkit-appearance: none) {
+    /* .syspad {
+      transform: scale(1.135) translateY(-51.1vw);
+    }
+
+    .merged {
+      translate: 0 -20%;
+    } */
   }
 
   .panam,
