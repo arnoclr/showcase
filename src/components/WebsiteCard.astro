@@ -39,6 +39,25 @@ const { title, description, image, backgroundColor, textColor } = Astro.props;
     border-radius: 4vw;
   }
 
+  @media (max-width: 768px) {
+    article {
+      padding: 0;
+      grid-template-columns: 1fr;
+      justify-content: center;
+    }
+
+    article img {
+      height: 40vh;
+      width: auto;
+      max-width: 100%;
+      object-fit: cover;
+    }
+
+    article .text {
+      padding: 16px;
+    }
+  }
+
   h3 {
     margin: 0;
   }
