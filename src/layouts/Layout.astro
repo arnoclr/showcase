@@ -33,8 +33,7 @@ const { title } = Astro.props;
         <li>
           <a
             href="mailto:bonjour@arnocellarier.fr"
-            class="bubble"
-            id="contact-bubble"
+            class="bubble privacy-email"
           >
             <MessageBubble>Hey ! On discute ?</MessageBubble>
           </a>
@@ -47,11 +46,15 @@ const { title } = Astro.props;
   <script>
     import { getTrackingID, addCopyUrlSourceInUrl } from "../utils/tracking";
 
-    const contactBubble = document.getElementById("contact-bubble");
-    contactBubble?.setAttribute(
-      "href",
-      `mailto:bonjour.${getTrackingID()}@arno.cl`
-    );
+    const emailLinks = document.querySelectorAll("a.privacy-email");
+
+    emailLinks.forEach((a) => {
+      const email = `${getTrackingID()}@arno.cl`;
+      a.setAttribute("href", `mailto:${email}`);
+      if (a.textContent?.includes("@")) {
+        a.textContent = email;
+      }
+    });
 
     addCopyUrlSourceInUrl();
   </script>
