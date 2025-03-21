@@ -1,0 +1,320 @@
+---
+import { Image } from "astro:assets";
+import syspadImage from "../../images/prochains-trains/syspad.png";
+import panamImage from "../../images/prochains-trains/panam.png";
+import rerScreenImage from "../../images/prochains-trains/rer.png";
+import Statistics from "../../components/presentations/Statistics.astro";
+import linesPodiumImage from "../../images/prochains-trains/routes.png";
+import screensPodiumImage from "../../images/prochains-trains/screens.png";
+import Comments from "../../components/Comments.vue";
+import bitmojisImage from "../../images/prochains-trains/bitmojis.png";
+import ExternalWebsiteButton from "../../components/presentations/ExternalWebsiteButton.astro";
+---
+
+<section class="header">
+  <div
+    class="elements"
+    data-scroll
+    data-scroll-from-height-vh="0"
+    data-scroll-to-height-vh="200"
+    data-scroll-bezier=".86,.63,.78,.98"
+  >
+    <h1>Écrans d'informations<br />voyageur</h1>
+    <div class="merged">
+      <video
+        muted
+        preload="metadata"
+        src="https://cdn1.arno.cl/2025/03/syspad.webm"></video>
+      <Image class="syspad" src={syspadImage} alt="" />
+    </div>
+    <Image src={panamImage} alt="" class="panam" />
+    <Image src={rerScreenImage} alt="" class="rerScreen" />
+  </div>
+  <div class="safeArea"></div>
+  <small
+    data-footnote="Ces écrans sont des reproductions d'écrans RATP et SNCF, il ne s'agit en aucun cas d'écrans officiels et les informations affichées peuvent différer."
+    >Ecrans : prochains départs métro (PANAM), prochain départ RER (Syspad),
+    prochains départs RER.</small
+  >
+</section>
+
+<ExternalWebsiteButton
+  href="https://prochainstrains.arno.cl/?utm_source=arno.cl"
+>
+  Visiter le site
+</ExternalWebsiteButton>
+
+<section class="team">
+  <div>
+    <h2>Un travail d'équipe</h2>
+    <p>
+      Avec Léon Edmee, nous avons recréé une large gamme d’écrans d’information
+      voyageur en nous basant sur des photos trouvées sur Twitter, Discord,
+      ainsi que sur nos propres clichés pris en gare.
+    </p>
+    <p>
+      Pendant plusieurs mois, nous avons analysé l’API IDFM pour évaluer la
+      fiabilité des données en temps réel, allant même jusqu’à faire des retours
+      à leur équipe sur Slack.
+    </p>
+    <p>
+      Chaque écran a été développé de notre côté, puis centralisé sur un hub
+      commun afin de mutualiser le paramétrage (choix des arrêts et lignes).
+      Grâce à des composants réutilisables, Léon a pu livrer 8 écrans en un
+      temps record.
+    </p>
+    <p>
+      Le site est en ligne et continue d’évoluer : nous prévoyons d’ajouter
+      encore plus d’écrans, ainsi que des informations pour d’autres villes,
+      notamment les départs en gare SNCF.
+    </p>
+  </div>
+  <Image src={bitmojisImage} alt="" />
+</section>
+
+<section>
+  <div class="favorites">
+    <h3 data-footnote="Données Mars 2025">
+      Vos coups de <span style="color: var(--pink)">coeur</span>
+    </h3>
+    <div class="podiums">
+      <Image src={linesPodiumImage} alt="" />
+      <Image src={screensPodiumImage} alt="" />
+    </div>
+    <p>Les lignes et écrans de RER sont les plus utilisés.</p>
+  </div>
+  <div class="comments">
+    <Comments githubIssueId={7} client:visible />
+  </div>
+</section>
+
+<section class="statistics">
+  <h3 data-footnote="En mars 2025">Chiffres clés</h3>
+  <Statistics
+    color="var(--pink)"
+    rows={[
+      {
+        number: 10,
+        headline: "Écrans disponibles",
+      },
+      {
+        number: 3300,
+        headline: "Utilisateurs uniques",
+      },
+      {
+        number: 86400,
+        headline: "Requêtes traitées par jour",
+        footnote: "Selon les jours. Moyenne sur des jours à forte demande.",
+      },
+    ]}
+  />
+</section>
+
+<section></section>
+
+<script>
+  const video = document.querySelector("video");
+  const progressRange = [120, window.innerHeight * 1.6];
+  // @ts-ignore
+  const isSafari = window.safari !== undefined;
+
+  window.addEventListener("scroll", () => {
+    if (isSafari) {
+      video?.play();
+    } else {
+      if (!video) return;
+      const progress = (window.scrollY - progressRange[0]) / progressRange[1];
+      if (progress < 0) return;
+      video.currentTime = video.duration * progress;
+    }
+  });
+</script>
+
+<style>
+  .header {
+    --small-screens-scroll-height: 0vh;
+    --centered-translateY: calc(50vh - 12vw);
+    --header-bg: #f3edeb;
+  }
+
+  .header small {
+    display: block;
+    padding: 0 var(--navbar-horizontal-padding);
+    opacity: 0.4;
+    transform: translateY(5vh);
+  }
+
+  .elements {
+    position: relative;
+    height: 250vh;
+    background-color: var(--header-bg);
+  }
+
+  h1 {
+    position: absolute;
+    top: 50vh;
+    left: 50vw;
+    transform: translate(-50%, -50%);
+    width: max-content;
+    opacity: calc(0.8 - var(--progress) * 8);
+    color: #3e2b25;
+  }
+
+  @media (max-width: 800px) {
+    h1 {
+      font-size: 8vw;
+    }
+  }
+
+  .merged {
+    position: sticky;
+    height: calc(30vw);
+    top: 0;
+    transform-origin: bottom;
+    transform: translateY(var(--centered-translateY))
+      scale(min(1, calc(1.4 - var(--progress) * 0.94)));
+  }
+
+  .safeArea {
+    width: 100vw;
+    height: var(--centered-translateY);
+    /* background-color: red; */
+    background: linear-gradient(to bottom, var(--header-bg), transparent);
+  }
+
+  video {
+    width: 100vw;
+    height: auto;
+    opacity: calc(var(--progress) * 2 - 0.2);
+  }
+
+  .syspad {
+    display: block;
+    width: 100vw;
+    height: auto;
+    transform: translateY(-47vw) scale(1.135);
+    opacity: calc(var(--progress) * 4 - 2);
+  }
+
+  @supports (font: -apple-system-body) and (-webkit-appearance: none) {
+    /* .syspad {
+      transform: scale(1.135) translateY(-51.1vw);
+    }
+
+    .merged {
+      translate: 0 -20%;
+    } */
+  }
+
+  .panam,
+  .rerScreen {
+    height: 25vw;
+    width: auto;
+    position: absolute;
+    bottom: 0;
+    opacity: calc((var(--progress) * 10 - 9.8) * 5);
+  }
+
+  .panam {
+    left: 0;
+    transform: translateY(calc(var(--centered-translateY) + 10%))
+      translateX(-18vw);
+  }
+
+  .rerScreen {
+    right: 0;
+    transform: translateY(calc(var(--centered-translateY) + 10%))
+      translateX(8vw);
+  }
+
+  section:not(.header) {
+    margin: 10vh var(--navbar-horizontal-padding);
+  }
+
+  h2 {
+    font-size: 3rem;
+  }
+
+  p {
+    margin: 1.2rem 0;
+    font-size: 1.4rem;
+  }
+
+  .team {
+    padding-top: 6vh;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 5vw;
+  }
+
+  .team img {
+    width: 100%;
+    height: auto;
+  }
+
+  @media (max-width: 1100px) {
+    .team {
+      grid-template-columns: 1fr;
+    }
+
+    .team img {
+      height: 200px;
+      width: auto;
+      order: -1;
+    }
+  }
+
+  .podiums {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10vw;
+  }
+
+  .podiums img {
+    width: 100%;
+    height: auto;
+  }
+
+  .favorites {
+    padding: 42px 56px;
+    border-radius: 32px;
+    background-color: rgba(255, 45, 85, 0.04);
+    box-shadow:
+      inset 4px 2px 60px rgba(255, 45, 85, 0.12),
+      4px 2px 60px rgba(255, 45, 85, 0.12);
+  }
+
+  .comments {
+    padding: 22px 56px;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    h1 {
+      color: #f3edeb;
+    }
+
+    .header {
+      --header-bg: #222;
+    }
+
+    .favorites {
+      background-color: rgba(251, 104, 131, 0.14);
+    }
+  }
+
+  @media (max-width: 880px) {
+    .podiums {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .favorites h3 {
+    margin-top: 0;
+  }
+
+  .favorites p {
+    margin: 0;
+    color: var(--pink);
+  }
+</style>

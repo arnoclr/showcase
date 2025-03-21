@@ -1,21 +1,21 @@
 ---
 import { Image } from "astro:assets";
-import Comments from "../components/Comments.vue";
-import DeviceFrameSection from "../components/presentations/DeviceFrameSection.astro";
-import Statistics from "../components/presentations/Statistics.astro";
-import ExternalWebsiteButton from "../components/presentations/ExternalWebsiteButton.astro";
-import Heading from "../components/presentations/Heading.astro";
-import discoverImageDark from "../images/omsistuff/dark/discover.png";
-import highlightsImageDark from "../images/omsistuff/dark/highlights.png";
-import loginImageDark from "../images/omsistuff/dark/login.png";
-import presentationImageDark from "../images/omsistuff/dark/phone ipad.png";
-import reviewsImageDark from "../images/omsistuff/dark/reviews.png";
-import discoverImage from "../images/omsistuff/light/discover.png";
-import highlightsImage from "../images/omsistuff/light/highlights.png";
-import loginImage from "../images/omsistuff/light/login.png";
-import presentationImage from "../images/omsistuff/light/phone ipad.png";
-import reviewsImage from "../images/omsistuff/light/reviews.png";
-import { ImageColorScheme, ImageSizePreset } from "../utils/images";
+import discoverImageDark from "../../images/omsistuff/dark/discover.png";
+import highlightsImageDark from "../../images/omsistuff/dark/highlights.png";
+import loginImageDark from "../../images/omsistuff/dark/login.png";
+import presentationImageDark from "../../images/omsistuff/dark/phone ipad.png";
+import reviewsImageDark from "../../images/omsistuff/dark/reviews.png";
+import discoverImage from "../../images/omsistuff/light/discover.png";
+import highlightsImage from "../../images/omsistuff/light/highlights.png";
+import loginImage from "../../images/omsistuff/light/login.png";
+import presentationImage from "../../images/omsistuff/light/phone ipad.png";
+import reviewsImage from "../../images/omsistuff/light/reviews.png";
+import { ImageColorScheme, ImageSizePreset } from "../../utils/images";
+import Heading from "../../components/presentations/Heading.astro";
+import DeviceFrameSection from "../../components/presentations/DeviceFrameSection.astro";
+import Statistics from "../../components/presentations/Statistics.astro";
+import ExternalWebsiteButton from "../../components/presentations/ExternalWebsiteButton.astro";
+import Comments from "../../components/Comments.vue";
 ---
 
 <section class="bs-omsistuff-content bento-content">
@@ -121,8 +121,9 @@ import { ImageColorScheme, ImageSizePreset } from "../utils/images";
       },
     ]}
   />
-  <br /><br />
-  <Comments githubIssueId={3} client:visible />
+  <div style="padding-top: 10vh; display: grid; place-items: center;">
+    <Comments githubIssueId={3} client:visible />
+  </div>
   <ExternalWebsiteButton href="https://omsistuff.fr/?ref=arno.cl">
     Visiter le site
   </ExternalWebsiteButton>

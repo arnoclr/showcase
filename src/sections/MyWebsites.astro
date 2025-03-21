@@ -1,0 +1,115 @@
+---
+import WebsiteCard from "../components/WebsiteCard.astro";
+import sscImage from "../images/ssc25/hero.png";
+import kppImage from "../images/kpp/dark/share.png";
+import thesesImages from "../images/theses/light/presentation.png";
+import omsistuffImages from "../images/omsistuff/light/reviews.png";
+import syspadImage from "../images/prochains-trains/syspad.png";
+import msmImage from "../images/msm/dark/main.png";
+
+const websites = [
+  {
+    slug: "decouvrez-le-mont-saint-michel",
+    title: "Découvrez le Mont-Saint-Michel",
+    description:
+      "Notre premier gros projet au BUT informatique, en partenariat avec l'UNESCO.",
+    backgroundColor: "#B94503",
+    textColor: "white",
+    image: msmImage,
+  },
+  {
+    slug: "prochains-trains",
+    title: "Prochains trains",
+    description:
+      "Une reproduction fidèle des écrans d'information voyageur en gare RATP et SNCF.",
+    backgroundColor: "#E3051C",
+    textColor: "white",
+    image: syspadImage,
+  },
+  {
+    slug: "omsistuff-repaints-pour-omsi2",
+    title: "Trouvez des repaints",
+    description:
+      "Librairie de repaints pour OMSI 2, postés par la communauté et notre équipe.",
+    backgroundColor: "#22A569",
+    textColor: "white",
+    image: omsistuffImages,
+  },
+  {
+    slug: "chercher-des-theses-soutenues-en-france",
+    title: "Cherchez des thèses soutenues en France",
+    description:
+      "Moteur de recherche avec système d'alerte et filtres avancés.",
+    backgroundColor: "#c4e7ff",
+    textColor: "#01354a",
+    image: thesesImages,
+  },
+  {
+    slug: "editeur-de-girouettes-omsi2",
+    title: "KPP Maker",
+    description:
+      "Créez des girouettes défilantes, avec messages alternants et icônes pour OMSI 2.",
+    backgroundColor: "#607d8b",
+    textColor: "white",
+    image: kppImage,
+  },
+];
+---
+
+<section>
+  <h2>Mes sites web</h2>
+  <ul>
+    {
+      websites.map((website) => (
+        <li>
+          <a href={website.slug}>
+            <WebsiteCard
+              title={website.title}
+              description={website.description}
+              image={website.image || sscImage}
+              backgroundColor={website.backgroundColor}
+              textColor={website.textColor}
+            />
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<style>
+  section {
+    padding: 0 var(--navbar-horizontal-padding);
+    margin-bottom: 20vh;
+  }
+
+  h2 {
+    font-size: 4vh;
+    margin-top: 10vh;
+    margin-bottom: 10vh;
+    opacity: 0.4;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20vh;
+  }
+
+  li {
+    position: sticky;
+    top: 10vh;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  a:focus-visible {
+    text-decoration: underline;
+  }
+</style>

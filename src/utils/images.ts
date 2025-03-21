@@ -2,6 +2,8 @@ export enum ImageSizePreset {
   ThreePhonesOrTablet = "threePhonesOrTablet",
   SinglePhone = "singlePhone",
   TabletAndPhone = "tabletAndPhone",
+  CroppedPhone = "croppedPhone",
+  AppIcon = "appIcon",
 }
 
 export enum ImageColorScheme {

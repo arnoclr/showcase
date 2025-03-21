@@ -1,0 +1,78 @@
+---
+import { Image } from "astro:assets";
+import halobusIcon from "../images/ssc25/logo.png";
+import wagonIcon from "../images/wagon/Icon.png";
+---
+
+<section>
+  <h2>Mes applications</h2>
+
+  <ul>
+    <li>
+      <a href="/prendre-les-transports-avec-wagon">
+        <Image src={wagonIcon} alt="" />
+        <div>
+          <h3>Wagon</h3>
+          <p>
+            Mon appli pour faciliter l'usage des transports en Île de France et
+            quelques autres villes.
+          </p>
+        </div>
+      </a>
+    </li>
+
+    <li>
+      <a href="/swift-student-challenge-2025">
+        <Image src={halobusIcon} alt="" />
+        <div>
+          <h3>Halobus</h3>
+          <p>
+            Ma participation au Swift Student Challenge 2025, pour vous aider à
+            prendre le bus à Nice.
+          </p>
+        </div>
+      </a>
+    </li>
+  </ul>
+</section>
+
+<style>
+  section {
+    padding: 0 var(--navbar-horizontal-padding);
+  }
+
+  img {
+    height: 15vh;
+    width: auto;
+    border-radius: 24%;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  li a {
+    display: flex;
+    gap: 2rem;
+  }
+
+  h2 {
+    font-size: 4vh;
+    margin-bottom: 10vh;
+    opacity: 0.4;
+  }
+
+  h3 {
+    margin: 0;
+  }
+</style>

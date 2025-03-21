@@ -1,22 +1,12 @@
 ---
 import MessageBubble from "../components/MessageBubble.astro";
-import { projects } from "../projects";
 
 interface Props {
   title: string;
+  overflowX?: "hidden" | "visible";
 }
 
 const { title } = Astro.props;
-
-const rawCSS = projects
-  .map((project) => {
-    return `
-    body:not(:has(#checkbox-${project.id}:checked)) #navtitle-${project.id} {
-      display: none;
-    }
-  `;
-  })
-  .join("\n");
 ---
 
 <!doctype html>
@@ -31,16 +21,9 @@ const rawCSS = projects
   </head>
   <body>
     <nav>
-      <span>
-        <span>Arno Cellarier</span>
-        {
-          projects.map((project) => (
-            <span aria-hidden="true" id={"navtitle-" + project.id}>
-              — {project.title}
-            </span>
-          ))
-        }
-      </span>
+      <div class="left">
+        <a href="/"><span>Arno Cellarier</span></a>
+      </div>
       <ul>
         <li>
           <a target="_blank" href="https://cdn1.arno.cl/2024/03/CV%202024.pdf">
@@ -72,12 +55,26 @@ const rawCSS = projects
 
     addCopyUrlSourceInUrl();
   </script>
+  <script>
+    import { AnimatedScroll } from "../AnimatedScroll";
+
+    const animatedScroll = new AnimatedScroll();
+    const main = document.querySelector("main.presentation");
+
+    const resizeObserver = new ResizeObserver((entries) => {
+      animatedScroll.update();
+    });
+
+    if (main) {
+      resizeObserver.observe(main);
+    }
+  </script>
 </html>
 
-<style is:inline set:html={rawCSS}></style>
 <style>
   :root {
     --navbar-horizontal-padding: 10vw;
+    --pink: rgb(255, 45, 85);
   }
 
   nav {
@@ -117,6 +114,16 @@ const rawCSS = projects
 
   nav a:not(.bubble):hover {
     text-decoration: underline;
+  }
+
+  nav .left {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+  }
+
+  nav .left ul {
+    gap: 1rem;
   }
 
   .bubble {
@@ -160,6 +167,10 @@ const rawCSS = projects
   }
 
   @media (prefers-color-scheme: dark) and (max-width: 580px) {
+    :root {
+      --pink: rgb(255, 45, 85);
+    }
+
     nav {
       background-color: #000;
     }
@@ -187,7 +198,7 @@ const rawCSS = projects
 
   body,
   html {
-    overflow-x: hidden;
+    overflow-x: clip;
     margin: 0;
     padding: 0;
   }
@@ -204,6 +215,39 @@ const rawCSS = projects
     font-size: max(11px, 0.3em);
     color: gray;
     vertical-align: super;
+  }
+
+  h1,
+  h2 {
+    margin-top: 0;
+    margin-bottom: 16px;
+    font-size: max(40px, 5vw);
+    font-weight: 500;
+  }
+
+  h3 {
+    font-size: max(36px, 4vw);
+    font-weight: 500;
+  }
+
+  p {
+    font-size: max(18px, 2vw);
+    margin-bottom: 4vw;
+    opacity: 0.7;
+  }
+
+  h3 small {
+    font-size: inherit;
+    opacity: 0.6;
+  }
+
+  a {
+    color: #007aff;
+  }
+
+  .bento-content {
+    padding: 20vh var(--navbar-horizontal-padding);
+    padding-bottom: 0;
   }
 
   .bento-content [role="rowgroup"] {
@@ -239,6 +283,18 @@ const rawCSS = projects
     height: auto;
   }
 
+  .croppedPhone {
+    width: 40%;
+    height: auto;
+  }
+
+  .appIcon {
+    height: 40vh;
+    width: auto;
+    border-radius: 24%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+
   @keyframes appearWithBlur {
     from {
       transform-origin: top;
@@ -260,6 +316,10 @@ const rawCSS = projects
     .threePhonesOrTablet {
       width: 100%;
     }
+
+    .appIcon {
+      height: 30vh;
+    }
   }
 
   @media (max-width: 500px) {
@@ -269,6 +329,11 @@ const rawCSS = projects
       object-fit: cover;
       transform: scale(1.2);
       margin: 5vh 0;
+    }
+
+    .appIcon {
+      height: auto;
+      width: 50vw;
     }
   }
 
