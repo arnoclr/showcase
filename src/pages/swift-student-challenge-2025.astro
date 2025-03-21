@@ -8,12 +8,6 @@ import appIcon from "../images/ssc25/logo.png";
 import Layout from "../layouts/Layout.astro";
 import Footer from "../sections/Footer.astro";
 import { ImageSizePreset } from "../utils/images";
-import map1Image from "../images/ssc25/map1.png";
-import map2Image from "../images/ssc25/map2.png";
-import map3Image from "../images/ssc25/map3.png";
-import map4Image from "../images/ssc25/map4.png";
-import map5Image from "../images/ssc25/map5.png";
-import map6Image from "../images/ssc25/map6.png";
 ---
 
 <Layout title="Swift Student Challenge 2025">
@@ -37,7 +31,7 @@ import map6Image from "../images/ssc25/map6.png";
     </DeviceFrameSection>
   </section>
   <section class="content">
-    <DeviceFrameSection placement="frameFirst" height="fitContent">
+    <DeviceFrameSection placement="iconOnTop" height="fitContent">
       <Image
         slot="frame"
         src={appIcon}
@@ -52,79 +46,60 @@ import map6Image from "../images/ssc25/map6.png";
           tous les bus et tramways. Elle met en valeur l’étendue du réseau et
           invite les utilisateurs à <mark>explorer la ville sans voiture</mark>.
         </p>
+        <Comments githubIssueId={6} client:visible />
+        <h2>Idée</h2>
+        <p>
+          J'ai eu l'idée de cette application en prenant connaissance des
+          contraintes imposées pour ce défi. En effet, il faut une application :
+          <ul>
+            <li>Légère (25 MB)</li>
+            <li>Qui fonctionne hors-ligne</li>
+            <li>Qui puisse se tester en moins de 3 minutes.</li>
+          </ul>
+        </p>
+        <p>
+          J'ai voulu réinvestir mes connaissances acquises en développant Wagon,
+          j'ai donc reflechi à une application sur la thématique des transports
+          en commun, qui intégrerait ces contraintes.
+        </p>
+        <p>
+          Mais je ne voulais pas une application trop basique, il me fallait un
+          côté "Waouh". C'est ainsi que m'est venue l'idée : une application
+          100% hors-ligne, ou l'on verrait les bus bouger sur une carte ; <mark
+            >simple en apparence</mark
+          >, mais plutôt technique à réaliser.
+        </p>
       </div>
     </DeviceFrameSection>
-
-    <div class="idea">
-      <Comments githubIssueId={6} client:visible />
-      <h2>Idée</h2>
-      <p>
-        J'ai eu l'idée de cette application en prenant connaissance des
-        contraintes imposées pour ce défi. En effet, il faut une application :
-        <ul>
-          <li>Légère (25 MB)</li>
-          <li>Qui fonctionne hors-ligne</li>
-          <li>Qui puisse se tester en moins de 3 minutes.</li>
-        </ul>
-      </p>
-      <p>
-        J'ai voulu réinvestir mes connaissances acquises en développant Wagon,
-        j'ai donc reflechi à une application sur la thématique des transports en
-        commun, qui intégrerait ces contraintes.
-      </p>
-      <p>
-        Mais je ne voulais pas une application trop basique, il me fallait un
-        côté "Waouh". C'est ainsi que m'est venue l'idée : une application 100%
-        hors-ligne, ou l'on verrait les bus bouger sur une carte ; <mark
-          >simple en apparence</mark
-        >, mais plutôt technique à réaliser.
-      </p>
-    </div>
   </section>
 
   <section class="technical">
-    <h2>Défis techniques</h2>
-    <p>
-      Pour respecter les contraintes, j'ai fait face à quelques difficultés en
-      réalisant mon app.
-    </p>
-    <h3>Carte hors-ligne</h3>
-    <p>
-      Bien qu'Apple Plan propose un mode hors-ligne depuis iOS 17, le SDK
-      disponible dans Swift UI ne propose pas d'option analogue. J'ai recréé ma
-      propre carte à partir des données OpenStreetMap et des options permises
-      par MapKit.
-    </p>
+    <DeviceFrameSection height="fitContent" placement="textFirst">
+      <Image src={mapImage} alt="" slot="frame" />
+      <div class="text">
+        <h2>Défis techniques</h2>
+        <p>
+          Pour respecter les contraintes, j'ai fait face à quelques difficultés
+          en réalisant mon app.
+        </p>
+        <h3>Carte hors-ligne</h3>
+        <p>
+          Bien qu'Apple Plan propose un mode hors-ligne depuis iOS 17, le SDK
+          disponible dans Swift UI ne propose pas d'option analogue. J'ai recréé
+          ma propre carte à partir des données OpenStreetMap et des options
+          permises par MapKit.
+        </p>
+        <ol>
+          <li>Initialisation d'une carte MapKit classique</li>
+          <li>Affichage en mode Satellite pour retirer les labels</li>
+          <li>
+            Itération sur chaque type de zone OpenStreetMap pour créer les
+            polygones correspondants sur la carte
+          </li>
+        </ol>
+      </div>
+    </DeviceFrameSection>
   </section>
-
-  <div id="map-anchor-start"></div>
-  <section style="padding: 0">
-    <div
-      class="mapSticky"
-      data-scroll
-      data-scroll-anchor-from="map-anchor-start"
-      data-scroll-anchor-to="map-anchor-end"
-      data-scroll-from-height-vh="-80"
-      data-scroll-to-height-vh="0"
-      data-scroll-bezier="0,0,1,1"
-    >
-      <Image src={map1Image} alt="" />
-      <Image src={map2Image} alt="" />
-      <Image src={map3Image} alt="" />
-      <Image src={map4Image} alt="" />
-      <Image src={map5Image} alt="" />
-      <Image src={map6Image} alt="" />
-      <ol>
-        <li>Initialisation de la carte Apple Plan, centrée sur Nice.</li>
-        <li>Affichage en mode satellite pour retirer les labels.</li>
-        <li>
-          Itération sur l'extrait OSM pour dessiner des polygones de couleur sur
-          la carte.
-        </li>
-      </ol>
-    </div>
-  </section>
-  <div id="map-anchor-end"></div>
 
   <section style="padding-top: 0;">
     <h3>Taille des données</h3>
@@ -292,71 +267,5 @@ import map6Image from "../images/ssc25/map6.png";
 
   mark {
     background-color: #ffc089;
-  }
-
-  .mapSticky {
-    position: relative;
-    height: 200vh;
-    transform: translateY(calc(var(--progress) * 100vh - 50vh));
-    user-select: none;
-    pointer-events: none;
-  }
-
-  .mapSticky img {
-    position: absolute;
-    top: 50%;
-    width: 100%;
-    height: 100vh;
-    object-fit: cover;
-    transform: translateY(-50%);
-  }
-
-  .mapSticky img:nth-child(2) {
-    opacity: calc(var(--progress) * 6);
-  }
-
-  .mapSticky img:nth-child(3) {
-    opacity: calc((-0.3 + var(--progress)) * 10);
-  }
-
-  .mapSticky img:nth-child(4) {
-    opacity: calc((-0.4 + var(--progress)) * 12);
-  }
-
-  .mapSticky img:nth-child(5) {
-    opacity: calc((-0.5 + var(--progress)) * 14);
-  }
-
-  .mapSticky img:nth-child(6) {
-    opacity: calc((-0.6 + var(--progress)) * 18);
-  }
-
-  .mapSticky ol {
-    display: flex;
-    flex-direction: column;
-    gap: 10vh;
-    padding: 0 var(--navbar-horizontal-padding);
-    position: fixed;
-    top: 30%;
-    left: 0;
-    font-size: 40px;
-    color: black;
-    transform: translateY(calc(var(--progress) * -50vh));
-  }
-
-  .mapSticky ol li:nth-child(1) {
-    color: black;
-    opacity: calc(1 + var(--progress) * -10);
-  }
-
-  .mapSticky ol li:nth-child(2) {
-    opacity: calc((-0 + var(--progress)) * 4);
-    color: white;
-    text-shadow: 0 0 10px black;
-  }
-
-  .mapSticky ol li:nth-child(3) {
-    opacity: calc((-0.2 + var(--progress)) * 4);
-    color: black;
   }
 </style>

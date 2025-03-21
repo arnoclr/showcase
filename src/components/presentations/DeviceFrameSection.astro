@@ -1,7 +1,7 @@
 ---
 interface Props {
   height?: "screen" | "fitContent";
-  placement?: "frameFirst" | "textFirst" | "frameFirstOnDesktop";
+  placement?: "frameFirst" | "textFirst" | "iconOnTop";
 }
 
 const { height = "screen", placement = "textFirst" } = Astro.props;
@@ -27,8 +27,17 @@ const { height = "screen", placement = "textFirst" } = Astro.props;
     width: 100%;
   }
 
-  .frameFirst {
+  .frameFirst,
+  .iconOnTop {
     flex-direction: row-reverse;
+  }
+
+  .iconOnTop {
+    align-items: start;
+  }
+
+  .iconOnTop .text {
+    padding-top: 6vh;
   }
 
   .screen {
@@ -37,12 +46,22 @@ const { height = "screen", placement = "textFirst" } = Astro.props;
 
   @media (max-width: 900px) {
     section.textFirst,
-    section.frameFirst {
+    section.frameFirst,
+    section.iconOnTop {
       flex-direction: column;
     }
 
-    section.frameFirst {
+    section.frameFirst,
+    section.iconOnTop {
       flex-direction: column-reverse;
+    }
+
+    section.iconOnTop {
+      gap: 0;
+    }
+
+    .iconOnTop .text {
+      padding-top: 0;
     }
 
     .screen {
