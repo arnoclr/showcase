@@ -8,6 +8,7 @@ import linesPodiumImage from "../../images/prochains-trains/routes.png";
 import screensPodiumImage from "../../images/prochains-trains/screens.png";
 import Comments from "../../components/Comments.vue";
 import bitmojisImage from "../../images/prochains-trains/bitmojis.png";
+import ExternalWebsiteButton from "../../components/presentations/ExternalWebsiteButton.astro";
 ---
 
 <section class="header">
@@ -36,6 +37,12 @@ import bitmojisImage from "../../images/prochains-trains/bitmojis.png";
     prochains départs RER.</small
   >
 </section>
+
+<ExternalWebsiteButton
+  href="https://prochainstrains.arno.cl/?utm_source=arno.cl"
+>
+  Visiter le site
+</ExternalWebsiteButton>
 
 <section class="team">
   <div>
@@ -234,7 +241,7 @@ import bitmojisImage from "../../images/prochains-trains/bitmojis.png";
   }
 
   .team {
-    padding-top: 10vh;
+    padding-top: 6vh;
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 5vw;
