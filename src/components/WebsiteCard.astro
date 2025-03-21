@@ -1,0 +1,60 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  title: string;
+  description: string;
+  image: ImageMetadata;
+  backgroundColor: string;
+  textColor: string;
+}
+
+const { title, description, image, backgroundColor, textColor } = Astro.props;
+---
+
+<article
+  style={{
+    backgroundColor: backgroundColor,
+    color: textColor,
+    "--color-transparent": `${backgroundColor}33`,
+  }}
+>
+  <Image src={image} alt="" />
+  <div class="text">
+    <h3>{title}</h3>
+    <p>{description}</p>
+    <span>En savoir plus</span>
+  </div>
+</article>
+
+<style>
+  article {
+    height: 80vh;
+    padding: 4vw;
+    width: 100%;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 2fr 1fr;
+    gap: 4vw;
+    border-radius: 4vw;
+  }
+
+  h3 {
+    margin: 0;
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  span {
+    opacity: 0.6;
+    text-decoration: underline;
+  }
+</style>
