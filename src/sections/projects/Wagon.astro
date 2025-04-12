@@ -18,6 +18,7 @@ import androidImage from "../../images/wagon/light/android.png";
 import androidImageDark from "../../images/wagon/dark/android.png";
 import Statistics from "../../components/presentations/Statistics.astro";
 import testFlightButton from "../../images/wagon/testflight button.png";
+import wagonMap from "../../images/wagon/map.svg";
 import { Display } from "../../utils/css";
 import Team from "../../components/presentations/Team.astro";
 
@@ -52,7 +53,6 @@ const matthieuCloet = {
 
 <section class="bs-wagon-content bento-content">
   <Heading title="Wagon" subtitle="Prendre les transports, autrement." />
-  <Comments githubIssueId={1} client:visible />
   <DeviceFrameSection>
     <h3><small>Prochains passages,</small><br />en un coup d'œil.</h3>
     <p class:list={[Display.OnlyForScreenReader]}>
@@ -74,6 +74,7 @@ const matthieuCloet = {
       alt=""
     />
   </DeviceFrameSection>
+  <Comments githubIssueId={1} client:visible />
   <DeviceFrameSection placement="frameFirst">
     <Video
       slot="frame"
@@ -165,43 +166,39 @@ const matthieuCloet = {
   />
   <h3 style="padding-top: 56px;">L'équipe.</h3>
   <Team people={[arnoCellarier, remyCellarier, leonEdmee, matthieuCloet]} />
-  <section style="margin: 20vh 0">
-    <h3>Obtenir Wagon</h3>
-    <div role="row">
-      <a
-        href="https://testflight.apple.com/join/M2xoL0bC"
-        title="Obtenir l'application sur TestFlight"
-        target="_blank"
-      >
-        <Image
-          src={testFlightButton}
-          alt="Disponible sur TestFlight"
-          height={56}
-          quality={100}
-        />
-      </a>
-      <ExternalWebsiteButton
-        align="left"
-        href="https://twitter.com/ridewithwagon"
-      >
-        Accéder au fil Twitter
-      </ExternalWebsiteButton>
-      <ExternalWebsiteButton align="left" href="http://arno.cl/uirq">
-        S'inscrire aux tests Android
-      </ExternalWebsiteButton>
-    </div>
-    <ul>
-      <li>
-        <small>Cette application requiert iOS 17.0 ou supérieur.</small>
-      </li>
-      <li>
-        <small>
-          Disponible pour les villes suivantes : Île-de-France (réseau IDF
-          Mobilités).
-        </small>
-      </li>
-    </ul>
-  </section>
+</section>
+
+<section class="getWagon">
+  <h3>Obtenir Wagon</h3>
+  <p
+    data-footnote="Certaines régions ne prennent pas en charge certaines fonctionnalités, telles que l'affichage des perturbations trafic (liste non exhaustive)."
+  >
+    Wagon est disponible dans les régions suivantes : Île-de-France, Nice,
+    Toulouse et Chypre (UE).
+  </p>
+  <Image src={wagonMap} class="map" alt="" />
+  <div role="row">
+    <a
+      href="https://testflight.apple.com/join/M2xoL0bC"
+      title="Obtenir l'application sur TestFlight"
+      target="_blank"
+    >
+      <Image
+        src={testFlightButton}
+        alt="Disponible sur TestFlight"
+        height={56}
+        quality={100}
+      />
+    </a>
+  </div>
+  <small
+    >Si l'essai via TestFlight est plein, vous pouvez m'addresser une demande
+    par mail.</small
+  >
+  <small
+    >L'application est disponible pour les iPhone XS, iPhone XR ou ultérieur
+    avec iOS 17 ou plus. Egalement disponible sur Android 8+.</small
+  >
 </section>
 
 <style>
@@ -209,5 +206,36 @@ const matthieuCloet = {
     display: flex;
     align-items: center;
     gap: 32px;
+  }
+
+  section.getWagon {
+    --content-width: calc((100vw - var(--navbar-horizontal-padding) * 2));
+    position: relative;
+    margin-top: 10vh;
+    padding: 10vh var(--navbar-horizontal-padding);
+    background-color: #00aa83;
+    color: white;
+  }
+
+  section.getWagon .map {
+    position: absolute;
+    top: 5vh;
+    right: 0;
+    height: auto;
+    width: calc(var(--content-width) * 0.8);
+  }
+
+  section.getWagon p,
+  section.getWagon small {
+    display: block;
+    max-width: calc(var(--content-width) * 0.3);
+  }
+
+  section.getWagon small {
+    margin-top: 20px;
+  }
+
+  section.getWagon :global(sup a) {
+    color: white;
   }
 </style>
