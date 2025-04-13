@@ -3,7 +3,6 @@ import { Image } from "astro:assets";
 import Comments from "../../components/Comments.vue";
 import Video from "../../components/Video.astro";
 import DeviceFrameSection from "../../components/presentations/DeviceFrameSection.astro";
-import ExternalWebsiteButton from "../../components/presentations/ExternalWebsiteButton.astro";
 import Heading from "../../components/presentations/Heading.astro";
 import presentationImageDark from "../../images/wagon/dark/phones.png";
 import reportImageDark from "../../images/wagon/dark/report.png";
@@ -19,6 +18,9 @@ import androidImageDark from "../../images/wagon/dark/android.png";
 import Statistics from "../../components/presentations/Statistics.astro";
 import testFlightButton from "../../images/wagon/testflight button.png";
 import wagonMap from "../../images/wagon/map.svg";
+import detourImage from "../../images/wagon/light/detour.png";
+import vehiclesNice from "../../images/wagon/vehicles nice.png";
+import palmTree from "../../images/wagon/palmtree.png";
 import { Display } from "../../utils/css";
 import Team from "../../components/presentations/Team.astro";
 
@@ -51,8 +53,54 @@ const matthieuCloet = {
 };
 ---
 
-<section class="bs-wagon-content bento-content">
+<section class="header">
   <Heading title="Wagon" subtitle="Prendre les transports, autrement." />
+  <Comments
+    githubIssueId={1}
+    bubbleColor={{
+      darkBackground: "#FEA580",
+      lightBackground: "#FEA580",
+      lightBackgroundText: "black",
+      darkBackgroundText: "black",
+    }}
+    client:visible
+  />
+  <div class="illustrations">
+    <Image class="vehicles" src={vehiclesNice} alt="" />
+    <Image class="palmtree" src={palmTree} alt="" />
+  </div>
+</section>
+
+<style>
+  section.header {
+    padding: 20vh var(--navbar-horizontal-padding);
+    padding-bottom: 0;
+    background-color: #ffede6;
+  }
+
+  section.header :global(h2) {
+    color: #fc4a00;
+  }
+
+  section.header .illustrations {
+    display: grid;
+    align-items: end;
+    grid-template-columns: 6fr 1fr;
+    gap: 20vw;
+  }
+
+  section.header img {
+    width: 100%;
+    height: auto;
+  }
+
+  section.header .palmtree {
+    transform-origin: bottom right;
+    transform: scale(1.9);
+  }
+</style>
+
+<section class="bs-wagon-content bento-content" style="padding-top: 0">
   <DeviceFrameSection>
     <h3><small>Prochains passages,</small><br />en un coup d'œil.</h3>
     <p class:list={[Display.OnlyForScreenReader]}>
@@ -74,7 +122,6 @@ const matthieuCloet = {
       alt=""
     />
   </DeviceFrameSection>
-  <Comments githubIssueId={1} client:visible />
   <DeviceFrameSection placement="frameFirst">
     <Video
       slot="frame"
@@ -112,6 +159,19 @@ const matthieuCloet = {
       pickpocket, vous pouvez signaler l'incident pour qu'il soit affiché aux
       autres utilisateurs. Les signalements sont rattachés aux arrêts où ils ont
       été renseignés.
+    </p>
+  </DeviceFrameSection>
+  <DeviceFrameSection placement="textFirst">
+    <Image
+      slot="frame"
+      class:list={[ImageSizePreset.SinglePhone]}
+      src={detourImage}
+      alt=""
+    />
+    <h3>Ne soyez plus surpris par les travaux.</h3>
+    <p class:list={[Display.OnlyForScreenReader]}>
+      En cas de travaux, les prochains arrêts non desservis seront marqués d'une
+      croix.
     </p>
   </DeviceFrameSection>
   <DeviceFrameSection placement="frameFirst">

@@ -1,11 +1,17 @@
 <script lang="ts" setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 import { removeHtmlTags } from "../utils/strings";
 import type { GithubAPICommentsResponse } from "../external/GithubApiCommentsResponse";
 import { Display } from "../utils/css";
 
 const props = defineProps<{
   githubIssueId: number;
+  bubbleColor?: {
+    lightBackground: string;
+    darkBackground: string;
+    lightBackgroundText: string;
+    darkBackgroundText: string;
+  };
 }>();
 
 interface Comment {
@@ -73,6 +79,15 @@ function delayForComment(i: number): string {
   return `${1000 + Math.log10(1 + i) * 3000}ms`;
 }
 
+const customColors = computed(() => ({
+  "--bubble-custom-background-color": props.bubbleColor?.lightBackground,
+  "--bubble-custom-background-color-dark": props.bubbleColor?.darkBackground,
+  "--bubble-custom-background-color-text":
+    props.bubbleColor?.lightBackgroundText,
+  "--bubble-custom-background-color-text-dark":
+    props.bubbleColor?.darkBackgroundText,
+}));
+
 onMounted(() => {
   fetchComments();
 });
@@ -82,7 +97,11 @@ onMounted(() => {
   <span v-if="state.type === 'error'">
     Impossible de charger les commentaires pour le moment.
   </span>
-  <div class="transitionOnHeight" :aria-hidden="state.type !== 'loading'">
+  <div
+    class="transitionOnHeight"
+    :aria-hidden="state.type !== 'loading'"
+    :style="customColors"
+  >
     <div class="overflowHidden">
       <div class="loading">
         <span>Un utilisateur est train d'écrire</span>
@@ -96,7 +115,11 @@ onMounted(() => {
       </div>
     </div>
   </div>
-  <div class="transitionOnHeight" :aria-hidden="state.type !== 'ok'">
+  <div
+    class="transitionOnHeight"
+    :aria-hidden="state.type !== 'ok'"
+    :style="customColors"
+  >
     <div class="overflowHidden">
       <ul v-if="state.type === 'ok'">
         <li
@@ -148,7 +171,8 @@ onMounted(() => {
 
 <style scoped>
 .transitionOnHeight {
-  --bubble-background-color: #eee;
+  --bubble-background-color: var(--bubble-custom-background-color, #eee);
+  --bubble-text-color: var(--bubble-custom-background-color-text, #000);
   --horizontal-padding: 1rem;
   display: grid;
   grid-template-rows: 1fr;
@@ -199,6 +223,7 @@ li {
   max-width: 60ch;
   padding: 8px var(--horizontal-padding);
   background-color: var(--bubble-background-color);
+  color: var(--bubble-text-color);
   border-radius: 1.4rem;
 }
 
