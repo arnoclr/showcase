@@ -197,7 +197,7 @@ const matthieuCloet = {
       dessus pour consulter les horaires en temps réel.
     </p>
   </DeviceFrameSection>
-  <DeviceFrameSection>
+  <!-- <DeviceFrameSection>
     <h3>Aussi sur Android.</h3>
     <Image
       slot="frame"
@@ -211,34 +211,40 @@ const matthieuCloet = {
       src={androidImageDark}
       alt=""
     />
-  </DeviceFrameSection>
+  </DeviceFrameSection> -->
   <Statistics
     color="#00aa83"
     rows={[
       {
-        number: 1297,
-        headline: "abonnés sur X",
-        footnote: "Données pour février 2023. X (anciennement Twitter)",
+        number: 358,
+        headline: "utilisateurs mensuels",
+        footnote: "Le 1 déc. 2025.",
       },
       {
-        number: 600,
-        headline: "testeurs",
-        footnote: "600 testeurs sur TestFlight. Nombre de places limité.",
+        number: 71,
+        headline: "contributeurs",
+        footnote:
+          "Le 1 déc. 2025. Personnes qui ont signalé un incident ou répondu à une question sur les 30 derniers jours.",
       },
-      { number: 55800, headline: "arrêts de bus référencés" },
+      { number: 38309, headline: "zones d'arrêt référencées" },
     ]}
   />
   <h3 style="padding-top: 56px;">L'équipe.</h3>
-  <Team people={[arnoCellarier, remyCellarier, leonEdmee, matthieuCloet]} />
+  <Team people={[arnoCellarier, remyCellarier, leonEdmee]} />
 </section>
 
 <section class="getWagon">
   <h3>Obtenir Wagon</h3>
-  <p
-    data-footnote="Certaines régions ne prennent pas en charge certaines fonctionnalités, telles que l'affichage des perturbations trafic (liste non exhaustive)."
-  >
-    Wagon est disponible dans les régions suivantes : Île-de-France, Nice,
-    Toulouse et Chypre (UE).
+  <p>
+    Wagon est disponible dans les régions <span
+      data-footnote="Certaines régions ne prennent pas en charge certaines fonctionnalités, telles que l'affichage des perturbations trafic (liste non exhaustive)."
+      >suivantes</span
+    > :
+    <br />
+    <span style="font-size: 0.6em; display: block; margin-top: 10px;"
+      >Île-de-France, Nice, Toulouse, Prague, Pilsen, Bratislava et Chypre (UE),
+      ainsi que le réseau Flixbus.</span
+    >
   </p>
   <Image src={wagonMap} class="map" alt="" />
   <div role="row">
@@ -261,7 +267,7 @@ const matthieuCloet = {
   >
   <small
     >L'application est disponible pour les iPhone XS, iPhone XR ou ultérieur
-    avec iOS 17 ou plus. Egalement disponible sur Android 8+.</small
+    avec iOS 17 ou plus.</small
   >
 </section>
 
