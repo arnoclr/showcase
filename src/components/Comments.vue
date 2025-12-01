@@ -292,6 +292,11 @@ a[emphasized="true"] {
 }
 
 @media (prefers-color-scheme: dark) {
+  .bubble {
+    --bubble-background-color: var(--bubble-custom-background-color-dark, #333);
+    --bubble-text-color: var(--bubble-custom-background-color-text-dark, #fff);
+  }
+
   .transitionOnHeight {
     --bubble-background-color: #333;
   }

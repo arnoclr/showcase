@@ -75,10 +75,14 @@ const matthieuCloet = {
   section.header {
     padding: 20vh var(--navbar-horizontal-padding);
     padding-bottom: 0;
-    background-color: #ffede6;
+    background: linear-gradient(to bottom, #ffcfbc 20%, #ffede6 50%);
   }
 
   section.header :global(h2) {
+    color: #fc4a00;
+  }
+
+  section.header :global(h2 + p) {
     color: #fc4a00;
   }
 
